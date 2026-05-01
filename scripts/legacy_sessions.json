@@ -1,0 +1,773 @@
+[
+  {
+    "day": "Mon 3/2",
+    "month": "March",
+    "blue": [
+      "Nathan",
+      "Ryan",
+      "Cal",
+      "Lee"
+    ],
+    "white": [
+      "Chad",
+      "Wags",
+      "Sean",
+      "Gabe"
+    ],
+    "winner": "white",
+    "score": "4-3"
+  },
+  {
+    "day": "Tue 3/3",
+    "month": "March",
+    "blue": [
+      "Nathan",
+      "Wags",
+      "Cody",
+      "Ryan",
+      "Lee"
+    ],
+    "white": [
+      "Chad",
+      "Sean",
+      "Gabe",
+      "Kyle",
+      "Jared"
+    ],
+    "winner": "blue",
+    "score": "W",
+    "note": "Blue beat that ass."
+  },
+  {
+    "day": "Thu 3/5",
+    "month": "March",
+    "blue": [
+      "Nathan",
+      "Jared",
+      "Sean",
+      "Ryan"
+    ],
+    "white": [
+      "Wags",
+      "Mike",
+      "Gabe",
+      "Lee"
+    ],
+    "winner": "blue",
+    "score": "W",
+    "note": "Blue smacked ass again."
+  },
+  {
+    "day": "Fri 3/6",
+    "month": "March",
+    "blue": [
+      "Nathan",
+      "Mike",
+      "Gabe",
+      "Cal",
+      "Lee"
+    ],
+    "white": [
+      "Chad",
+      "Wags",
+      "Sean",
+      "Tyler",
+      "Ryan"
+    ],
+    "winner": "white",
+    "score": "4-3"
+  },
+  {
+    "day": "Mon 3/9",
+    "month": "March",
+    "blue": [
+      "Nathan",
+      "Wags",
+      "Sean",
+      "Lee"
+    ],
+    "white": [
+      "Jared",
+      "Cody",
+      "Gabe",
+      "Kyle"
+    ],
+    "winner": "blue",
+    "score": "W"
+  },
+  {
+    "day": "Tue 3/10",
+    "month": "March",
+    "blue": [],
+    "white": [],
+    "winner": null,
+    "score": null,
+    "note": "3 showed (Sean, Lee, Wags). That's a carpool, not a game."
+  },
+  {
+    "day": "Wed 3/11",
+    "month": "March",
+    "blue": [
+      "Nathan",
+      "Jared",
+      "Chad",
+      "Lee"
+    ],
+    "white": [
+      "Gabe",
+      "Wags",
+      "Sean",
+      "Cal"
+    ],
+    "winner": "white",
+    "score": "4-2"
+  },
+  {
+    "day": "Thu 3/12",
+    "month": "March",
+    "blue": [
+      "Nathan",
+      "Gabe",
+      "Wags",
+      "Ryan"
+    ],
+    "white": [
+      "Chad",
+      "Sean",
+      "Lee",
+      "Tyler"
+    ],
+    "winner": null,
+    "score": null,
+    "note": "No result recorded. Lost to history."
+  },
+  {
+    "day": "Fri 3/13",
+    "month": "March",
+    "blue": [
+      "Nathan",
+      "Gabe",
+      "Tyler",
+      "Kyle",
+      "Lee"
+    ],
+    "white": [
+      "Jared",
+      "Chad",
+      "Wags",
+      "Sean",
+      "Ryan"
+    ],
+    "winner": "blue",
+    "score": "4-2"
+  },
+  {
+    "day": "Mon 3/16",
+    "month": "March",
+    "blue": [
+      "Kyle",
+      "Ryan",
+      "Wags",
+      "Gabe"
+    ],
+    "white": [
+      "Nathan",
+      "Lee",
+      "Sean",
+      "Jared"
+    ],
+    "winner": "blue",
+    "score": "4-3"
+  },
+  {
+    "day": "Tue 3/17",
+    "month": "March",
+    "blue": [
+      "Nathan",
+      "Gabe",
+      "Wags",
+      "Cal"
+    ],
+    "white": [
+      "Sean",
+      "Cody",
+      "Ryan",
+      "Phil"
+    ],
+    "winner": "blue",
+    "score": "4-2",
+    "note": "Phil debuted. Phil lost. Phil never returned."
+  },
+  {
+    "day": "Wed 3/18",
+    "month": "March",
+    "blue": [
+      "Tomcat (KY)",
+      "Ryan",
+      "Gabe",
+      "Kyle M (KY)",
+      "Sean"
+    ],
+    "white": [
+      "Nathan",
+      "Cal",
+      "Lee",
+      "Jared",
+      "Tyler"
+    ],
+    "winner": "white",
+    "score": "4-1",
+    "note": "Kentucky visitors. Cal on White = cheat code."
+  },
+  {
+    "day": "Thu 3/19",
+    "month": "March",
+    "blue": [
+      "Nathan",
+      "Wags",
+      "Lee",
+      "Cody"
+    ],
+    "white": [
+      "Gabe",
+      "Sean",
+      "Mike",
+      "Ryan"
+    ],
+    "winner": "white",
+    "score": "4-3",
+    "note": "Blue was up 3-0. Then lost four straight. A genuine crime scene."
+  },
+  {
+    "day": "Fri 3/20",
+    "month": "March",
+    "blue": [
+      "Lee",
+      "Jared",
+      "Sean",
+      "Mike"
+    ],
+    "white": [
+      "Nathan",
+      "Kyle",
+      "Ryan",
+      "Tyler"
+    ],
+    "winner": "white",
+    "score": "4-0",
+    "note": "First sweep in Morning Hoops history. Blue got 1 back in the in-season tourney, which 'really matters.'"
+  },
+  {
+    "day": "Mon 3/23",
+    "month": "March",
+    "blue": [
+      "Nathan",
+      "Jared",
+      "Gabe",
+      "Cal"
+    ],
+    "white": [
+      "Kyle",
+      "Ryan",
+      "Lee",
+      "Chad"
+    ],
+    "winner": "blue",
+    "score": "4-3",
+    "note": "Gabe went 7/7 in game 1: three 3s and a layup. Every point."
+  },
+  {
+    "day": "Tue 3/24",
+    "month": "March",
+    "blue": [
+      "Chad",
+      "Ryan",
+      "Gabe",
+      "Jared"
+    ],
+    "white": [
+      "Nathan",
+      "Lee",
+      "Wags",
+      "Cody"
+    ],
+    "winner": "blue",
+    "score": "4-1"
+  },
+  {
+    "day": "Wed 3/25",
+    "month": "March",
+    "blue": [
+      "Ryan",
+      "Lee",
+      "Tyler",
+      "Gabe"
+    ],
+    "white": [
+      "Nathan",
+      "Jared",
+      "Kyle",
+      "Cal"
+    ],
+    "winner": "blue",
+    "score": "4-1",
+    "note": "Lee finally won. Tyler returns and extends to 5-0."
+  },
+  {
+    "day": "Thu 3/26",
+    "month": "March",
+    "blue": [],
+    "white": [],
+    "winner": null,
+    "score": null,
+    "note": "No game. Mike's birthday. The gym got the day off. Mike did not get a win."
+  },
+  {
+    "day": "Fri 3/27",
+    "month": "March",
+    "blue": [
+      "Kyle",
+      "Mitch",
+      "Chad",
+      "Mike"
+    ],
+    "white": [
+      "Nathan",
+      "Ryan",
+      "Lee",
+      "Tyler"
+    ],
+    "winner": "white",
+    "score": "4-0",
+    "note": "Second sweep in history. Tyler 7/7 in game 2. Mitch debuted and got baptized 0-4. Mike got swept the day after his birthday."
+  },
+  {
+    "day": "Mon 3/30",
+    "month": "March",
+    "blue": [
+      "Nathan",
+      "Lee",
+      "Gabe",
+      "Cal"
+    ],
+    "white": [
+      "Tyler",
+      "Kyle",
+      "Chad",
+      "Mike"
+    ],
+    "winner": "blue",
+    "score": "4-3",
+    "note": "TYLER'S FIRST LOSS. EVER. Pour one out for the perfect record."
+  },
+  {
+    "day": "Tue 3/31",
+    "month": "March",
+    "blue": [],
+    "white": [],
+    "winner": null,
+    "score": null,
+    "note": "No game."
+  },
+  {
+    "day": "Wed 4/1",
+    "month": "April",
+    "blue": [
+      "Chad",
+      "Gabe",
+      "Tyler",
+      "Lee"
+    ],
+    "white": [
+      "Nathan",
+      "Kyle",
+      "Sean",
+      "Cal"
+    ],
+    "winner": "blue",
+    "score": "4-0",
+    "note": "Blue sweeps. Tyler rebounds from his first-ever loss. Sean returns and immediately loses."
+  },
+  {
+    "day": "Thu 4/2",
+    "month": "April",
+    "blue": [],
+    "white": [],
+    "winner": null,
+    "score": null,
+    "note": "No game. Four showed up. That's a brunch reservation."
+  },
+  {
+    "day": "Fri 4/3",
+    "month": "April",
+    "blue": [
+      "Nathan",
+      "Tyler",
+      "Lee",
+      "Cal",
+      "Jared"
+    ],
+    "white": [
+      "Chad",
+      "Gabe",
+      "Kyle",
+      "Sean",
+      "Mike"
+    ],
+    "winner": "blue",
+    "score": "4-2",
+    "note": "Blue sweeps the week 3-0. Jared returns and wins."
+  },
+  {
+    "day": "Mon 4/6",
+    "month": "April",
+    "blue": [
+      "Nathan",
+      "Gabe",
+      "Lee",
+      "Ryan"
+    ],
+    "white": [
+      "Kyle",
+      "Wags",
+      "Cal",
+      "Jared"
+    ],
+    "winner": "blue",
+    "score": "4-1",
+    "note": "Blue opens the week. Lee starts the week with a W."
+  },
+  {
+    "day": "Tue 4/7",
+    "month": "April",
+    "blue": [
+      "Gabe",
+      "Tyler",
+      "Ryan",
+      "Cal"
+    ],
+    "white": [
+      "Nathan",
+      "Wags",
+      "Lee",
+      "Chad"
+    ],
+    "winner": "blue",
+    "score": "4-1",
+    "note": "Gabe and Cal start the week 2-0."
+  },
+  {
+    "day": "Wed 4/8",
+    "month": "April",
+    "blue": [
+      "Nathan",
+      "Wags",
+      "Gabe",
+      "Jared",
+      "Cal"
+    ],
+    "white": [
+      "Tyler",
+      "Lee",
+      "Ryan",
+      "Chad",
+      "Mike"
+    ],
+    "winner": "blue",
+    "score": "4-1",
+    "note": "Blue threepeats. Tyler loses on White. Lee back below .500."
+  },
+  {
+    "day": "Thu 4/9",
+    "month": "April",
+    "blue": [
+      "Wags",
+      "Gabe",
+      "Lee",
+      "Cody"
+    ],
+    "white": [
+      "Nathan",
+      "Jared",
+      "Ryan",
+      "Cal"
+    ],
+    "winner": "white",
+    "score": "4-0",
+    "note": "Third sweep in history. Cody was on the toilet for the tip of game one. Post-sweep, Lee-for-Cal trade. Cal hit six straight threes like the gym personally insulted his mother."
+  },
+  {
+    "day": "Fri 4/10",
+    "month": "April",
+    "blue": [
+      "Nathan",
+      "Kyle",
+      "Tyler",
+      "Lee",
+      "Cal"
+    ],
+    "white": [
+      "Gabe",
+      "Mike",
+      "Wags",
+      "Ryan",
+      "Jared"
+    ],
+    "winner": "blue",
+    "score": "4-0",
+    "note": "Fourth sweep of the season — Blue's first. Tyler, Lee, and Cal all on the same team — absurd."
+  },
+  {
+    "day": "Mon 4/13",
+    "month": "April",
+    "blue": [],
+    "white": [],
+    "winner": null,
+    "score": null,
+    "note": "No games. The calendar took a day off."
+  },
+  {
+    "day": "Tue 4/14",
+    "month": "April",
+    "blue": [
+      "Gabe",
+      "Wags",
+      "Tyler",
+      "Cal"
+    ],
+    "white": [
+      "Nathan",
+      "Ryan",
+      "Chadwick",
+      "Sean"
+    ],
+    "winner": "blue",
+    "score": "4-1",
+    "note": "'No rotation Sean' returned. Chadwick debuted — Chad's distinguished twin who plays only when the mood is right."
+  },
+  {
+    "day": "Wed 4/15",
+    "month": "April",
+    "blue": [
+      "Chad",
+      "Mike",
+      "Ryan",
+      "Gabe"
+    ],
+    "white": [
+      "Nathan",
+      "Jared",
+      "Wags",
+      "Cal"
+    ],
+    "winner": "white",
+    "score": "4-0",
+    "note": "Fifth sweep in history. Cal on the wrong end. The Flamethrower needed a cold glass of water."
+  },
+  {
+    "day": "Thu 4/16",
+    "month": "April",
+    "blue": [
+      "Nathan",
+      "Gabe",
+      "Cody",
+      "Cal"
+    ],
+    "white": [
+      "Ryan",
+      "Wags",
+      "Jared",
+      "Sean"
+    ],
+    "winner": "blue",
+    "score": "4-2"
+  },
+  {
+    "day": "Fri 4/17",
+    "month": "April",
+    "blue": [
+      "Jared",
+      "Chad",
+      "Mike",
+      "Tyler",
+      "Cal"
+    ],
+    "white": [
+      "Nathan",
+      "Kyle",
+      "Ryan",
+      "Wags",
+      "Mitch"
+    ],
+    "winner": "blue",
+    "score": "4-2",
+    "note": "Mitch returns. Mitch loses. The Welcome-to-the-League playlist is on repeat."
+  },
+  {
+    "day": "Mon 4/20",
+    "month": "April",
+    "blue": [
+      "Nathan",
+      "Gabe",
+      "Jared",
+      "Cal",
+      "Wags"
+    ],
+    "white": [
+      "Chad",
+      "Kyle",
+      "Tyler",
+      "Mike",
+      "Ryan"
+    ],
+    "winner": "white",
+    "score": "4-1",
+    "note": "White stacks Tyler and wins. Simple, really."
+  },
+  {
+    "day": "Tue 4/21",
+    "month": "April",
+    "blue": [],
+    "white": [],
+    "winner": null,
+    "score": null,
+    "note": "Aka no game. Don't ask why the spreadsheet says 'White wins 4-0' next to 'no game.' This league's record-keeping is, on its best day, jazz."
+  },
+  {
+    "day": "Wed 4/22",
+    "month": "April",
+    "blue": [
+      "Nathan",
+      "Gabe",
+      "Cal",
+      "Ryan"
+    ],
+    "white": [
+      "Sean",
+      "Lee",
+      "Mike",
+      "Jared"
+    ],
+    "winner": "blue",
+    "score": "4-2",
+    "note": "Lee returns from vacation. Lee immediately loses. Florida was probably worth it."
+  },
+  {
+    "day": "Thu 4/23",
+    "month": "April",
+    "blue": [
+      "Cody",
+      "Gabe",
+      "Mitch",
+      "Ryan"
+    ],
+    "white": [
+      "Nathan",
+      "Chad",
+      "Lee",
+      "Cal"
+    ],
+    "winner": "white",
+    "score": "4-3",
+    "note": "Mitch's third career series. Still looking for his first W. Cody back in action with no bathroom-related incidents reported, which we are forced to assume counts as growth."
+  },
+  {
+    "day": "Fri 4/24",
+    "month": "April",
+    "blue": [
+      "Chad",
+      "Kyle",
+      "Tyler",
+      "Mitch",
+      "Ryan"
+    ],
+    "white": [
+      "Nathan",
+      "Mike",
+      "Jared",
+      "Cal",
+      "Lee"
+    ],
+    "winner": "blue",
+    "score": "4-3",
+    "note": "Tyler back on Blue. Tyler back to winning. The man's algorithm is simple: show up, put on blue, collect dub."
+  },
+  {
+    "day": "Mon 4/27",
+    "month": "April",
+    "blue": [
+      "Nathan",
+      "Lee",
+      "Mike",
+      "Cal"
+    ],
+    "white": [
+      "Kyle",
+      "Gabe",
+      "Ryan",
+      "Wags"
+    ],
+    "winner": "blue",
+    "score": "4-3",
+    "note": "Cal and Lee on the same team again. Maybe they really are the same person. Inconclusive but suspicious."
+  },
+  {
+    "day": "Tue 4/28",
+    "month": "April",
+    "blue": [],
+    "white": [],
+    "winner": null,
+    "score": null,
+    "note": "No game. The gym sleeps."
+  },
+  {
+    "day": "Wed 4/29",
+    "month": "April",
+    "blue": [
+      "Lee",
+      "Mike",
+      "Jared",
+      "Tyler",
+      "Ryan"
+    ],
+    "white": [
+      "Nathan",
+      "Chad",
+      "Cody",
+      "Sean",
+      "Gabe",
+      "Cal"
+    ],
+    "winner": "white",
+    "score": "4-0",
+    "note": "Seventh sweep in history. The spreadsheet refers to one participant as 'Sean aka big dumb b——,' which is the kind of editorial decision that earns this league its accreditation."
+  },
+  {
+    "day": "Thu 4/30",
+    "month": "April",
+    "blue": [],
+    "white": [],
+    "winner": null,
+    "score": null,
+    "note": "No game. Allegedly only Nathan and Lee showed up, which is two humans short of basketball and one human short of a meaningful conversation."
+  },
+  {
+    "day": "Fri 5/1",
+    "month": "May",
+    "blue": [
+      "Nathan",
+      "Lee",
+      "Chad",
+      "Ryan"
+    ],
+    "white": [
+      "Mike",
+      "Tyler",
+      "Dane",
+      "Cal"
+    ],
+    "winner": "blue",
+    "score": "4-3",
+    "note": "Dane debuted. Lee went 7/7 in game 5 — 3 from beyond the arc and a layup — scoring every point for the winning Blue squad. Blue took the series 4-3. Lee joins the season's exclusive 7/7 Club alongside Gabe (Mon 3/23) and Tyler (Fri 3/27)."
+  }
+]

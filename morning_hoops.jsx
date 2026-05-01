@@ -54,7 +54,7 @@ const SESSIONS = [
   { day: "Tue 4/28", month: "April", blue: [], white: [], winner: null, score: null, note: "No game. The gym sleeps." },
   { day: "Wed 4/29", month: "April", blue: ["Lee","Mike","Jared","Tyler","Ryan"], white: ["Nathan","Chad","Cody","Sean","Gabe","Cal"], winner: "white", score: "4-0", note: "Seventh sweep in history. The spreadsheet refers to one participant as 'Sean aka big dumb b——,' which is the kind of editorial decision that earns this league its accreditation." },
   { day: "Thu 4/30", month: "April", blue: [], white: [], winner: null, score: null, note: "No game. Allegedly only Nathan and Lee showed up, which is two humans short of basketball and one human short of a meaningful conversation." },
-  { day: "Fri 5/1", month: "May", blue: ["Nathan","Mike","Tyler","Dane","Cal"], white: ["Lee","Chad","Ryan"], winner: "blue", score: "4-3", note: "Dane debuted. The pivotal game 5 was won single-handedly by a White-team player who hit 3 from beyond the arc and a layup to score all 7 points 7/7 from the field. White still lost the series 4-3, but that game-5 performance puts said player in the season's exclusive 7/7 Club alongside Gabe (Mon 3/23) and Tyler (Fri 3/27)." },
+  { day: "Fri 5/1", month: "May", blue: ["Nathan","Lee","Chad","Ryan"], white: ["Mike","Tyler","Dane","Cal"], winner: "blue", score: "4-3", note: "Dane debuted. Lee went 7/7 in game 5 — 3 from beyond the arc and a layup — scoring every point for the winning Blue squad. Blue took the series 4-3. Lee joins the season's exclusive 7/7 Club alongside Gabe (Mon 3/23) and Tyler (Fri 3/27)." },
 ];
 
 // Group sessions by month
@@ -74,8 +74,8 @@ const MONTHS = [
   {
     id: "may", label: "May", short: "May",
     name: "The 7/7 Club Gets a New Member",
-    commentary: "May opened with one game. One. But it was a Friday for the books. Dane debuted on Blue. Tyler returned to Blue and resumed winning. And in a pivotal game 5, a White-team player scored all 7 points himself: three from beyond the arc and a layup, going 7/7 from the field, joining Gabe (Mon 3/23) and Tyler (Fri 3/27) in the 7/7 Club. White still lost the series 4-3, because of course they did. But the dashboard cannot ignore individual brilliance just because the team result said otherwise. The spreadsheet has receipts. The dashboard has receipts. May has begun.",
-    insight: "May has exactly one decided series so far. The headline is the 7/7 game, an absurd individual performance from a player whose season-long narrative has been less 'highlight reel' and more 'ongoing forensic investigation.' He still presumably missed several open layups along the way, because he is who he is, but for one game he was a basketball cheat code, and the dashboard is contractually obligated to acknowledge it.",
+    commentary: "May opened with one game. One. But it was a Friday for the books. Dane debuted on White. Lee went 7/7 in a pivotal game 5 — three from beyond the arc and a layup — scoring every point for the winning Blue squad. Blue took the series 4-3. Lee joins Gabe (Mon 3/23) and Tyler (Fri 3/27) in the 7/7 Club. The spreadsheet has receipts. The dashboard has receipts. May has begun.",
+    insight: "May has exactly one decided series so far. The headline is Lee's 7/7 game, an absurd individual performance from a player whose season-long narrative has been less 'highlight reel' and more 'ongoing forensic investigation.' His team actually won this time, which is new for him. He still presumably missed several open layups along the way, because he is who he is, but for one game he was a basketball cheat code, and the dashboard is contractually obligated to acknowledge it.",
   },
 ];
 
@@ -95,7 +95,7 @@ const CORRELATIONS = [
   { name: "Cody", tag: "Bathroom Break", desc: "On Thursday 4/9 Cody missed the tip of game one because he was, to put it delicately, conducting important gastrointestinal business in the facilities. Blue opened the series down a body and got swept 0-4. The forensic asterisk will follow him until he retires or the plumbing is investigated, whichever comes first." },
   { name: "Chadwick", tag: "Chad's Distinguished Twin", desc: "Debuted Tuesday 4/14. Is supposedly Chad's twin. Nobody has ever seen Chad and Chadwick in the same room. The Witness Protection Program is one possibility. A long con is another. Currently cataloged as 'unsolved.'" },
   { name: "Dane", tag: "Newcomer", desc: "Debuted Friday 5/1 on Blue and won. A 1.000 lifetime win rate, which is technically tied with rookie-Tyler before the wheels came off. We'll see how this ages. Dane: enjoy the view from the top while it lasts." },
-  { name: "Lee", tag: "7/7 Club", desc: "Spent two months as the dashboard's punching bag, then walked into Friday 5/1 and scored every single point in a pivotal game 5: three from beyond the arc and a layup, 7/7 from the field. Joins Gabe and Tyler in the 7/7 Club. His team still lost the series 4-3, because that is who he is, but for one game he was the best player in the gym. He probably also missed several open layups along the way to keep the cosmic ledger balanced." },
+  { name: "Lee", tag: "7/7 Club", desc: "Spent two months as the dashboard's punching bag, then walked into Friday 5/1 and scored every single point in a pivotal game 5: three from beyond the arc and a layup, 7/7 from the field. Joins Gabe and Tyler in the 7/7 Club. His Blue team won the series 4-3 — a rare instance of Lee being on the right side of history. For one game he was the best player in the gym. He probably also missed several open layups along the way to keep the cosmic ledger balanced." },
 ];
 
 // ═══════════════════════════════════════════════════════════
@@ -192,9 +192,9 @@ function getStats(sessions) {
 }
 
 function Badge({ winner, score, dark }) {
-  if (!winner) return <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: 1, textTransform: "uppercase", padding: "3px 8px", borderRadius: 4, background: dark ? "rgba(255,255,255,.04)" : "rgba(0,0,0,.04)", color: dark ? "#71717A" : "#6B7280" }}>No result</span>;
+  if (!winner) return <span style={{ fontSize: 'var(--type-label)', fontWeight: 700, letterSpacing: 1, textTransform: "uppercase", padding: "3px 8px", borderRadius: 4, background: dark ? "rgba(255,255,255,.04)" : "rgba(0,0,0,.04)", color: dark ? "#71717A" : "#6B7280" }}>No result</span>;
   const b = winner === "blue";
-  return <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: 1, textTransform: "uppercase", padding: "3px 8px", borderRadius: 4, background: b ? (dark ? "rgba(91,141,239,.15)" : "rgba(59,107,245,.08)") : (dark ? "rgba(180,188,208,.1)" : "rgba(100,116,139,.08)"), color: b ? (dark ? "#5B8DEF" : "#3B6BF5") : (dark ? "#B4BCD0" : "#64748B") }}>{b ? "Blue" : "White"} {score || "W"}</span>;
+  return <span style={{ fontSize: 'var(--type-label)', fontWeight: 700, letterSpacing: 1, textTransform: "uppercase", padding: "3px 8px", borderRadius: 4, background: b ? (dark ? "rgba(91,141,239,.15)" : "rgba(59,107,245,.08)") : (dark ? "rgba(180,188,208,.1)" : "rgba(100,116,139,.08)"), color: b ? (dark ? "#5B8DEF" : "#3B6BF5") : (dark ? "#B4BCD0" : "#64748B") }}>{b ? "Blue" : "White"} {score || "W"}</span>;
 }
 
 function Dot({ team, dark }) {
@@ -210,17 +210,28 @@ export default function App() {
     if (window.matchMedia("(prefers-color-scheme: light)").matches) return false;
     return true;
   });
-  const [isMobile, setIsMobile] = useState(() => typeof window !== "undefined" && window.innerWidth < 640);
+  const [layout, setLayout] = useState(() => {
+    if (typeof window === "undefined") return "wide";
+    const w = window.innerWidth;
+    return w < 480 ? "compact" : w < 768 ? "regular" : "wide";
+  });
 
   useEffect(() => {
     localStorage.setItem("morning-hoops-theme", dark ? "dark" : "light");
   }, [dark]);
 
   useEffect(() => {
-    const onResize = () => setIsMobile(window.innerWidth < 640);
+    const onResize = () => {
+      const w = window.innerWidth;
+      setLayout(w < 480 ? "compact" : w < 768 ? "regular" : "wide");
+    };
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
   }, []);
+
+  const isCompact = layout === "compact";
+  const isWide = layout === "wide";
+  const isMobile = layout !== "wide";
 
   const stats = useMemo(() => getStats(SESSIONS), []);
   const { p: players, totalS, uniqueCount, avgPerSession, topRivals, topTeammates, playerLosses, teammateReport, bestPairs, worstPairs } = stats;
@@ -233,9 +244,13 @@ export default function App() {
     green: "#34D399", gold: "#FBBF24", red: "#F87171",
   };
 
-  const C = (x = {}) => ({ background: t.card, border: `1px solid ${t.border}`, borderRadius: 14, padding: 20, ...x });
-  const L = { fontSize: 10, fontWeight: 700, letterSpacing: 1.6, textTransform: "uppercase", color: t.t3, marginBottom: 14 };
+  const C = (x = {}) => ({ background: t.card, border: `1px solid ${t.border}`, borderRadius: 14, padding: 'var(--space-card-padding)', ...x });
+  const L = { fontSize: 'var(--type-label-lg)', fontWeight: 700, letterSpacing: 1.6, textTransform: "uppercase", color: t.t3, marginBottom: 14 };
   const S = { fontFamily: "'Instrument Serif',serif" };
+
+  const SectionDivider = () => (
+    <div style={{ borderTop: `1px solid ${t.border}`, margin: 'var(--space-section-gap) 0 20px', paddingTop: 20 }} />
+  );
 
   const tabs = [
     { id: "summary", label: "Summary" },
@@ -246,42 +261,76 @@ export default function App() {
   const renderGame = (s, i, len) => {
     const noGame = s.blue.length === 0 && s.white.length === 0;
     const rowOpacity = !s.winner && !noGame ? 0.5 : noGame ? 0.35 : 1;
-    return (
-      <div key={i}>
-        {isMobile ? (
-          <div style={{ padding: "12px 16px", borderBottom: i < len - 1 ? `1px solid ${t.border}` : "none", opacity: rowOpacity }}>
+
+    // Compact: condensed inline format with · separator
+    if (isCompact) {
+      return (
+        <div key={i}>
+          <div style={{ padding: '10px var(--space-card-padding)', borderBottom: i < len - 1 ? `1px solid ${t.border}` : "none", opacity: rowOpacity }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: noGame ? 0 : 6 }}>
-              <div style={{ fontWeight: 600, fontSize: 12 }}>{s.day}</div>
+              <div style={{ fontWeight: 700, fontSize: 'var(--type-body)' }}>{s.day}</div>
               {!noGame && <Badge winner={s.winner} score={s.score} dark={dark} />}
             </div>
             {noGame ? (
-              <div style={{ fontSize: 11, color: t.t3, fontStyle: "italic", marginTop: 4 }}>{s.note || "No game"}</div>
+              <div style={{ fontSize: 'var(--type-body-sm)', color: t.t3, fontStyle: "italic", marginTop: 4 }}>{s.note || "No game"}</div>
+            ) : (
+              <div style={{ fontSize: 'var(--type-body-sm)', lineHeight: 1.7 }}>
+                <span style={{ color: t.blue, fontWeight: 600 }}>{s.blue.join(' \u00b7 ')}</span>
+                <span style={{ ...S, color: t.t3, fontStyle: "italic", margin: "0 6px" }}>vs</span>
+                <span style={{ color: t.white, fontWeight: 600 }}>{s.white.join(' \u00b7 ')}</span>
+              </div>
+            )}
+          </div>
+          {s.note && !noGame && (
+            <div style={{ padding: '0 var(--space-card-padding) 8px', borderLeft: `2px solid ${t.accent}`, marginLeft: 'var(--space-card-padding)', fontSize: 'var(--type-label)', color: t.accent, fontWeight: 600, fontStyle: "italic" }}>{s.note}</div>
+          )}
+        </div>
+      );
+    }
+
+    // Regular: stacked with dots, tighter spacing
+    if (!isWide) {
+      return (
+        <div key={i}>
+          <div style={{ padding: "12px 16px", borderBottom: i < len - 1 ? `1px solid ${t.border}` : "none", opacity: rowOpacity }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: noGame ? 0 : 6 }}>
+              <div style={{ fontWeight: 600, fontSize: 'var(--type-body-sm)' }}>{s.day}</div>
+              {!noGame && <Badge winner={s.winner} score={s.score} dark={dark} />}
+            </div>
+            {noGame ? (
+              <div style={{ fontSize: 'var(--type-body-sm)', color: t.t3, fontStyle: "italic", marginTop: 4 }}>{s.note || "No game"}</div>
             ) : (
               <>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: "3px 8px", lineHeight: 1.6 }}>
-                  {s.blue.map((p, j) => <span key={j} style={{ display: "inline-flex", alignItems: "center" }}><Dot team="blue" dark={dark} /><span style={{ fontWeight: 500, fontSize: 12 }}>{p}</span></span>)}
+                  {s.blue.map((p, j) => <span key={j} style={{ display: "inline-flex", alignItems: "center" }}><Dot team="blue" dark={dark} /><span style={{ fontWeight: 500, fontSize: 'var(--type-body-sm)' }}>{p}</span></span>)}
                 </div>
-                <div style={{ ...S, fontSize: 11, color: t.t3, fontStyle: "italic", padding: "2px 0" }}>vs</div>
+                <div style={{ ...S, fontSize: 'var(--type-body-sm)', color: t.t3, fontStyle: "italic", padding: "2px 0" }}>vs</div>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: "3px 8px", lineHeight: 1.6 }}>
-                  {s.white.map((p, j) => <span key={j} style={{ display: "inline-flex", alignItems: "center" }}><Dot team="white" dark={dark} /><span style={{ fontWeight: 500, fontSize: 12 }}>{p}</span></span>)}
+                  {s.white.map((p, j) => <span key={j} style={{ display: "inline-flex", alignItems: "center" }}><Dot team="white" dark={dark} /><span style={{ fontWeight: 500, fontSize: 'var(--type-body-sm)' }}>{p}</span></span>)}
                 </div>
               </>
             )}
           </div>
-        ) : (
-          <div style={{ display: "grid", gridTemplateColumns: "72px 1fr 24px 1fr 76px", alignItems: "center", padding: "12px 16px", borderBottom: i < len - 1 ? `1px solid ${t.border}` : "none", gap: 6, opacity: rowOpacity }}>
-            <div style={{ fontWeight: 600, fontSize: 12 }}>{s.day}</div>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "3px 8px", lineHeight: 1.6 }}>
-              {noGame ? <span style={{ fontSize: 11, color: t.t3, fontStyle: "italic" }}>{s.note || "No game"}</span> : s.blue.map((p, j) => <span key={j} style={{ display: "inline-flex", alignItems: "center" }}><Dot team="blue" dark={dark} /><span style={{ fontWeight: 500, fontSize: 12 }}>{p}</span></span>)}
-            </div>
-            <div style={{ textAlign: "center", ...S, fontSize: 11, color: t.t3, fontStyle: "italic" }}>{noGame ? "" : "vs"}</div>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "3px 8px", lineHeight: 1.6 }}>
-              {!noGame && s.white.map((p, j) => <span key={j} style={{ display: "inline-flex", alignItems: "center" }}><Dot team="white" dark={dark} /><span style={{ fontWeight: 500, fontSize: 12 }}>{p}</span></span>)}
-            </div>
-            <div style={{ textAlign: "right" }}>{!noGame && <Badge winner={s.winner} score={s.score} dark={dark} />}</div>
+          {s.note && !noGame && <div style={{ padding: "0 16px 10px 16px", fontSize: 'var(--type-label)', color: t.accent, fontWeight: 600, fontStyle: "italic" }}>{s.note}</div>}
+        </div>
+      );
+    }
+
+    // Wide: 5-column grid with fluid columns
+    return (
+      <div key={i}>
+        <div style={{ display: "grid", gridTemplateColumns: "minmax(60px,72px) 1fr 24px 1fr minmax(60px,80px)", alignItems: "center", padding: "12px 16px", borderBottom: i < len - 1 ? `1px solid ${t.border}` : "none", gap: 6, opacity: rowOpacity }}>
+          <div style={{ fontWeight: 600, fontSize: 'var(--type-body-sm)' }}>{s.day}</div>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "3px 8px", lineHeight: 1.6 }}>
+            {noGame ? <span style={{ fontSize: 'var(--type-body-sm)', color: t.t3, fontStyle: "italic" }}>{s.note || "No game"}</span> : s.blue.map((p, j) => <span key={j} style={{ display: "inline-flex", alignItems: "center" }}><Dot team="blue" dark={dark} /><span style={{ fontWeight: 500, fontSize: 'var(--type-body-sm)' }}>{p}</span></span>)}
           </div>
-        )}
-        {s.note && !noGame && <div style={{ padding: isMobile ? "0 16px 10px 16px" : "0 16px 10px 90px", fontSize: 10, color: t.accent, fontWeight: 600, fontStyle: "italic" }}>{s.note}</div>}
+          <div style={{ textAlign: "center", ...S, fontSize: 'var(--type-body-sm)', color: t.t3, fontStyle: "italic" }}>{noGame ? "" : "vs"}</div>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "3px 8px", lineHeight: 1.6 }}>
+            {!noGame && s.white.map((p, j) => <span key={j} style={{ display: "inline-flex", alignItems: "center" }}><Dot team="white" dark={dark} /><span style={{ fontWeight: 500, fontSize: 'var(--type-body-sm)' }}>{p}</span></span>)}
+          </div>
+          <div style={{ textAlign: "right" }}>{!noGame && <Badge winner={s.winner} score={s.score} dark={dark} />}</div>
+        </div>
+        {s.note && !noGame && <div style={{ padding: "0 16px 10px 90px", fontSize: 'var(--type-label)', color: t.accent, fontWeight: 600, fontStyle: "italic" }}>{s.note}</div>}
       </div>
     );
   };
@@ -295,13 +344,13 @@ export default function App() {
       <div>
         <div style={{ marginBottom: 24 }}>
           <div style={L}>{m.label} Recap</div>
-          <h2 style={{ ...S, fontSize: 28, color: t.text, margin: 0, fontWeight: 400 }}>{m.name}</h2>
-          <div style={{ fontSize: 12, fontWeight: 600, color: t.t3, marginTop: 4 }}>Blue {monthBW} – White {monthWW} · {monthDecided.length} decided series</div>
+          <h2 style={{ ...S, fontSize: 'var(--type-headline)', color: t.text, margin: 0, fontWeight: 400 }}>{m.name}</h2>
+          <div style={{ fontSize: 'var(--type-body-sm)', fontWeight: 600, color: t.t3, marginTop: 4 }}>Blue {monthBW} – White {monthWW} · {monthDecided.length} decided series</div>
         </div>
-        <div style={{ ...C({ padding: 0, overflow: "hidden" }), marginBottom: 20 }}>
-          <div style={{ padding: "16px", borderBottom: `1px solid ${t.border}`, fontSize: 13, color: t.t2, lineHeight: 1.65 }}>{m.commentary}</div>
+        <div style={{ ...C({ padding: 0, overflow: "hidden" }), marginBottom: 'var(--space-section-gap)' }}>
+          <div style={{ padding: "16px", borderBottom: `1px solid ${t.border}`, fontSize: 'var(--type-body)', color: t.t2, lineHeight: 1.65 }}>{m.commentary}</div>
           {monthSessions.map((s, i) => renderGame(s, i, monthSessions.length))}
-          <div style={{ padding: "14px 16px", background: t.inset, fontSize: 11, color: t.t3, lineHeight: 1.65, borderTop: `1px solid ${t.border}` }}><span style={{ color: t.accent, fontWeight: 700 }}>Debrief: </span>{m.insight}</div>
+          <div style={{ padding: "14px 16px", paddingLeft: 18, background: t.inset, borderLeft: `2px solid ${t.accent}`, fontSize: 'var(--type-body-sm)', color: t.t3, lineHeight: 1.65, borderTop: `1px solid ${t.border}` }}><span style={{ color: t.accent, fontWeight: 700 }}>Debrief: </span>{m.insight}</div>
         </div>
       </div>
     );
@@ -320,100 +369,185 @@ export default function App() {
       <div>
         <div style={{ marginBottom: 24 }}>
           <div style={L}>Season Summary</div>
-          <h2 style={{ ...S, fontSize: 26, color: t.text, margin: 0, fontWeight: 400 }}>The State of the Gym</h2>
-          <div style={{ fontSize: 13, color: t.t2, marginTop: 6, lineHeight: 1.6, maxWidth: 600 }}>
+          <h2 style={{ ...S, fontSize: 'var(--type-headline)', color: t.text, margin: 0, fontWeight: 400 }}>The State of the Gym</h2>
+          <div style={{ fontSize: 'var(--type-body)', color: t.t2, marginTop: 6, lineHeight: 1.6, maxWidth: 'var(--space-prose-max)' }}>
             {decided.length} decided 7-game series. {uniquePlayers(players)} players. Blue leads {bW}–{wW}. Tyler is mortal but still elite. Gabe and Nathan are the structural beams of this league. Cal is a flamethrower who occasionally vanishes to Florida. The 7/7 Club has a third member as of Friday 5/1. Anyway, here's the summary.
           </div>
         </div>
 
-        {/* HEADLINE STATS — editorial prose */}
-        <div style={{ ...S, fontSize: 19, fontStyle: "italic", color: t.t2, lineHeight: 1.7, marginBottom: 28, padding: "16px 0", maxWidth: 640 }}>
-          <span style={{ color: t.accent }}>{decided.length}</span> series decided. Blue leads <span style={{ color: t.accent }}>{bW}–{wW}</span> in the overall, with <span style={{ color: t.accent }}>{sweeps}</span> sweeps and <span style={{ color: t.accent }}>{uniquePlayers(players)}</span> players who've touched the court, averaging <span style={{ color: t.accent }}>{avgPerSession}</span> per session.
+        {/* HEADLINE STATS — editorial pull-quote */}
+        <div style={{ ...S, fontSize: 'var(--type-title)', fontStyle: "italic", color: t.t2, lineHeight: 1.7, marginBottom: 'var(--space-section-gap)', padding: "20px 0 20px 20px", borderLeft: `2px solid ${t.accent}`, maxWidth: 'var(--space-prose-max)' }}>
+          <span style={{ color: t.accent }}>{decided.length}</span> series decided. Blue leads <span style={{ color: t.accent }}>{bW}–{wW}</span> in the overall, with <span style={{ color: t.accent }}>{sweeps}</span> sweeps and <span style={{ color: t.accent }}>{uniquePlayers(players)}</span> players who{"'"}ve touched the court, averaging <span style={{ color: t.accent }}>{avgPerSession}</span> per session.
+        </div>
+
+        {/* SUMMARY STAT BOXES — compact: 2-col, regular: 3-col, wide: 4-col */}
+        <div style={{ display: "grid", gridTemplateColumns: isCompact ? "1fr 1fr" : isWide ? "1fr 1fr 1fr 1fr" : "1fr 1fr 1fr", gap: 8, marginBottom: 'var(--space-section-gap)' }}>
+          {[
+            { v: String(bW), l: "Blue Wins", c: t.blue },
+            { v: String(wW), l: "White Wins", c: t.white },
+            { v: String(sweeps), l: "Sweeps", c: t.accent },
+            { v: avgPerSession, l: "Avg/Session", c: t.green },
+          ].map((m, i) => (
+            <div key={i} style={{ textAlign: "center", background: t.inset, borderRadius: 8, padding: isCompact ? '10px 8px' : 12 }}>
+              <div style={{ ...S, fontSize: 'var(--type-stat-lg)', color: m.c, lineHeight: 1 }}>{m.v}</div>
+              <div style={{ fontSize: 'var(--type-label)', color: t.t3, fontWeight: 600, marginTop: 3 }}>{m.l}</div>
+            </div>
+          ))}
         </div>
 
         {/* TOP 5 WIN RATES */}
         <div style={L}>Top 5 Win Rates (min 3 series)</div>
-        <div style={{ ...C({ padding: 0, overflow: "hidden" }), marginBottom: 28 }}>
+        <div style={{ ...C({ padding: 0, overflow: "hidden" }), marginBottom: 'var(--space-section-gap)' }}>
           {topWinners.map(([name, d], i) => {
             const dec = d.w + d.l; const pct = Math.round(d.w / dec * 100);
+            if (isCompact) {
+              return (
+                <div key={name} style={{ padding: '12px var(--space-card-padding)', borderBottom: i < topWinners.length - 1 ? `1px solid ${t.border}` : "none" }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
+                    <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
+                      <span style={{ ...S, fontSize: 'var(--type-stat-md)', color: t.accent }}>{i + 1}</span>
+                      <span style={{ fontWeight: 700, fontSize: 'var(--type-body)' }}>{name}</span>
+                    </div>
+                    <div style={{ ...S, fontSize: 'var(--type-stat-md)', color: t.green, flexShrink: 0 }}>{pct}%</div>
+                  </div>
+                  <div style={{ display: "flex", alignItems: "center", gap: 10, marginTop: 6 }}>
+                    <div style={{ fontSize: 'var(--type-body-sm)', color: t.t2, fontWeight: 600, minWidth: 40 }}>{d.w}-{d.l}</div>
+                    <div style={{ flex: 1, height: 6, background: t.inset, borderRadius: 3, overflow: "hidden" }}>
+                      <div style={{ height: "100%", width: `${pct}%`, background: t.green, borderRadius: 3 }} />
+                    </div>
+                  </div>
+                </div>
+              );
+            }
             return (
               <div key={name} style={{ display: "grid", gridTemplateColumns: "24px 1fr 80px 1fr 60px", alignItems: "center", padding: "12px 16px", borderBottom: i < topWinners.length - 1 ? `1px solid ${t.border}` : "none", gap: 10 }}>
-                <div style={{ ...S, fontSize: 20, color: t.accent }}>{i + 1}</div>
-                <div style={{ fontWeight: 700, fontSize: 14 }}>{name}</div>
-                <div style={{ fontSize: 12, color: t.t2, fontWeight: 600 }}>{d.w}-{d.l}</div>
+                <div style={{ ...S, fontSize: 'var(--type-stat-md)', color: t.accent }}>{i + 1}</div>
+                <div style={{ fontWeight: 700, fontSize: 'var(--type-body)' }}>{name}</div>
+                <div style={{ fontSize: 'var(--type-body-sm)', color: t.t2, fontWeight: 600 }}>{d.w}-{d.l}</div>
                 <div style={{ height: 6, background: t.inset, borderRadius: 3, overflow: "hidden" }}><div style={{ height: "100%", width: `${pct}%`, background: t.green, borderRadius: 3 }} /></div>
-                <div style={{ ...S, fontSize: 18, color: t.green, textAlign: "right" }}>{pct}%</div>
+                <div style={{ ...S, fontSize: 'var(--type-stat-md)', color: t.green, textAlign: "right" }}>{pct}%</div>
               </div>
             );
           })}
         </div>
 
         {/* TOP PARTNERSHIPS */}
+        <SectionDivider />
         <div style={L}>Best Partnerships (min 3 series together)</div>
-        <div style={{ ...C({ padding: 0, overflow: "hidden" }), marginBottom: 28 }}>
-          <div style={{ padding: "12px 16px", borderBottom: `1px solid ${t.border}`, fontSize: 11, color: t.t3, lineHeight: 1.5 }}>The pairs that win together. If you want to engineer a W, put these two on the same team and get out of their way.</div>
-          {bestPairs.map((pair, i) => (
+        <div style={{ ...C({ padding: 0, overflow: "hidden" }), marginBottom: 'var(--space-section-gap)' }}>
+          <div style={{ padding: "12px 16px", borderBottom: `1px solid ${t.border}`, fontSize: 'var(--type-body-sm)', color: t.t3, lineHeight: 1.5 }}>The pairs that win together. If you want to engineer a W, put these two on the same team and get out of their way.</div>
+          {bestPairs.map((pair, i) => isCompact ? (
+            <div key={i} style={{ padding: '10px var(--space-card-padding)', borderBottom: i < bestPairs.length - 1 ? `1px solid ${t.border}` : "none" }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
+                <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
+                  <span style={{ ...S, fontSize: 'var(--type-stat-md)', color: t.green }}>{i + 1}</span>
+                  <span style={{ fontWeight: 600, fontSize: 'var(--type-body)' }}>{pair.a} + {pair.b}</span>
+                </div>
+                <div style={{ ...S, fontSize: 'var(--type-stat-md)', color: t.green, flexShrink: 0 }}>{Math.round(pair.pct * 100)}%</div>
+              </div>
+              <div style={{ fontSize: 'var(--type-body-sm)', color: t.t2, fontWeight: 600, marginTop: 2, paddingLeft: 28 }}>{pair.w}-{pair.l}</div>
+            </div>
+          ) : (
             <div key={i} style={{ display: "grid", gridTemplateColumns: "24px 1fr 80px 60px", alignItems: "center", padding: "10px 16px", borderBottom: i < bestPairs.length - 1 ? `1px solid ${t.border}` : "none", gap: 10 }}>
-              <div style={{ ...S, fontSize: 18, color: t.green }}>{i + 1}</div>
-              <div style={{ fontWeight: 600, fontSize: 13 }}>{pair.a} + {pair.b}</div>
-              <div style={{ fontSize: 12, color: t.t2, fontWeight: 600 }}>{pair.w}-{pair.l}</div>
-              <div style={{ ...S, fontSize: 16, color: t.green, textAlign: "right" }}>{Math.round(pair.pct * 100)}%</div>
+              <div style={{ ...S, fontSize: 'var(--type-stat-md)', color: t.green }}>{i + 1}</div>
+              <div style={{ fontWeight: 600, fontSize: 'var(--type-body)' }}>{pair.a} + {pair.b}</div>
+              <div style={{ fontSize: 'var(--type-body-sm)', color: t.t2, fontWeight: 600 }}>{pair.w}-{pair.l}</div>
+              <div style={{ ...S, fontSize: 'var(--type-stat-md)', color: t.green, textAlign: "right" }}>{Math.round(pair.pct * 100)}%</div>
             </div>
           ))}
         </div>
 
         {/* WORST PARTNERSHIPS */}
         <div style={L}>Worst Partnerships (min 3 series together)</div>
-        <div style={{ ...C({ padding: 0, overflow: "hidden" }), marginBottom: 28 }}>
-          <div style={{ padding: "12px 16px", borderBottom: `1px solid ${t.border}`, fontSize: 11, color: t.t3, lineHeight: 1.5 }}>The pairs that lose together. Separate them at the door. For their sake, for the gym's sake, for the integrity of the spreadsheet.</div>
-          {worstPairs.map((pair, i) => (
+        <div style={{ ...C({ padding: 0, overflow: "hidden" }), marginBottom: 'var(--space-section-gap)' }}>
+          <div style={{ padding: "12px 16px", borderBottom: `1px solid ${t.border}`, fontSize: 'var(--type-body-sm)', color: t.t3, lineHeight: 1.5 }}>The pairs that lose together. Separate them at the door. For their sake, for the gym{"'"}s sake, for the integrity of the spreadsheet.</div>
+          {worstPairs.map((pair, i) => isCompact ? (
+            <div key={i} style={{ padding: '10px var(--space-card-padding)', borderBottom: i < worstPairs.length - 1 ? `1px solid ${t.border}` : "none" }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
+                <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
+                  <span style={{ ...S, fontSize: 'var(--type-stat-md)', color: t.red }}>{i + 1}</span>
+                  <span style={{ fontWeight: 600, fontSize: 'var(--type-body)' }}>{pair.a} + {pair.b}</span>
+                </div>
+                <div style={{ ...S, fontSize: 'var(--type-stat-md)', color: t.red, flexShrink: 0 }}>{Math.round(pair.pct * 100)}%</div>
+              </div>
+              <div style={{ fontSize: 'var(--type-body-sm)', color: t.t2, fontWeight: 600, marginTop: 2, paddingLeft: 28 }}>{pair.w}-{pair.l}</div>
+            </div>
+          ) : (
             <div key={i} style={{ display: "grid", gridTemplateColumns: "24px 1fr 80px 60px", alignItems: "center", padding: "10px 16px", borderBottom: i < worstPairs.length - 1 ? `1px solid ${t.border}` : "none", gap: 10 }}>
-              <div style={{ ...S, fontSize: 18, color: t.red }}>{i + 1}</div>
-              <div style={{ fontWeight: 600, fontSize: 13 }}>{pair.a} + {pair.b}</div>
-              <div style={{ fontSize: 12, color: t.t2, fontWeight: 600 }}>{pair.w}-{pair.l}</div>
-              <div style={{ ...S, fontSize: 16, color: t.red, textAlign: "right" }}>{Math.round(pair.pct * 100)}%</div>
+              <div style={{ ...S, fontSize: 'var(--type-stat-md)', color: t.red }}>{i + 1}</div>
+              <div style={{ fontWeight: 600, fontSize: 'var(--type-body)' }}>{pair.a} + {pair.b}</div>
+              <div style={{ fontSize: 'var(--type-body-sm)', color: t.t2, fontWeight: 600 }}>{pair.w}-{pair.l}</div>
+              <div style={{ ...S, fontSize: 'var(--type-stat-md)', color: t.red, textAlign: "right" }}>{Math.round(pair.pct * 100)}%</div>
             </div>
           ))}
         </div>
 
         {/* BIGGEST RIVALRIES */}
+        <SectionDivider />
         <div style={L}>Biggest Rivalries (opposite teams most often)</div>
-        <div style={{ ...C({ padding: 0, overflow: "hidden" }), marginBottom: 28 }}>
-          <div style={{ padding: "12px 16px", borderBottom: `1px solid ${t.border}`, fontSize: 11, color: t.t3, lineHeight: 1.5 }}>The guys who seem to always be trying to beat each other, either by design or by the cruel hand of the jersey assignment fairy.</div>
-          {topRivals.map((r, i) => (
+        <div style={{ ...C({ padding: 0, overflow: "hidden" }), marginBottom: 'var(--space-section-gap)' }}>
+          <div style={{ padding: "12px 16px", borderBottom: `1px solid ${t.border}`, fontSize: 'var(--type-body-sm)', color: t.t3, lineHeight: 1.5 }}>The guys who seem to always be trying to beat each other, either by design or by the cruel hand of the jersey assignment fairy.</div>
+          {topRivals.map((r, i) => isCompact ? (
+            <div key={i} style={{ padding: '10px var(--space-card-padding)', borderBottom: i < topRivals.length - 1 ? `1px solid ${t.border}` : "none" }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
+                <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
+                  <span style={{ ...S, fontSize: 'var(--type-stat-md)', color: t.accent }}>{i + 1}</span>
+                  <span style={{ fontWeight: 600, fontSize: 'var(--type-body)' }}>{r.pair[0]} vs {r.pair[1]}</span>
+                </div>
+                <div style={{ ...S, fontSize: 'var(--type-stat-md)', color: t.accent, flexShrink: 0 }}>{r.count}x</div>
+              </div>
+            </div>
+          ) : (
             <div key={i} style={{ display: "grid", gridTemplateColumns: "24px 1fr 60px", alignItems: "center", padding: "10px 16px", borderBottom: i < topRivals.length - 1 ? `1px solid ${t.border}` : "none", gap: 10 }}>
-              <div style={{ ...S, fontSize: 18, color: t.accent }}>{i + 1}</div>
-              <div style={{ fontWeight: 600, fontSize: 13 }}>{r.pair[0]} vs {r.pair[1]}</div>
-              <div style={{ ...S, fontSize: 16, color: t.accent, textAlign: "right" }}>{r.count}x</div>
+              <div style={{ ...S, fontSize: 'var(--type-stat-md)', color: t.accent }}>{i + 1}</div>
+              <div style={{ fontWeight: 600, fontSize: 'var(--type-body)' }}>{r.pair[0]} vs {r.pair[1]}</div>
+              <div style={{ ...S, fontSize: 'var(--type-stat-md)', color: t.accent, textAlign: "right" }}>{r.count}x</div>
             </div>
           ))}
         </div>
 
         {/* THE FLORIDA INVESTIGATION */}
+        <SectionDivider />
         <div style={L}>The Florida Investigation</div>
-        <div style={{ ...C(), marginBottom: 28, borderColor: dark ? "rgba(239,98,52,.2)" : "rgba(239,98,52,.15)", background: dark ? "rgba(239,98,52,.03)" : "rgba(239,98,52,.02)" }}>
-          <div style={{ fontSize: 13, color: t.t2, lineHeight: 1.65 }}>
+        <div style={{ ...C(), marginBottom: 'var(--space-section-gap)', borderColor: dark ? "rgba(239,98,52,.2)" : "rgba(239,98,52,.15)", background: dark ? "rgba(239,98,52,.03)" : "rgba(239,98,52,.02)" }}>
+          <div style={{ fontSize: 'var(--type-body)', color: t.t2, lineHeight: 1.65 }}>
             <strong style={{ color: t.accent }}>An open case.</strong> Two members of this gym are alleged to spend a suspicious amount of time in Florida. Neither has produced clear evidence of a traditional 9-to-5. The dashboard is forced to consider three possibilities: (1) two extremely flexible freelancers, (2) the same person operating a long con, or (3) Florida is where Morning Hoops players go to recover from being Morning Hoops players. Evidence is inconclusive. Investigation ongoing. The good news for the league is that whichever of them is in town tends to win, and whichever is in Florida tends to be missed. So functionally Florida might just be where this league sends people for emotional regulation.
           </div>
         </div>
 
         {/* BOTTOM RECORDS */}
         <div style={L}>Currently Struggling (bottom 3 win rates)</div>
-        <div style={{ ...C({ padding: 0, overflow: "hidden" }), marginBottom: 28 }}>
+        <div style={{ ...C({ padding: 0, overflow: "hidden" }), marginBottom: 'var(--space-section-gap)' }}>
           {bottomWinners.map(([name, d], i) => {
             const dec = d.w + d.l; const pct = Math.round(d.w / dec * 100);
+            if (isCompact) {
+              return (
+                <div key={name} style={{ padding: '12px var(--space-card-padding)', borderBottom: i < bottomWinners.length - 1 ? `1px solid ${t.border}` : "none" }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
+                    <span style={{ fontWeight: 700, fontSize: 'var(--type-body)' }}>{name}</span>
+                    <div style={{ ...S, fontSize: 'var(--type-stat-md)', color: t.red, flexShrink: 0 }}>{pct}%</div>
+                  </div>
+                  <div style={{ display: "flex", alignItems: "center", gap: 10, marginTop: 6 }}>
+                    <div style={{ fontSize: 'var(--type-body-sm)', color: t.t2, fontWeight: 600, minWidth: 40 }}>{d.w}-{d.l}</div>
+                    <div style={{ flex: 1, height: 6, background: t.inset, borderRadius: 3, overflow: "hidden" }}>
+                      <div style={{ height: "100%", width: `${pct}%`, background: t.red, borderRadius: 3 }} />
+                    </div>
+                  </div>
+                </div>
+              );
+            }
             return (
               <div key={name} style={{ display: "grid", gridTemplateColumns: "1fr 80px 1fr 60px", alignItems: "center", padding: "12px 16px", borderBottom: i < bottomWinners.length - 1 ? `1px solid ${t.border}` : "none", gap: 10 }}>
-                <div style={{ fontWeight: 700, fontSize: 14 }}>{name}</div>
-                <div style={{ fontSize: 12, color: t.t2, fontWeight: 600 }}>{d.w}-{d.l}</div>
+                <div style={{ fontWeight: 700, fontSize: 'var(--type-body)' }}>{name}</div>
+                <div style={{ fontSize: 'var(--type-body-sm)', color: t.t2, fontWeight: 600 }}>{d.w}-{d.l}</div>
                 <div style={{ height: 6, background: t.inset, borderRadius: 3, overflow: "hidden" }}><div style={{ height: "100%", width: `${pct}%`, background: t.red, borderRadius: 3 }} /></div>
-                <div style={{ ...S, fontSize: 18, color: t.red, textAlign: "right" }}>{pct}%</div>
+                <div style={{ ...S, fontSize: 'var(--type-stat-md)', color: t.red, textAlign: "right" }}>{pct}%</div>
               </div>
             );
           })}
         </div>
 
-        <div style={{ fontSize: 11, color: t.t3, textAlign: "center", lineHeight: 1.6 }}>
+        <div style={{ fontSize: 'var(--type-body-sm)', color: t.t3, textAlign: "center", lineHeight: 1.6 }}>
           More detail on the <strong style={{ color: t.accent }}>Season tab</strong>, month-by-month breakdowns on the <strong style={{ color: t.accent }}>March</strong> and <strong style={{ color: t.accent }}>April</strong> tabs.
         </div>
       </div>
@@ -436,14 +570,14 @@ export default function App() {
       <div>
         <div style={{ marginBottom: 24 }}>
           <div style={L}>Full Season</div>
-          <h2 style={{ ...S, fontSize: 26, color: t.text, margin: 0, fontWeight: 400 }}>Every Series. Every Roaster.</h2>
-          <div style={{ fontSize: 13, color: t.t2, marginTop: 6, lineHeight: 1.6, maxWidth: 600 }}>
+          <h2 style={{ ...S, fontSize: 'var(--type-headline)', color: t.text, margin: 0, fontWeight: 400 }}>Every Series. Every Roaster.</h2>
+          <div style={{ fontSize: 'var(--type-body)', color: t.t2, marginTop: 6, lineHeight: 1.6, maxWidth: 'var(--space-prose-max)' }}>
             {decided.length} decided 7-game series. {uniquePlayers(players)} players. Played by 1s and 2s. {bW > wW ? `Blue leads ${bW}–${wW}` : bW < wW ? `White leads ${wW}–${bW}` : `Tied ${bW}–${wW}`}. Every stat below is computed live from game data.
           </div>
         </div>
 
         {/* SECTION JUMP NAV */}
-        <nav style={{ display: "flex", gap: 4, marginBottom: 22, overflowX: "auto", WebkitOverflowScrolling: "touch", paddingBottom: 2 }}>
+        <nav style={{ display: "flex", gap: 6, marginBottom: 22, overflowX: "auto", WebkitOverflowScrolling: "touch", paddingBottom: 4, scrollbarWidth: "none", maskImage: "linear-gradient(to right, black 90%, transparent)", WebkitMaskImage: "linear-gradient(to right, black 90%, transparent)" }}>
           {[
             { label: "Overview", id: "season-overview" },
             { label: "Head to Head", id: "season-h2h" },
@@ -454,107 +588,187 @@ export default function App() {
             { label: "7/7 Club", id: "season-club" },
             { label: "Algorithm", id: "season-algorithm" },
           ].map((s, i) => (
-            <button key={i} onClick={() => document.getElementById(s.id)?.scrollIntoView({ behavior: "smooth", block: "start" })} style={{ background: "none", border: "none", padding: "4px 10px", cursor: "pointer", fontSize: 11, fontWeight: 500, color: t.t3, fontFamily: "'Outfit',sans-serif", whiteSpace: "nowrap", borderRadius: 4 }}>{s.label}</button>
+            <button key={i} onClick={() => document.getElementById(s.id)?.scrollIntoView({ behavior: "smooth", block: "start" })} style={{ background: t.inset, border: `1px solid ${t.border}`, padding: "8px 14px", cursor: "pointer", fontSize: 'var(--type-body-sm)', fontWeight: 600, color: t.t3, fontFamily: "'Outfit',sans-serif", whiteSpace: "nowrap", borderRadius: 6, minHeight: 44, flexShrink: 0 }}>{s.label}</button>
           ))}
         </nav>
 
-        {/* HEADLINE STATS — editorial prose */}
-        <div id="season-overview" style={{ ...S, fontSize: 19, fontStyle: "italic", color: t.t2, lineHeight: 1.7, marginBottom: 28, padding: "16px 0", maxWidth: 640 }}>
+        {/* HEADLINE STATS — editorial pull-quote */}
+        <div id="season-overview" style={{ ...S, fontSize: 'var(--type-title)', fontStyle: "italic", color: t.t2, lineHeight: 1.7, marginBottom: 'var(--space-section-gap)', padding: "20px 0 20px 20px", borderLeft: `2px solid ${t.accent}`, maxWidth: 'var(--space-prose-max)' }}>
           <span style={{ color: t.accent }}>{decided.length}</span> decided series across the full season. Blue <span style={{ color: t.accent }}>{bW}</span>, White <span style={{ color: t.accent }}>{wW}</span>. <span style={{ color: t.accent }}>{uniquePlayers(players)}</span> players have stepped on the court, averaging <span style={{ color: t.accent }}>{avgPerSession}</span> per session. Every stat below is computed live from game data.
         </div>
 
         <div id="season-h2h" style={L}>Head to Head</div>
-        <div style={{ ...C(), marginBottom: 28 }}>
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 14 }}>
-            <div><div style={{ ...S, fontSize: 48, color: t.blue, lineHeight: 1 }}>{bW}</div><div style={{ fontSize: 10, fontWeight: 600, color: t.t3, marginTop: 2 }}>Blue Wins</div></div>
-            <div style={{ ...S, fontSize: 14, color: t.t3, fontStyle: "italic", alignSelf: "center" }}>vs</div>
-            <div style={{ textAlign: "right" }}><div style={{ ...S, fontSize: 48, color: t.white, lineHeight: 1 }}>{wW}</div><div style={{ fontSize: 10, fontWeight: 600, color: t.t3, marginTop: 2 }}>White Wins</div></div>
-          </div>
-          <div style={{ height: 6, borderRadius: 3, overflow: "hidden", display: "flex", background: t.inset }}>
-            <div style={{ width: `${bW / (bW + wW) * 100}%`, background: t.blue }} />
-            <div style={{ width: `${wW / (bW + wW) * 100}%`, background: "#94A3B8" }} />
-          </div>
-          <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr 1fr" : "1fr 1fr 1fr 1fr", gap: 8, marginTop: 18 }}>
+        <div style={{ ...C(), marginBottom: 'var(--space-section-gap)' }}>
+          {isCompact ? (
+            <div style={{ textAlign: "center", marginBottom: 14 }}>
+              <div style={{ ...S, fontSize: 'var(--type-stat-hero)', color: t.blue, lineHeight: 1 }}>{bW}</div>
+              <div style={{ fontSize: 'var(--type-label)', fontWeight: 600, color: t.t3, marginTop: 2, marginBottom: 12 }}>Blue Wins</div>
+              <div style={{ height: 6, borderRadius: 3, overflow: "hidden", display: "flex", background: t.inset, margin: "0 auto", maxWidth: 240 }}>
+                <div style={{ width: `${bW / (bW + wW) * 100}%`, background: t.blue }} />
+                <div style={{ width: `${wW / (bW + wW) * 100}%`, background: "#94A3B8" }} />
+              </div>
+              <div style={{ ...S, fontSize: 'var(--type-stat-hero)', color: t.white, lineHeight: 1, marginTop: 12 }}>{wW}</div>
+              <div style={{ fontSize: 'var(--type-label)', fontWeight: 600, color: t.t3, marginTop: 2 }}>White Wins</div>
+            </div>
+          ) : (
+            <>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 14 }}>
+                <div><div style={{ ...S, fontSize: 'var(--type-stat-hero)', color: t.blue, lineHeight: 1 }}>{bW}</div><div style={{ fontSize: 'var(--type-label)', fontWeight: 600, color: t.t3, marginTop: 2 }}>Blue Wins</div></div>
+                <div style={{ ...S, fontSize: 'var(--type-body)', color: t.t3, fontStyle: "italic", alignSelf: "center" }}>vs</div>
+                <div style={{ textAlign: "right" }}><div style={{ ...S, fontSize: 'var(--type-stat-hero)', color: t.white, lineHeight: 1 }}>{wW}</div><div style={{ fontSize: 'var(--type-label)', fontWeight: 600, color: t.t3, marginTop: 2 }}>White Wins</div></div>
+              </div>
+              <div style={{ height: 6, borderRadius: 3, overflow: "hidden", display: "flex", background: t.inset }}>
+                <div style={{ width: `${bW / (bW + wW) * 100}%`, background: t.blue }} />
+                <div style={{ width: `${wW / (bW + wW) * 100}%`, background: "#94A3B8" }} />
+              </div>
+            </>
+          )}
+          <div style={{ display: "grid", gridTemplateColumns: isCompact ? "1fr 1fr" : isWide ? "1fr 1fr 1fr 1fr" : "1fr 1fr", gap: 8, marginTop: 18 }}>
             {[
               { v: String(sweeps), l: "Sweeps (4-0)", c: t.accent },
               { v: String(blowouts), l: "Blowouts (4-1)", c: t.green },
               { v: String(comfortable), l: "Comfortable (4-2)", c: t.gold },
               { v: String(nailbiters), l: "Nail-biters (4-3)", c: t.red },
-            ].map((m, i) =>
-              <div key={i} style={{ textAlign: "center", background: t.inset, borderRadius: 8, padding: 12 }}>
-                <div style={{ ...S, fontSize: 26, color: m.c, lineHeight: 1 }}>{m.v}</div>
-                <div style={{ fontSize: 9, color: t.t3, fontWeight: 600, marginTop: 3 }}>{m.l}</div>
+            ].map((m, i) => (
+              <div key={i} style={{ textAlign: "center", background: t.inset, borderRadius: 8, padding: isCompact ? '10px 8px' : 12 }}>
+                <div style={{ ...S, fontSize: 'var(--type-stat-lg)', color: m.c, lineHeight: 1 }}>{m.v}</div>
+                <div style={{ fontSize: 'var(--type-label)', color: t.t3, fontWeight: 600, marginTop: 3 }}>{m.l}</div>
               </div>
-            )}
+            ))}
           </div>
         </div>
 
+        {/* WIN-LOSS RECORDS */}
+        <SectionDivider />
         <div id="season-records" style={L}>Player Win-Loss Records</div>
-        <div style={{ ...C({ padding: 0, overflow: "hidden" }), marginBottom: 28 }}>
-          <div style={{ padding: "12px 16px", borderBottom: `1px solid ${t.border}`, fontSize: 11, color: t.t3, lineHeight: 1.5 }}>Series record. Minimum 3 decided series. Computed live.</div>
+        <div style={{ ...C({ padding: 0, overflow: "hidden" }), marginBottom: 'var(--space-section-gap)' }}>
+          <div style={{ padding: "12px 16px", borderBottom: `1px solid ${t.border}`, fontSize: 'var(--type-body-sm)', color: t.t3, lineHeight: 1.5 }}>Series record. Minimum 3 decided series. Computed live.</div>
           {winSorted.map(([name, d], i) => {
             const dec = d.w + d.l; const pct = Math.round(d.w / dec * 100);
             const barColor = pct >= 60 ? t.green : pct >= 45 ? t.gold : t.red;
+            if (isCompact) {
+              return (
+                <div key={name} style={{ padding: '12px var(--space-card-padding)', borderBottom: i < winSorted.length - 1 ? `1px solid ${t.border}` : "none" }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 4 }}>
+                    <div style={{ fontWeight: 700, fontSize: 'var(--type-body)' }}>{name}</div>
+                    <div style={{ ...S, fontSize: 'var(--type-stat-md)', color: barColor }}>{pct}%</div>
+                  </div>
+                  <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                    <div style={{ fontSize: 'var(--type-body-sm)', color: t.t2, fontWeight: 600, minWidth: 40 }}>{d.w}-{d.l}</div>
+                    <div style={{ flex: 1, height: 6, background: t.inset, borderRadius: 3, overflow: "hidden" }}>
+                      <div style={{ height: "100%", width: `${pct}%`, background: barColor, borderRadius: 3 }} />
+                    </div>
+                  </div>
+                </div>
+              );
+            }
             return (
-              <div key={name} style={{ display: "grid", gridTemplateColumns: "100px 60px 1fr 50px", alignItems: "center", padding: "10px 16px", borderBottom: i < winSorted.length - 1 ? `1px solid ${t.border}` : "none", gap: 10 }}>
-                <div style={{ fontWeight: 600, fontSize: 13 }}>{name}</div>
-                <div style={{ fontSize: 13, color: t.t2, fontWeight: 600 }}>{d.w}-{d.l}</div>
+              <div key={name} style={{ display: "grid", gridTemplateColumns: "minmax(80px,120px) 60px 1fr 50px", alignItems: "center", padding: "10px 16px", borderBottom: i < winSorted.length - 1 ? `1px solid ${t.border}` : "none", gap: 10 }}>
+                <div style={{ fontWeight: 600, fontSize: 'var(--type-body)' }}>{name}</div>
+                <div style={{ fontSize: 'var(--type-body)', color: t.t2, fontWeight: 600 }}>{d.w}-{d.l}</div>
                 <div style={{ height: 6, background: t.inset, borderRadius: 3, overflow: "hidden" }}><div style={{ height: "100%", width: `${pct}%`, background: barColor, borderRadius: 3 }} /></div>
-                <div style={{ ...S, fontSize: 16, color: barColor, textAlign: "right" }}>{pct}%</div>
+                <div style={{ ...S, fontSize: 'var(--type-stat-md)', color: barColor, textAlign: "right" }}>{pct}%</div>
               </div>
             );
           })}
         </div>
 
+        {/* PLAYER PROFILES */}
+        <SectionDivider />
         <div id="season-profiles" style={L}>Player Profiles</div>
-        <div style={{ display: "grid", gap: 8, marginBottom: 28 }}>
+        <div style={{ display: "grid", gap: 'var(--space-card-gap)', marginBottom: 'var(--space-section-gap)' }}>
           {CORRELATIONS.map((c, i) => {
             const d = players[c.name];
             const dec = d ? d.w + d.l : 0;
-            const rec = dec > 0 ? `${d.w}-${d.l}` : "—";
+            const rec = dec > 0 ? `${d.w}-${d.l}` : "\u2014";
             const pct = dec > 0 ? Math.round(d.w / dec * 100) : null;
+            if (isCompact) {
+              return (
+                <div key={i} style={{ ...C() }}>
+                  <div style={{ display: "flex", alignItems: "baseline", gap: 10, marginBottom: 6 }}>
+                    <div style={{ ...S, fontSize: 'var(--type-title)', color: pct !== null ? (pct >= 60 ? t.green : pct >= 45 ? t.gold : t.red) : t.t3, flexShrink: 0 }}>{rec}</div>
+                    <div style={{ fontWeight: 700, fontSize: 'var(--type-body)' }}>
+                      {c.name}
+                      <span style={{ fontSize: 'var(--type-label)', fontWeight: 600, color: t.accent, marginLeft: 6 }}>{c.tag}</span>
+                    </div>
+                  </div>
+                  <div style={{ fontSize: 'var(--type-body-sm)', color: t.t2, lineHeight: 1.55 }}>{c.desc}</div>
+                </div>
+              );
+            }
             return (
               <div key={i} style={{ ...C(), display: "flex", alignItems: "center", gap: 14 }}>
-                <div style={{ ...S, fontSize: 22, color: pct !== null ? (pct >= 60 ? t.green : pct >= 45 ? t.gold : t.red) : t.t3, minWidth: 64, textAlign: "center" }}>{rec}</div>
+                <div style={{ ...S, fontSize: 'var(--type-title)', color: pct !== null ? (pct >= 60 ? t.green : pct >= 45 ? t.gold : t.red) : t.t3, minWidth: 64, textAlign: "center" }}>{rec}</div>
                 <div style={{ flex: 1 }}>
-                  <div style={{ fontWeight: 700, fontSize: 14 }}>{c.name} <span style={{ fontSize: 10, fontWeight: 600, color: t.accent, marginLeft: 4 }}>{c.tag}</span></div>
-                  <div style={{ fontSize: 12, color: t.t2, lineHeight: 1.5, marginTop: 2 }}>{c.desc}</div>
+                  <div style={{ fontWeight: 700, fontSize: 'var(--type-body)' }}>{c.name} <span style={{ fontSize: 'var(--type-label)', fontWeight: 600, color: t.accent, marginLeft: 4 }}>{c.tag}</span></div>
+                  <div style={{ fontSize: 'var(--type-body-sm)', color: t.t2, lineHeight: 1.5, marginTop: 2 }}>{c.desc}</div>
                 </div>
               </div>
             );
           })}
         </div>
 
+        {/* ATTENDANCE */}
+        <SectionDivider />
         <div id="season-attendance" style={L}>Attendance</div>
-        <div style={{ ...C({ padding: 0, overflow: "hidden" }), marginBottom: 28 }}>
-          <div style={{ overflowX: "auto" }}>
-            <table style={{ width: "100%", borderCollapse: "collapse", minWidth: 500, fontSize: 12 }}>
-              <thead><tr style={{ background: t.inset, borderBottom: `1px solid ${t.border}` }}>
-                {["Player", "Games", "Rate", "Blue", "White", "W-L", "Win%"].map(h => <th key={h} style={{ padding: "10px 8px", fontSize: 9, fontWeight: 700, letterSpacing: 1, color: t.t3, textAlign: h === "Player" ? "left" : "center", ...(h === "Player" ? { paddingLeft: 16, minWidth: 90 } : {}) }}>{h}</th>)}
-              </tr></thead>
-              <tbody>
-                {sorted.map(([name, d]) => {
-                  const rate = Math.round(d.g / totalS * 100);
-                  const dec = d.w + d.l;
-                  const wpct = dec > 0 ? Math.round(d.w / dec * 100) : null;
-                  const tier = rate >= 90 ? ["IRON", t.accent] : rate >= 70 ? ["REG", t.green] : rate >= 40 ? ["PT", t.blue] : rate >= 15 ? ["DROP", t.gold] : ["1x", t.t3];
-                  return (
-                    <tr key={name} style={{ borderBottom: `1px solid ${t.border}` }}>
-                      <td style={{ padding: "9px 16px", fontWeight: 600, fontSize: 13 }}>{name}<span style={{ fontSize: 8, fontWeight: 800, letterSpacing: 1, padding: "2px 6px", borderRadius: 3, background: `${tier[1]}18`, color: tier[1], marginLeft: 8 }}>{tier[0]}</span></td>
-                      <td style={{ textAlign: "center", color: t.t2 }}>{d.g}/{totalS}</td>
-                      <td style={{ textAlign: "center", ...S, fontSize: 15, color: tier[1] }}>{rate}%</td>
-                      <td style={{ textAlign: "center", color: t.blue, fontWeight: 600 }}>{d.bt}</td>
-                      <td style={{ textAlign: "center", color: t.white, fontWeight: 600 }}>{d.wt}</td>
-                      <td style={{ textAlign: "center", fontSize: 12, fontWeight: 600, color: dec > 0 ? t.t2 : t.t3 }}>{dec > 0 ? `${d.w}-${d.l}` : "—"}</td>
-                      <td style={{ textAlign: "center", ...S, fontSize: 14, color: wpct !== null ? (wpct >= 60 ? t.green : wpct >= 45 ? t.gold : t.red) : t.t3 }}>{wpct !== null ? `${wpct}%` : "—"}</td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
+        <div style={{ ...C({ padding: 0, overflow: "hidden" }), marginBottom: 'var(--space-section-gap)' }}>
+          {isCompact ? (
+            /* Compact: card list sorted by sessions descending */
+            [...sorted].sort((a, b) => b[1].g - a[1].g).map(([name, d], i, arr) => {
+              const rate = Math.round(d.g / totalS * 100);
+              const dec = d.w + d.l;
+              const wpct = dec > 0 ? Math.round(d.w / dec * 100) : null;
+              const tier = rate >= 90 ? ["IRON", t.accent] : rate >= 70 ? ["REG", t.green] : rate >= 40 ? ["PT", t.blue] : rate >= 15 ? ["DROP", t.gold] : ["1x", t.t3];
+              return (
+                <div key={name} style={{ padding: '12px var(--space-card-padding)', borderBottom: i < arr.length - 1 ? `1px solid ${t.border}` : "none" }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                      <span style={{ fontWeight: 600, fontSize: 'var(--type-body)' }}>{name}</span>
+                      <span style={{ fontSize: 8, fontWeight: 800, letterSpacing: 1, padding: "2px 6px", borderRadius: 3, background: `${tier[1]}18`, color: tier[1] }}>{tier[0]}</span>
+                    </div>
+                    <div style={{ ...S, fontSize: 'var(--type-stat-md)', color: tier[1] }}>{rate}%</div>
+                  </div>
+                  <div style={{ display: "flex", gap: 12, marginTop: 4, fontSize: 'var(--type-body-sm)', color: t.t2 }}>
+                    <span>{d.g}/{totalS} games</span>
+                    <span style={{ color: t.blue }}>{d.bt}B</span>
+                    <span style={{ color: t.white }}>{d.wt}W</span>
+                    {dec > 0 && <span style={{ marginLeft: "auto", fontWeight: 600 }}>{d.w}-{d.l} ({wpct}%)</span>}
+                  </div>
+                </div>
+              );
+            })
+          ) : (
+            /* Regular/Wide: table */
+            <div style={{ overflowX: "auto" }}>
+              <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 'var(--type-body-sm)' }}>
+                <thead><tr style={{ background: t.inset, borderBottom: `1px solid ${t.border}` }}>
+                  {["Player", "Games", "Rate", "Blue", "White", "W-L", "Win%"].map(h => <th key={h} style={{ padding: "10px 8px", fontSize: 'var(--type-label)', fontWeight: 700, letterSpacing: 1, color: t.t3, textAlign: h === "Player" ? "left" : "center", ...(h === "Player" ? { paddingLeft: 16, minWidth: 80 } : {}) }}>{h}</th>)}
+                </tr></thead>
+                <tbody>
+                  {sorted.map(([name, d]) => {
+                    const rate = Math.round(d.g / totalS * 100);
+                    const dec = d.w + d.l;
+                    const wpct = dec > 0 ? Math.round(d.w / dec * 100) : null;
+                    const tier = rate >= 90 ? ["IRON", t.accent] : rate >= 70 ? ["REG", t.green] : rate >= 40 ? ["PT", t.blue] : rate >= 15 ? ["DROP", t.gold] : ["1x", t.t3];
+                    return (
+                      <tr key={name} style={{ borderBottom: `1px solid ${t.border}` }}>
+                        <td style={{ padding: "9px 16px", fontWeight: 600, fontSize: 'var(--type-body)' }}>{name}<span style={{ fontSize: 8, fontWeight: 800, letterSpacing: 1, padding: "2px 6px", borderRadius: 3, background: `${tier[1]}18`, color: tier[1], marginLeft: 8 }}>{tier[0]}</span></td>
+                        <td style={{ textAlign: "center", color: t.t2 }}>{d.g}/{totalS}</td>
+                        <td style={{ textAlign: "center", ...S, fontSize: 'var(--type-stat-md)', color: tier[1] }}>{rate}%</td>
+                        <td style={{ textAlign: "center", color: t.blue, fontWeight: 600 }}>{d.bt}</td>
+                        <td style={{ textAlign: "center", color: t.white, fontWeight: 600 }}>{d.wt}</td>
+                        <td style={{ textAlign: "center", fontSize: 'var(--type-body-sm)', fontWeight: 600, color: dec > 0 ? t.t2 : t.t3 }}>{dec > 0 ? `${d.w}-${d.l}` : "\u2014"}</td>
+                        <td style={{ textAlign: "center", ...S, fontSize: 'var(--type-body)', color: wpct !== null ? (wpct >= 60 ? t.green : wpct >= 45 ? t.gold : t.red) : t.t3 }}>{wpct !== null ? `${wpct}%` : "\u2014"}</td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          )}
         </div>
 
+        {/* TYLER LOSSES */}
         {playerLosses["Tyler"] && playerLosses["Tyler"].length > 0 && (() => {
           const losses = playerLosses["Tyler"];
           const allLossTeammates = losses.flatMap(l => l.teammates);
@@ -563,22 +777,23 @@ export default function App() {
           const cursed = Object.entries(freq).filter(([,v]) => v === losses.length).map(([k]) => k);
           return (
             <>
+              <SectionDivider />
               <div id="season-tyler" style={L}>The Tyler Losses Files</div>
-              <div style={{ ...C(), marginBottom: 28 }}>
-                <div style={{ fontSize: 13, color: t.t2, lineHeight: 1.6, marginBottom: 14 }}>Tyler has lost exactly {losses.length} series. Every single one is catalogued below. The group text demanded forensic accountability.</div>
+              <div style={{ ...C(), marginBottom: 'var(--space-section-gap)', borderColor: dark ? "rgba(248,113,113,.2)" : "rgba(248,113,113,.15)", background: dark ? "rgba(248,113,113,.03)" : "rgba(248,113,113,.02)" }}>
+                <div style={{ fontSize: 'var(--type-body)', color: t.t2, lineHeight: 1.6, marginBottom: 14 }}>Tyler has lost exactly {losses.length} series. Every single one is catalogued below. The group text demanded forensic accountability.</div>
                 {losses.map((loss, i) => (
-                  <div key={i} style={{ padding: "12px 14px", background: dark ? 'rgba(239,68,68,.06)' : 'rgba(239,68,68,.05)', borderRadius: 10, marginBottom: 8 }}>
+                  <div key={i} style={{ padding: isCompact ? '10px 12px' : "12px 14px", background: dark ? 'rgba(239,68,68,.06)' : 'rgba(239,68,68,.05)', borderRadius: 10, marginBottom: 8 }}>
                     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
-                      <div style={{ fontWeight: 700, fontSize: 13 }}>{loss.day}</div>
-                      <div style={{ fontSize: 11, color: t.red, fontWeight: 600 }}>Lost {loss.score}</div>
+                      <div style={{ fontWeight: 700, fontSize: 'var(--type-body)' }}>{loss.day}</div>
+                      <div style={{ fontSize: 'var(--type-body-sm)', color: t.red, fontWeight: 600 }}>Lost {loss.score}</div>
                     </div>
-                    <div style={{ fontSize: 11, color: t.t2, lineHeight: 1.6 }}><strong style={{ color: t.text }}>Tyler's teammates:</strong> {loss.teammates.join(", ") || "(solo, apparently)"}</div>
-                    <div style={{ fontSize: 11, color: t.t2, lineHeight: 1.6 }}><strong style={{ color: t.text }}>Opposing team:</strong> {loss.opponents.join(", ")}</div>
+                    <div style={{ fontSize: 'var(--type-body-sm)', color: t.t2, lineHeight: 1.6 }}><strong style={{ color: t.text }}>Tyler{"'"}s teammates:</strong> {loss.teammates.join(", ") || "(solo, apparently)"}</div>
+                    <div style={{ fontSize: 'var(--type-body-sm)', color: t.t2, lineHeight: 1.6 }}><strong style={{ color: t.text }}>Opposing team:</strong> {loss.opponents.join(", ")}</div>
                   </div>
                 ))}
                 {cursed.length > 0 && (
-                  <div style={{ fontSize: 12, color: t.t2, lineHeight: 1.55, marginTop: 10, paddingTop: 12, borderTop: `1px solid ${t.border}` }}>
-                    <strong style={{ color: t.red }}>The Curse Suspects:</strong> {cursed.join(", ")} {cursed.length === 1 ? "has" : "have"} been on Tyler's team for every single one of his losses. Cosmic coincidence or smoking gun? Jury's out.
+                  <div style={{ fontSize: 'var(--type-body-sm)', color: t.t2, lineHeight: 1.55, marginTop: 10, paddingTop: 12, borderTop: `1px solid ${t.border}` }}>
+                    <strong style={{ color: t.red }}>The Curse Suspects:</strong> {cursed.join(", ")} {cursed.length === 1 ? "has" : "have"} been on Tyler{"'"}s team for every single one of his losses. Cosmic coincidence or smoking gun? Jury{"'"}s out.
                   </div>
                 )}
               </div>
@@ -587,29 +802,30 @@ export default function App() {
         })()}
 
         {/* THE 7/7 CLUB */}
+        <SectionDivider />
         <div id="season-club" style={L}>The 7/7 Club</div>
-        <div style={{ ...C(), marginBottom: 28, borderColor: dark ? "rgba(251,191,36,.2)" : "rgba(202,138,4,.15)", background: dark ? "rgba(251,191,36,.04)" : "rgba(202,138,4,.03)" }}>
-          <div style={{ fontSize: 13, color: t.t2, lineHeight: 1.6, marginBottom: 14 }}>Three players have shot perfect from the field in a single game and scored every one of their team's seven points. This club is exclusive, unintentional, and possibly cursed.</div>
-          <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr 1fr", gap: 10 }}>
+        <div style={{ ...C(), marginBottom: 'var(--space-section-gap)', borderColor: dark ? "rgba(251,191,36,.2)" : "rgba(202,138,4,.15)", background: dark ? "rgba(251,191,36,.04)" : "rgba(202,138,4,.03)" }}>
+          <div style={{ fontSize: 'var(--type-body)', color: t.t2, lineHeight: 1.6, marginBottom: 14 }}>Three players have shot perfect from the field in a single game and scored every one of their team{"'"}s seven points. This club is exclusive, unintentional, and possibly cursed.</div>
+          <div style={{ display: "grid", gridTemplateColumns: isCompact ? "1fr" : isWide ? "1fr 1fr 1fr" : "1fr 1fr", gap: 10 }}>
             <div style={{ padding: "14px", background: dark ? 'rgba(251,191,36,.06)' : 'rgba(251,191,36,.05)', borderRadius: 10, border: `1px solid ${dark ? "rgba(251,191,36,.15)" : "rgba(251,191,36,.2)"}` }}>
-              <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: 1.5, color: t.gold, marginBottom: 4 }}>FOUNDING MEMBER</div>
-              <div style={{ ...S, fontSize: 22, color: t.text }}>Gabe</div>
-              <div style={{ fontSize: 11, color: t.t2, marginTop: 4, lineHeight: 1.5 }}>Mon 3/23 · Game 1<br />Three threes and a layup. Was mortal again by Game 2.</div>
+              <div style={{ fontSize: 'var(--type-label)', fontWeight: 800, letterSpacing: 1.5, color: t.gold, marginBottom: 4 }}>FOUNDING MEMBER</div>
+              <div style={{ ...S, fontSize: 'var(--type-title)', color: t.text }}>Gabe</div>
+              <div style={{ fontSize: 'var(--type-body-sm)', color: t.t2, marginTop: 4, lineHeight: 1.5 }}>Mon 3/23 · Game 1<br />Three threes and a layup. Was mortal again by Game 2.</div>
             </div>
             <div style={{ padding: "14px", background: dark ? 'rgba(251,191,36,.06)' : 'rgba(251,191,36,.05)', borderRadius: 10, border: `1px solid ${dark ? "rgba(251,191,36,.15)" : "rgba(251,191,36,.2)"}` }}>
-              <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: 1.5, color: t.gold, marginBottom: 4 }}>SECOND MEMBER</div>
-              <div style={{ ...S, fontSize: 22, color: t.text }}>Tyler</div>
-              <div style={{ fontSize: 11, color: t.t2, marginTop: 4, lineHeight: 1.5 }}>Fri 3/27 · Game 2<br />Capped a 4-0 sweep. Tyler does this kind of thing.</div>
+              <div style={{ fontSize: 'var(--type-label)', fontWeight: 800, letterSpacing: 1.5, color: t.gold, marginBottom: 4 }}>SECOND MEMBER</div>
+              <div style={{ ...S, fontSize: 'var(--type-title)', color: t.text }}>Tyler</div>
+              <div style={{ fontSize: 'var(--type-body-sm)', color: t.t2, marginTop: 4, lineHeight: 1.5 }}>Fri 3/27 · Game 2<br />Capped a 4-0 sweep. Tyler does this kind of thing.</div>
             </div>
             <div style={{ padding: "14px", background: dark ? 'rgba(251,191,36,.06)' : 'rgba(251,191,36,.05)', borderRadius: 10, border: `1px solid ${dark ? "rgba(251,191,36,.15)" : "rgba(251,191,36,.2)"}` }}>
-              <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: 1.5, color: t.gold, marginBottom: 4 }}>NEWEST MEMBER</div>
-              <div style={{ ...S, fontSize: 22, color: t.text }}>Lee</div>
-              <div style={{ fontSize: 11, color: t.t2, marginTop: 4, lineHeight: 1.5 }}>Fri 5/1 · Pivotal Game 5<br />Three threes and a layup. Team still lost the series 4-3. He insists on noting that he probably missed several open layups along the way, just to keep the cosmic ledger balanced.</div>
+              <div style={{ fontSize: 'var(--type-label)', fontWeight: 800, letterSpacing: 1.5, color: t.gold, marginBottom: 4 }}>NEWEST MEMBER</div>
+              <div style={{ ...S, fontSize: 'var(--type-title)', color: t.text }}>Lee</div>
+              <div style={{ fontSize: 'var(--type-body-sm)', color: t.t2, marginTop: 4, lineHeight: 1.5 }}>Fri 5/1 · Pivotal Game 5<br />Three threes and a layup. Blue won the series 4-3. He insists on noting that he probably missed several open layups along the way, just to keep the cosmic ledger balanced.</div>
             </div>
           </div>
         </div>
 
-
+        {/* ALGORITHM MATCHUP */}
         {(() => {
           const candidates = Object.entries(players)
             .filter(([, d]) => d.w + d.l >= 5)
@@ -627,35 +843,39 @@ export default function App() {
           const predA = (sumA / teamA.length * 100).toFixed(0);
           const predB = (sumB / teamB.length * 100).toFixed(0);
           const diff = Math.abs(parseFloat(predA) - parseFloat(predB)).toFixed(0);
+          const renderTeamPanel = (team, label, color, pred) => (
+            <div style={{ padding: 'var(--space-card-padding)', background: t.inset, borderRadius: 10 }}>
+              <div style={{ fontSize: 'var(--type-label)', fontWeight: 800, letterSpacing: 1.5, color, marginBottom: 8 }}>{label} · AVG {pred}%</div>
+              {team.map((p, i) => (
+                <div key={i} style={{ display: "flex", justifyContent: "space-between", padding: "3px 0", fontSize: 'var(--type-body)' }}>
+                  <span style={{ fontWeight: 600 }}>{p.name}</span>
+                  <span style={{ color: t.t3, fontSize: 'var(--type-body-sm)' }}>{Math.round(p.wpct * 100)}%</span>
+                </div>
+              ))}
+            </div>
+          );
           return (
             <>
-              <div id="season-algorithm" style={L}>The Algorithm's Matchup</div>
-              <div style={{ ...C(), marginBottom: 28, borderColor: dark ? "rgba(52,211,153,.2)" : "rgba(22,163,74,.15)", background: dark ? "rgba(52,211,153,.03)" : "rgba(22,163,74,.02)" }}>
-                <div style={{ fontSize: 13, color: t.t2, lineHeight: 1.6, marginBottom: 14 }}>
+              <SectionDivider />
+              <div id="season-algorithm" style={L}>The Algorithm{"'"}s Matchup</div>
+              <div style={{ ...C(), marginBottom: 'var(--space-section-gap)', borderColor: dark ? "rgba(52,211,153,.2)" : "rgba(22,163,74,.15)", background: dark ? "rgba(52,211,153,.03)" : "rgba(22,163,74,.02)" }}>
+                <div style={{ fontSize: 'var(--type-body)', color: t.t2, lineHeight: 1.6, marginBottom: 14 }}>
                   <strong style={{ color: t.green }}>Computed from actual data.</strong> Top 8 players by games played, sorted by win percentage, greedy-balanced to minimize predicted differential. No vibes, no feelings, just math at 4:45 AM.
                 </div>
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
-                  <div style={{ padding: "14px", background: t.inset, borderRadius: 10 }}>
-                    <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: 1.5, color: t.accent, marginBottom: 8 }}>TEAM A · AVG {predA}%</div>
-                    {teamA.map((p, i) => (
-                      <div key={i} style={{ display: "flex", justifyContent: "space-between", padding: "3px 0", fontSize: 13 }}>
-                        <span style={{ fontWeight: 600 }}>{p.name}</span>
-                        <span style={{ color: t.t3, fontSize: 11 }}>{Math.round(p.wpct * 100)}%</span>
-                      </div>
-                    ))}
+                {isCompact ? (
+                  <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+                    {renderTeamPanel(teamA, "TEAM A", t.accent, predA)}
+                    <div style={{ textAlign: "center", ...S, fontSize: 'var(--type-body-sm)', color: t.t3, fontStyle: "italic", padding: "4px 0" }}>vs</div>
+                    {renderTeamPanel(teamB, "TEAM B", t.blue, predB)}
                   </div>
-                  <div style={{ padding: "14px", background: t.inset, borderRadius: 10 }}>
-                    <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: 1.5, color: t.blue, marginBottom: 8 }}>TEAM B · AVG {predB}%</div>
-                    {teamB.map((p, i) => (
-                      <div key={i} style={{ display: "flex", justifyContent: "space-between", padding: "3px 0", fontSize: 13 }}>
-                        <span style={{ fontWeight: 600 }}>{p.name}</span>
-                        <span style={{ color: t.t3, fontSize: 11 }}>{Math.round(p.wpct * 100)}%</span>
-                      </div>
-                    ))}
+                ) : (
+                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
+                    {renderTeamPanel(teamA, "TEAM A", t.accent, predA)}
+                    {renderTeamPanel(teamB, "TEAM B", t.blue, predB)}
                   </div>
-                </div>
-                <div style={{ fontSize: 11, color: t.t3, lineHeight: 1.55, marginTop: 12, paddingTop: 10, borderTop: `1px solid ${t.border}`, fontStyle: "italic" }}>
-                  Predicted differential: {diff} percentage points. Closer to zero = closer to fair. Lee is on one of these teams. He is either the ceiling or the anchor depending on which series you're asking about.
+                )}
+                <div style={{ fontSize: 'var(--type-body-sm)', color: t.t3, lineHeight: 1.55, marginTop: 12, paddingTop: 10, borderTop: `1px solid ${t.border}`, fontStyle: "italic" }}>
+                  Predicted differential: {diff} percentage points. Closer to zero = closer to fair. Lee is on one of these teams. He is either the ceiling or the anchor depending on which series you{"'"}re asking about.
                 </div>
               </div>
             </>
@@ -675,21 +895,21 @@ export default function App() {
   return (
     <div style={{ background: t.bg, color: t.text, fontFamily: "'Outfit',sans-serif", minHeight: "100vh", transition: "background .3s,color .3s" }}>
       <style dangerouslySetInnerHTML={{ __html: "@media(prefers-reduced-motion:reduce){*{transition:none!important}}" }} />
-      <main style={{ maxWidth: 920, margin: "0 auto", padding: "40px 20px 100px" }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 40 }}>
+      <main style={{ maxWidth: 'var(--content-max)', margin: "0 auto", padding: "var(--space-page-top) var(--space-page-x) var(--space-page-bot)" }}>
+        <div style={{ display: "flex", flexDirection: isCompact ? "column" : "row", justifyContent: "space-between", alignItems: isCompact ? "flex-start" : "flex-start", gap: isCompact ? 16 : 0, marginBottom: 'var(--space-section-gap)', paddingBottom: 'var(--space-section-gap)', borderBottom: `1px solid ${t.border}` }}>
           <div>
-            <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: 2, textTransform: "uppercase", color: t.accent, marginBottom: 8 }}>4:45 AM · Middle School Gym · 3 Months Deep</div>
-            <h1 style={{ ...S, fontSize: "clamp(36px,5.5vw,56px)", fontWeight: 400, letterSpacing: -1, lineHeight: 1.05, margin: 0 }}>Morning <em style={{ fontStyle: "italic", color: t.accent }}>Hoops</em></h1>
-            <p style={{ fontSize: 13, color: t.t2, marginTop: 8, maxWidth: 500, lineHeight: 1.6 }}>A group of grown adults wake up before the sun to play 7-game series where children learn fractions. Tyler is mortal. Gabe is everywhere. Cal is occasionally in Florida. Sean is asleep. Nobody has a real job.</p>
+            <div style={{ fontSize: 'var(--type-label)', fontWeight: 700, letterSpacing: 2, textTransform: "uppercase", color: t.accent, marginBottom: 8 }}>4:45 AM · Middle School Gym · 3 Months Deep</div>
+            <h1 style={{ ...S, fontSize: "var(--type-display)", fontWeight: 400, letterSpacing: -1, lineHeight: 1.05, margin: 0 }}>Morning <em style={{ fontStyle: "italic", color: t.accent }}>Hoops</em></h1>
+            <p style={{ fontSize: 'var(--type-body)', color: t.t2, marginTop: 8, maxWidth: 500, lineHeight: 'var(--type-body-lh)' }}>A group of grown adults wake up before the sun to play 7-game series where children learn fractions. Tyler is mortal. Gabe is everywhere. Cal is occasionally in Florida. Sean is asleep. Nobody has a real job.</p>
           </div>
-          <button onClick={() => setDark(!dark)} aria-label="Toggle dark/light mode" style={{ background: t.card, border: `1px solid ${t.border}`, borderRadius: 8, padding: "8px 14px", cursor: "pointer", color: t.t2, fontSize: 11, fontWeight: 600, fontFamily: "'Outfit',sans-serif", display: "flex", alignItems: "center", gap: 6, marginTop: 8, minHeight: 44 }}>{dark ? "☀️" : "🌙"} {dark ? "Light" : "Dark"}</button>
+          <button onClick={() => setDark(!dark)} aria-label="Toggle dark/light mode" style={{ background: t.card, border: `1px solid ${t.border}`, borderRadius: 8, padding: isCompact ? "6px 10px" : "8px 14px", cursor: "pointer", color: t.t2, fontSize: isCompact ? 10 : 11, fontWeight: 600, fontFamily: "'Outfit',sans-serif", display: "flex", alignItems: "center", gap: 6, marginTop: isCompact ? 0 : 8, minHeight: 44 }}>{dark ? "☀️" : "🌙"} {dark ? "Light" : "Dark"}</button>
         </div>
 
-        <nav role="tablist" style={{ display: "flex", gap: 2, marginBottom: 28, borderBottom: `1px solid ${t.border}`, overflowX: "auto", WebkitOverflowScrolling: "touch" }}>
-          {tabs.map(tb => <button key={tb.id} role="tab" aria-selected={tab === tb.id} onClick={() => setTab(tb.id)} style={{ background: "none", border: "none", borderBottom: tab === tb.id ? `2px solid ${t.accent}` : "2px solid transparent", padding: "14px 16px", cursor: "pointer", fontSize: 13, fontWeight: tab === tb.id ? 700 : 500, color: tab === tb.id ? t.text : t.t3, fontFamily: "'Outfit',sans-serif", transition: "all .15s", whiteSpace: "nowrap", minHeight: 44 }}>{tb.label}</button>)}
+        <nav role="tablist" style={{ display: "flex", gap: 6, marginBottom: 'var(--space-section-gap)', overflowX: "auto", WebkitOverflowScrolling: "touch", padding: 4, background: t.inset, borderRadius: 999, scrollbarWidth: "none", position: "sticky", top: 0, zIndex: 10, backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)" }}>
+          {tabs.map(tb => <button key={tb.id} role="tab" aria-selected={tab === tb.id} onClick={() => setTab(tb.id)} style={{ background: tab === tb.id ? t.card : "transparent", border: tab === tb.id ? `1px solid ${t.border}` : "1px solid transparent", borderRadius: 999, padding: "8px 16px", cursor: "pointer", fontSize: 'var(--type-body)', fontWeight: tab === tb.id ? 700 : 500, color: tab === tb.id ? t.accent : t.t2, fontFamily: "'Outfit',sans-serif", transition: "all .15s", whiteSpace: "nowrap", minHeight: 44, minWidth: 44 }}>{tb.label}</button>)}
         </nav>
 
-        <div style={{ display: "flex", gap: 16, marginBottom: 20, fontSize: 11, color: t.t3 }}>
+        <div style={{ display: "flex", gap: 16, marginBottom: 20, fontSize: 'var(--type-body-sm)', color: t.t3, justifyContent: isCompact ? "center" : "flex-start" }}>
           <span style={{ display: "flex", alignItems: "center", gap: 4 }}><Dot team="blue" dark={dark} /> Blue team</span>
           <span style={{ display: "flex", alignItems: "center", gap: 4 }}><Dot team="white" dark={dark} /> White team</span>
         </div>
@@ -699,7 +919,7 @@ export default function App() {
         </div>
       </main>
 
-      <footer style={{ textAlign: "center", fontSize: 10, color: t.t3, paddingBottom: 40, lineHeight: 1.7 }}>
+      <footer style={{ textAlign: "center", fontSize: 'var(--type-label)', color: t.t3, paddingBottom: 40, lineHeight: 1.7 }}>
         <span style={{ color: t.accent }}>Morning Hoops</span> · 7-Game Series · Verified from spreadsheet<br />
         Played at 4:45 AM. Tyler is mortal. Gabe is unkillable. Florida remains under investigation.
       </footer>
