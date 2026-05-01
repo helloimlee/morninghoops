@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
 
 // ═══════════════════════════════════════════════════════════
 // SOURCE OF TRUTH: Morning_Hoops____3_.xlsx (verified cell colors)
@@ -218,7 +218,13 @@ function Badge({ winner, score, dark }) {
 }
 
 function Dot({ team, dark }) {
-  return <span style={{ display: "inline-block", width: 8, height: 8, borderRadius: "50%", background: team === "blue" ? "#3B6BF5" : (dark ? "#94A3B8" : "#64748B"), marginRight: 5, flexShrink: 0 }} />;
+  return (
+    <span style={{ display: "inline-block", width: 8, height: 8, borderRadius: "50%", background: team === "blue" ? "#3B6BF5" : (dark ? "#94A3B8" : "#64748B"), marginRight: 5, flexShrink: 0, position: "relative" }}>
+      <span style={{ position: "absolute", width: 1, height: 1, padding: 0, margin: -1, overflow: "hidden", clip: "rect(0,0,0,0)", whiteSpace: "nowrap", borderWidth: 0 }}>
+        {team === "blue" ? "Blue team" : "White team"}
+      </span>
+    </span>
+  );
 }
 
 export default function App() {
@@ -241,6 +247,14 @@ export default function App() {
   }, [dark]);
 
   useEffect(() => {
+    const metaThemeColor = document.querySelector('meta[name="theme-color"][media="(prefers-color-scheme: dark)"]');
+    const metaThemeColorLight = document.querySelector('meta[name="theme-color"][media="(prefers-color-scheme: light)"]');
+    const color = dark ? '#111113' : '#FAFAF8';
+    if (metaThemeColor) metaThemeColor.setAttribute('content', color);
+    if (metaThemeColorLight) metaThemeColorLight.setAttribute('content', color);
+  }, [dark]);
+
+  useEffect(() => {
     const onResize = () => {
       const w = window.innerWidth;
       setLayout(w < 480 ? "compact" : w < 768 ? "regular" : "wide");
@@ -248,6 +262,14 @@ export default function App() {
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
   }, []);
+
+  const activeTabRef = useRef(null);
+
+  useEffect(() => {
+    if (activeTabRef.current) {
+      activeTabRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    }
+  }, [tab]);
 
   const isCompact = layout === "compact";
   const isWide = layout === "wide";
@@ -350,7 +372,7 @@ export default function App() {
           </div>
           <div style={{ textAlign: "right" }}>{!noGame && <Badge winner={s.winner} score={s.score} dark={dark} />}</div>
         </div>
-        {s.note && !noGame && <div style={{ padding: "0 16px 10px 90px", fontSize: 'var(--type-label)', color: t.accent, fontWeight: 600, fontStyle: "italic", letterSpacing: '0.025em' }}>{s.note}</div>}
+        {s.note && !noGame && <div style={{ padding: `0 16px 10px ${isCompact ? '16px' : isWide ? '90px' : '48px'}`, fontSize: 'var(--type-label)', color: t.accent, fontWeight: 600, fontStyle: "italic", letterSpacing: '0.025em' }}>{s.note}</div>}
       </div>
     );
   };
@@ -467,7 +489,7 @@ export default function App() {
             { v: String(sweeps), l: "Sweeps", c: t.accent },
             { v: avgPerSession, l: "Avg/Session", c: t.green },
           ].map((m, i) => (
-            <div key={i} style={{ textAlign: "center", background: t.inset, borderRadius: 8, padding: isCompact ? '10px 8px' : 12 }}>
+            <div key={i} data-stat-card="" style={{ textAlign: "center", background: t.inset, borderRadius: 8, padding: isCompact ? '10px 8px' : 12 }}>
               <div style={{ ...S, fontSize: 'var(--type-stat-lg)', color: m.c, lineHeight: 1 }}>{m.v}</div>
               <div style={{ fontSize: 'var(--type-label)', color: t.t3, fontWeight: 600, marginTop: 3 }}>{m.l}</div>
             </div>
@@ -491,7 +513,7 @@ export default function App() {
                   </div>
                   <div style={{ display: "flex", alignItems: "center", gap: 10, marginTop: 6 }}>
                     <div style={{ fontSize: 'var(--type-body-sm)', color: t.t2, fontWeight: 600, minWidth: 40 }}>{d.w}-{d.l}</div>
-                    <div style={{ flex: 1, height: 6, background: t.inset, borderRadius: 3, overflow: "hidden" }}>
+                    <div style={{ flex: 1, height: 6, background: t.inset, borderRadius: 3, overflow: "hidden" }} role="progressbar" aria-valuenow={pct} aria-valuemin={0} aria-valuemax={100} aria-label={`${name} win rate: ${pct}%`}>
                       <div style={{ height: "100%", width: `${pct}%`, background: t.green, borderRadius: 3 }} />
                     </div>
                   </div>
@@ -503,7 +525,7 @@ export default function App() {
                 <div style={{ ...S, fontSize: 'var(--type-stat-md)', color: t.accent }}>{i + 1}</div>
                 <div style={{ fontWeight: 700, fontSize: 'var(--type-body)' }}>{name}</div>
                 <div style={{ fontSize: 'var(--type-body-sm)', color: t.t2, fontWeight: 600 }}>{d.w}-{d.l}</div>
-                <div style={{ height: 6, background: t.inset, borderRadius: 3, overflow: "hidden" }}><div style={{ height: "100%", width: `${pct}%`, background: t.green, borderRadius: 3 }} /></div>
+                <div style={{ height: 6, background: t.inset, borderRadius: 3, overflow: "hidden" }} role="progressbar" aria-valuenow={pct} aria-valuemin={0} aria-valuemax={100} aria-label={`${name} win rate: ${pct}%`}><div style={{ height: "100%", width: `${pct}%`, background: t.green, borderRadius: 3 }} /></div>
                 <div style={{ ...S, fontSize: 'var(--type-stat-md)', color: t.green, textAlign: "right" }}>{pct}%</div>
               </div>
             );
@@ -608,7 +630,7 @@ export default function App() {
                   </div>
                   <div style={{ display: "flex", alignItems: "center", gap: 10, marginTop: 6 }}>
                     <div style={{ fontSize: 'var(--type-body-sm)', color: t.t2, fontWeight: 600, minWidth: 40 }}>{d.w}-{d.l}</div>
-                    <div style={{ flex: 1, height: 6, background: t.inset, borderRadius: 3, overflow: "hidden" }}>
+                    <div style={{ flex: 1, height: 6, background: t.inset, borderRadius: 3, overflow: "hidden" }} role="progressbar" aria-valuenow={pct} aria-valuemin={0} aria-valuemax={100} aria-label={`${name} win rate: ${pct}%`}>
                       <div style={{ height: "100%", width: `${pct}%`, background: t.red, borderRadius: 3 }} />
                     </div>
                   </div>
@@ -619,7 +641,7 @@ export default function App() {
               <div key={name} style={{ display: "grid", gridTemplateColumns: "1fr 80px 1fr 60px", alignItems: "center", padding: "12px 16px", borderBottom: i < bottomWinners.length - 1 ? `1px solid ${t.border}` : "none", gap: 10 }}>
                 <div style={{ fontWeight: 700, fontSize: 'var(--type-body)' }}>{name}</div>
                 <div style={{ fontSize: 'var(--type-body-sm)', color: t.t2, fontWeight: 600 }}>{d.w}-{d.l}</div>
-                <div style={{ height: 6, background: t.inset, borderRadius: 3, overflow: "hidden" }}><div style={{ height: "100%", width: `${pct}%`, background: t.red, borderRadius: 3 }} /></div>
+                <div style={{ height: 6, background: t.inset, borderRadius: 3, overflow: "hidden" }} role="progressbar" aria-valuenow={pct} aria-valuemin={0} aria-valuemax={100} aria-label={`${name} win rate: ${pct}%`}><div style={{ height: "100%", width: `${pct}%`, background: t.red, borderRadius: 3 }} /></div>
                 <div style={{ ...S, fontSize: 'var(--type-stat-md)', color: t.red, textAlign: "right" }}>{pct}%</div>
               </div>
             );
@@ -667,22 +689,22 @@ export default function App() {
             { label: "7/7 Club", id: "season-club" },
             { label: "Algorithm", id: "season-algorithm" },
           ].map((s, i) => (
-            <button key={i} onClick={() => document.getElementById(s.id)?.scrollIntoView({ behavior: "smooth", block: "start" })} style={{ background: t.inset, border: `1px solid ${t.border}`, padding: "8px 14px", cursor: "pointer", fontSize: 'var(--type-body-sm)', fontWeight: 600, color: t.t3, fontFamily: "'Outfit',sans-serif", whiteSpace: "nowrap", borderRadius: 6, minHeight: 44, flexShrink: 0 }}>{s.label}</button>
+            <button key={i} onClick={() => document.getElementById(s.id)?.scrollIntoView({ behavior: "smooth", block: "start" })} aria-label={`Jump to ${s.label} section`} style={{ background: t.inset, border: `1px solid ${t.border}`, padding: "8px 14px", cursor: "pointer", fontSize: 'var(--type-body-sm)', fontWeight: 600, color: t.t3, fontFamily: "'Outfit',sans-serif", whiteSpace: "nowrap", borderRadius: 6, minHeight: 44, flexShrink: 0 }}>{s.label}</button>
           ))}
         </nav>
 
         {/* HEADLINE STATS — editorial pull-quote */}
-        <div id="season-overview" style={{ ...S, fontSize: 'var(--type-title)', fontStyle: "italic", color: t.t2, lineHeight: 1.7, marginBottom: 'var(--space-section-gap)', padding: "20px 0 20px 20px", borderLeft: `2px solid ${t.accent}`, maxWidth: 'var(--space-prose-max)' }}>
+        <div id="season-overview" style={{ ...S, fontSize: 'var(--type-title)', fontStyle: "italic", color: t.t2, lineHeight: 1.7, marginBottom: 'var(--space-section-gap)', padding: "20px 0 20px 20px", borderLeft: `2px solid ${t.accent}`, maxWidth: 'var(--space-prose-max)', scrollMarginTop: 64 }}>
           <span style={{ color: t.accent }}>{decided.length}</span> decided series across the full season. Blue <span style={{ color: t.accent }}>{bW}</span>, White <span style={{ color: t.accent }}>{wW}</span>. <span style={{ color: t.accent }}>{uniquePlayers(players)}</span> players have stepped on the court, averaging <span style={{ color: t.accent }}>{avgPerSession}</span> per session. The spreadsheet is the source of truth. The dashboard is just the messenger.
         </div>
 
-        <div id="season-h2h" style={L}>Head to Head</div>
+        <div id="season-h2h" style={{...L, scrollMarginTop: 64}}>Head to Head</div>
         <div style={{ ...C(), marginBottom: 'var(--space-section-gap)' }}>
           {isCompact ? (
             <div style={{ textAlign: "center", marginBottom: 14 }}>
               <div style={{ ...S, fontSize: 'var(--type-stat-hero)', color: t.blue, lineHeight: 1 }}>{bW}</div>
               <div style={{ fontSize: 'var(--type-label)', fontWeight: 600, color: t.t3, marginTop: 2, marginBottom: 12 }}>Blue Wins</div>
-              <div style={{ height: 6, borderRadius: 3, overflow: "hidden", display: "flex", background: t.inset, margin: "0 auto", maxWidth: 240 }}>
+              <div style={{ height: 6, borderRadius: 3, overflow: "hidden", display: "flex", background: t.inset, margin: "0 auto", maxWidth: 240 }} role="progressbar" aria-valuenow={Math.round(bW / (bW + wW) * 100)} aria-valuemin={0} aria-valuemax={100} aria-label={`Head-to-head: Blue ${Math.round(bW / (bW + wW) * 100)}%, White ${Math.round(wW / (bW + wW) * 100)}%`}>
                 <div style={{ width: `${bW / (bW + wW) * 100}%`, background: t.blue }} />
                 <div style={{ width: `${wW / (bW + wW) * 100}%`, background: "#94A3B8" }} />
               </div>
@@ -696,7 +718,7 @@ export default function App() {
                 <div style={{ ...S, fontSize: 'var(--type-body)', color: t.t3, fontStyle: "italic", alignSelf: "center" }}>vs</div>
                 <div style={{ textAlign: "right" }}><div style={{ ...S, fontSize: 'var(--type-stat-hero)', color: t.white, lineHeight: 1 }}>{wW}</div><div style={{ fontSize: 'var(--type-label)', fontWeight: 600, color: t.t3, marginTop: 2 }}>White Wins</div></div>
               </div>
-              <div style={{ height: 6, borderRadius: 3, overflow: "hidden", display: "flex", background: t.inset }}>
+              <div style={{ height: 6, borderRadius: 3, overflow: "hidden", display: "flex", background: t.inset }} role="progressbar" aria-valuenow={Math.round(bW / (bW + wW) * 100)} aria-valuemin={0} aria-valuemax={100} aria-label={`Head-to-head: Blue ${Math.round(bW / (bW + wW) * 100)}%, White ${Math.round(wW / (bW + wW) * 100)}%`}>
                 <div style={{ width: `${bW / (bW + wW) * 100}%`, background: t.blue }} />
                 <div style={{ width: `${wW / (bW + wW) * 100}%`, background: "#94A3B8" }} />
               </div>
@@ -709,7 +731,7 @@ export default function App() {
               { v: String(comfortable), l: "Comfortable (4-2)", c: t.gold },
               { v: String(nailbiters), l: "Nail-biters (4-3)", c: t.red },
             ].map((m, i) => (
-              <div key={i} style={{ textAlign: "center", background: t.inset, borderRadius: 8, padding: isCompact ? '10px 8px' : 12 }}>
+              <div key={i} data-stat-card="" style={{ textAlign: "center", background: t.inset, borderRadius: 8, padding: isCompact ? '10px 8px' : 12 }}>
                 <div style={{ ...S, fontSize: 'var(--type-stat-lg)', color: m.c, lineHeight: 1 }}>{m.v}</div>
                 <div style={{ fontSize: 'var(--type-label)', color: t.t3, fontWeight: 600, marginTop: 3 }}>{m.l}</div>
               </div>
@@ -719,7 +741,7 @@ export default function App() {
 
         {/* WIN-LOSS RECORDS */}
         <SectionDivider />
-        <div id="season-records" style={L}>Player Win-Loss Records</div>
+        <div id="season-records" style={{...L, scrollMarginTop: 64}}>Player Win-Loss Records</div>
         <div style={{ ...C({ padding: 0, overflow: "hidden" }), marginBottom: 'var(--space-section-gap)' }}>
           <div style={{ padding: "12px 16px", borderBottom: `1px solid ${t.border}`, fontSize: 'var(--type-body-sm)', color: t.t3, lineHeight: 1.5 }}>Series record. Minimum 3 decided series, because judging someone on two games is tempting but statistically irresponsible.</div>
           {winSorted.map(([name, d], i) => {
@@ -734,7 +756,7 @@ export default function App() {
                   </div>
                   <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                     <div style={{ fontSize: 'var(--type-body-sm)', color: t.t2, fontWeight: 600, minWidth: 40 }}>{d.w}-{d.l}</div>
-                    <div style={{ flex: 1, height: 6, background: t.inset, borderRadius: 3, overflow: "hidden" }}>
+                    <div style={{ flex: 1, height: 6, background: t.inset, borderRadius: 3, overflow: "hidden" }} role="progressbar" aria-valuenow={pct} aria-valuemin={0} aria-valuemax={100} aria-label={`${name} win rate: ${pct}%`}>
                       <div style={{ height: "100%", width: `${pct}%`, background: barColor, borderRadius: 3 }} />
                     </div>
                   </div>
@@ -745,7 +767,7 @@ export default function App() {
               <div key={name} style={{ display: "grid", gridTemplateColumns: "minmax(80px,120px) 60px 1fr 50px", alignItems: "center", padding: "10px 16px", borderBottom: i < winSorted.length - 1 ? `1px solid ${t.border}` : "none", gap: 10 }}>
                 <div style={{ fontWeight: 600, fontSize: 'var(--type-body)' }}>{name}</div>
                 <div style={{ fontSize: 'var(--type-body)', color: t.t2, fontWeight: 600 }}>{d.w}-{d.l}</div>
-                <div style={{ height: 6, background: t.inset, borderRadius: 3, overflow: "hidden" }}><div style={{ height: "100%", width: `${pct}%`, background: barColor, borderRadius: 3 }} /></div>
+                <div style={{ height: 6, background: t.inset, borderRadius: 3, overflow: "hidden" }} role="progressbar" aria-valuenow={pct} aria-valuemin={0} aria-valuemax={100} aria-label={`${name} win rate: ${pct}%`}><div style={{ height: "100%", width: `${pct}%`, background: barColor, borderRadius: 3 }} /></div>
                 <div style={{ ...S, fontSize: 'var(--type-stat-md)', color: barColor, textAlign: "right" }}>{pct}%</div>
               </div>
             );
@@ -754,7 +776,7 @@ export default function App() {
 
         {/* PLAYER PROFILES */}
         <SectionDivider />
-        <div id="season-profiles" style={L}>Player Profiles</div>
+        <div id="season-profiles" style={{...L, scrollMarginTop: 64}}>Player Profiles</div>
         <div style={{ display: "grid", gap: 'var(--space-card-gap)', marginBottom: 'var(--space-section-gap)' }}>
           {CORRELATIONS.map((c, i) => {
             const d = players[c.name];
@@ -789,7 +811,7 @@ export default function App() {
 
         {/* ATTENDANCE */}
         <SectionDivider />
-        <div id="season-attendance" style={L}>Attendance</div>
+        <div id="season-attendance" style={{...L, scrollMarginTop: 64}}>Attendance</div>
         <div style={{ ...C({ padding: 0, overflow: "hidden" }), marginBottom: 'var(--space-section-gap)' }}>
           {isCompact ? (
             /* Compact: card list sorted by sessions descending */
@@ -857,7 +879,7 @@ export default function App() {
           return (
             <>
               <SectionDivider />
-              <div id="season-tyler" style={L}>The Tyler Losses Files</div>
+              <div id="season-tyler" style={{...L, scrollMarginTop: 64}}>The Tyler Losses Files</div>
               <div style={{ ...C(), marginBottom: 'var(--space-section-gap)', borderColor: dark ? "rgba(248,113,113,.2)" : "rgba(248,113,113,.15)", background: dark ? "rgba(248,113,113,.03)" : "rgba(248,113,113,.02)" }}>
                 <div style={{ fontSize: 'var(--type-body)', color: t.t2, lineHeight: 1.6, marginBottom: 14 }}>Tyler has lost exactly {losses.length} series. Every single one is catalogued below. The group text demanded forensic accountability.</div>
                 {losses.map((loss, i) => (
@@ -882,7 +904,7 @@ export default function App() {
 
         {/* THE 7/7 CLUB */}
         <SectionDivider />
-        <div id="season-club" style={L}>The 7/7 Club</div>
+        <div id="season-club" style={{...L, scrollMarginTop: 64}}>The 7/7 Club</div>
         <div style={{ ...C(), marginBottom: 'var(--space-section-gap)', borderColor: dark ? "rgba(251,191,36,.2)" : "rgba(202,138,4,.15)", background: dark ? "rgba(251,191,36,.04)" : "rgba(202,138,4,.03)" }}>
           <div style={{ fontSize: 'var(--type-body)', color: t.t2, lineHeight: 1.6, marginBottom: 14 }}>Three players have shot perfect from the field in a single game and scored every one of their team{"'"}s seven points. This club is exclusive, unintentional, and possibly cursed.</div>
           <div style={{ display: "grid", gridTemplateColumns: isCompact ? "1fr" : isWide ? "1fr 1fr 1fr" : "1fr 1fr", gap: 10 }}>
@@ -936,7 +958,7 @@ export default function App() {
           return (
             <>
               <SectionDivider />
-              <div id="season-algorithm" style={L}>The Algorithm{"'"}s Matchup</div>
+              <div id="season-algorithm" style={{...L, scrollMarginTop: 64}}>The Algorithm{"'"}s Matchup</div>
               <div style={{ ...C(), marginBottom: 'var(--space-section-gap)', borderColor: dark ? "rgba(52,211,153,.2)" : "rgba(22,163,74,.15)", background: dark ? "rgba(52,211,153,.03)" : "rgba(22,163,74,.02)" }}>
                 <div style={{ fontSize: 'var(--type-body)', color: t.t2, lineHeight: 1.6, marginBottom: 14 }}>
                   <strong style={{ color: t.green }}>Computed from actual data.</strong> Top 8 players by games played, sorted by win percentage, greedy-balanced to minimize predicted differential. No vibes, no feelings, just math at 4:45 AM.
@@ -973,7 +995,7 @@ export default function App() {
 
   return (
     <div style={{ background: t.bg, color: t.text, fontFamily: "'Outfit',sans-serif", minHeight: "100vh", transition: "background .3s,color .3s" }}>
-      <style dangerouslySetInnerHTML={{ __html: "@media(prefers-reduced-motion:reduce){*{transition:none!important}}" }} />
+      <style dangerouslySetInnerHTML={{ __html: "button{transition:transform 0.1s ease-out}button:active{transform:scale(0.97)}:focus-visible{outline:2px solid #EF6234;outline-offset:2px}button:focus:not(:focus-visible){outline:none}@media(hover:hover){[data-stat-card]:hover{transform:scale(1.02);transition:transform 0.15s ease-out}}@media(prefers-reduced-motion:reduce){*{transition:none!important}}" }} />
       <main style={{ maxWidth: 'var(--content-max)', margin: "0 auto", padding: "var(--space-page-top) var(--space-page-x) var(--space-page-bot)" }}>
         <div style={{ display: "flex", flexDirection: isCompact ? "column" : "row", justifyContent: "space-between", alignItems: isCompact ? "flex-start" : "flex-start", gap: isCompact ? 16 : 0, marginBottom: 'var(--space-section-gap)', paddingBottom: 'var(--space-section-gap)', borderBottom: `1px solid ${t.border}` }}>
           <div>
@@ -984,8 +1006,22 @@ export default function App() {
           <button onClick={() => setDark(!dark)} aria-label="Toggle dark/light mode" style={{ background: t.card, border: `1px solid ${t.border}`, borderRadius: 8, padding: isCompact ? "6px 10px" : "8px 14px", cursor: "pointer", color: t.t2, fontSize: isCompact ? 10 : 11, fontWeight: 600, fontFamily: "'Outfit',sans-serif", display: "flex", alignItems: "center", gap: 6, marginTop: isCompact ? 0 : 8, minHeight: 44 }}>{dark ? "☀️" : "🌙"} {dark ? "Light" : "Dark"}</button>
         </div>
 
-        <nav role="tablist" style={{ display: "flex", gap: 6, marginBottom: 'var(--space-section-gap)', overflowX: "auto", WebkitOverflowScrolling: "touch", padding: 4, background: t.inset, borderRadius: 999, scrollbarWidth: "none", position: "sticky", top: 0, zIndex: 10, backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)" }}>
-          {tabs.map(tb => <button key={tb.id} role="tab" aria-selected={tab === tb.id} onClick={() => setTab(tb.id)} style={{ background: tab === tb.id ? t.card : "transparent", border: tab === tb.id ? `1px solid ${t.border}` : "1px solid transparent", borderRadius: 999, padding: "8px 16px", cursor: "pointer", fontSize: 'var(--type-body)', fontWeight: tab === tb.id ? 700 : 500, color: tab === tb.id ? t.accent : t.t2, fontFamily: "'Outfit',sans-serif", transition: "all .15s", whiteSpace: "nowrap", minHeight: 44, minWidth: 44 }}>{tb.label}</button>)}
+        <nav role="tablist" onKeyDown={(e) => {
+          const tabIds = tabs.map(tb => tb.id);
+          const currentIndex = tabIds.indexOf(tab);
+          let newIndex;
+          if (e.key === "ArrowRight") {
+            newIndex = (currentIndex + 1) % tabIds.length;
+            e.preventDefault();
+          } else if (e.key === "ArrowLeft") {
+            newIndex = (currentIndex - 1 + tabIds.length) % tabIds.length;
+            e.preventDefault();
+          } else {
+            return;
+          }
+          setTab(tabIds[newIndex]);
+        }} style={{ display: "flex", gap: 6, marginBottom: 'var(--space-section-gap)', overflowX: "auto", WebkitOverflowScrolling: "touch", padding: 4, background: t.inset, borderRadius: 999, scrollbarWidth: "none", position: "sticky", top: 0, zIndex: 10, backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)", scrollSnapType: "x mandatory" }}>
+          {tabs.map(tb => <button key={tb.id} ref={tb.id === tab ? activeTabRef : null} role="tab" aria-selected={tab === tb.id} tabIndex={tb.id === tab ? 0 : -1} onClick={() => setTab(tb.id)} style={{ background: tab === tb.id ? t.card : "transparent", border: tab === tb.id ? `1px solid ${t.border}` : "1px solid transparent", borderRadius: 999, padding: "8px 16px", cursor: "pointer", fontSize: 'var(--type-body)', fontWeight: tab === tb.id ? 700 : 500, color: tab === tb.id ? t.accent : t.t2, fontFamily: "'Outfit',sans-serif", transition: "all .15s", whiteSpace: "nowrap", minHeight: 44, minWidth: 44, scrollSnapAlign: "center" }}>{tb.label}</button>)}
         </nav>
 
         <div style={{ display: "flex", gap: 16, marginBottom: 20, fontSize: 'var(--type-body-sm)', color: t.t3, justifyContent: isCompact ? "center" : "flex-start" }}>
