@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-05-01T13:53:00.000Z",
+  "title": "Design System: Morning Hoops",
+  "extensions": {
+    "colorMeta": {
+      "accent-ember": { "role": "primary", "displayName": "Ember Orange", "canonical": "#EF6234", "tonalRamp": ["#3D1A0E", "#5C2714", "#7B341A", "#9A4120", "#B94E26", "#D85B2C", "#EF6234", "#F4927A"] },
+      "team-blue-dark": { "role": "secondary", "displayName": "Team Blue (Dark)", "canonical": "#5B8DEF", "tonalRamp": ["#162340", "#213660", "#2C4980", "#375CA0", "#426FC0", "#4D82E0", "#5B8DEF", "#8DB4F5"] },
+      "team-blue-light": { "role": "secondary", "displayName": "Team Blue (Light)", "canonical": "#3B6BF5", "tonalRamp": ["#0F1B3D", "#17295C", "#1F377B", "#27459A", "#2F53B9", "#375FD7", "#3B6BF5", "#7A9EF9"] },
+      "team-white-dark": { "role": "secondary", "displayName": "Team Slate (Dark)", "canonical": "#B4BCD0", "tonalRamp": ["#2D2F34", "#43464D", "#595D66", "#6F747F", "#858B98", "#9BA2B1", "#B4BCD0", "#CDD3E0"] },
+      "team-white-light": { "role": "secondary", "displayName": "Team Slate (Light)", "canonical": "#64748B", "tonalRamp": ["#1A1D23", "#272C35", "#343B47", "#414A59", "#4E596B", "#5B677D", "#64748B", "#8E9BAD"] },
+      "stat-green": { "role": "tertiary", "displayName": "Stat Green", "canonical": "#34D399", "tonalRamp": ["#0D3526", "#14503A", "#1B6B4E", "#228662", "#29A176", "#30BC8A", "#34D399", "#6DE3B8"] },
+      "stat-gold": { "role": "tertiary", "displayName": "Stat Gold", "canonical": "#FBBF24", "tonalRamp": ["#3E3009", "#5D480E", "#7C6013", "#9B7818", "#BA901D", "#D9A822", "#FBBF24", "#FCCE5C"] },
+      "stat-red": { "role": "tertiary", "displayName": "Stat Red", "canonical": "#F87171", "tonalRamp": ["#3E1C1C", "#5D2A2A", "#7C3838", "#9B4646", "#BA5454", "#D96262", "#F87171", "#FA9D9D"] },
+      "surface-dark": { "role": "neutral", "displayName": "Void", "canonical": "#09090B", "tonalRamp": ["#030304", "#050506", "#070708", "#09090B", "#0B0B0D", "#0D0D0F", "#0F0F12", "#121215"] },
+      "surface-card-dark": { "role": "neutral", "displayName": "Charcoal", "canonical": "#16161A", "tonalRamp": ["#08080A", "#0C0C0E", "#101012", "#14141A", "#18181C", "#1C1C20", "#202024", "#242428"] },
+      "surface-inset-dark": { "role": "neutral", "displayName": "Obsidian", "canonical": "#0D0D0F", "tonalRamp": ["#040405", "#060607", "#080809", "#0A0A0C", "#0D0D0F", "#0F0F12", "#121215", "#151518"] },
+      "surface-light": { "role": "neutral", "displayName": "Warm Linen", "canonical": "#F7F6F3", "tonalRamp": ["#C4C3C0", "#CDCCC9", "#D6D5D2", "#DFDEDD", "#E8E7E4", "#F1F0ED", "#F7F6F3", "#FCFBF8"] },
+      "surface-card-light": { "role": "neutral", "displayName": "Paper", "canonical": "#FFFFFF", "tonalRamp": ["#CCCCCC", "#D5D5D5", "#DEDEDE", "#E7E7E7", "#F0F0F0", "#F9F9F9", "#FFFFFF", "#FFFFFF"] },
+      "surface-inset-light": { "role": "neutral", "displayName": "Parchment", "canonical": "#EDECEB", "tonalRamp": ["#BBBAB9", "#C4C3C2", "#CDCCCA", "#D6D5D4", "#DFDEDD", "#E8E7E6", "#EDECEB", "#F6F5F4"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Page title only. 'Morning Hoops' with italic accent." },
+      "headline": { "displayName": "Headline", "purpose": "Section titles per tab view. Instrument Serif." },
+      "title": { "displayName": "Title", "purpose": "Stat numbers, ranking numerals, 7/7 Club names. Instrument Serif numbers." },
+      "body": { "displayName": "Body", "purpose": "Commentary, descriptions, editorial notes. Outfit. Max 600px width." },
+      "label": { "displayName": "Label", "purpose": "Section headers, tier badges, club designations. Outfit uppercase." }
+    },
+    "shadows": [],
+    "motion": [
+      { "name": "theme-transition", "value": "background 0.3s, color 0.3s", "purpose": "Dark/light theme toggle crossfade." },
+      { "name": "tab-transition", "value": "all 0.15s", "purpose": "Tab active state change." }
+    ],
+    "breakpoints": []
+  },
+  "components": [
+    {
+      "name": "Team Badge (Blue Win)",
+      "kind": "chip",
+      "refersTo": "badge-blue",
+      "description": "Compact result indicator for Blue team victories. Appears at the end of each game row.",
+      "html": "<span class=\"ds-badge-blue\">BLUE 4-3</span>",
+      "css": ".ds-badge-blue { font-size: 9px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 3px 8px; border-radius: 4px; background: rgba(91,141,239,.15); color: #5B8DEF; font-family: 'Outfit', sans-serif; display: inline-block; }"
+    },
+    {
+      "name": "Team Badge (White Win)",
+      "kind": "chip",
+      "refersTo": "badge-white",
+      "description": "Compact result indicator for White team victories.",
+      "html": "<span class=\"ds-badge-white\">WHITE 4-2</span>",
+      "css": ".ds-badge-white { font-size: 9px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 3px 8px; border-radius: 4px; background: rgba(180,188,208,.1); color: #B4BCD0; font-family: 'Outfit', sans-serif; display: inline-block; }"
+    },
+    {
+      "name": "Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Primary container for all content sections. Flat, bordered, rounded.",
+      "html": "<div class=\"ds-card\"><div class=\"ds-card-label\">TOP 5 WIN RATES</div><div class=\"ds-card-body\">Card content area</div></div>",
+      "css": ".ds-card { background: #16161A; border: 1px solid rgba(255,255,255,.06); border-radius: 14px; padding: 20px; font-family: 'Outfit', sans-serif; color: #EDEDEF; } .ds-card-label { font-size: 10px; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase; color: #52525B; margin-bottom: 14px; } .ds-card-body { font-size: 13px; color: #A1A1AA; line-height: 1.6; }"
+    },
+    {
+      "name": "Tab Navigation",
+      "kind": "nav",
+      "refersTo": "tab-active",
+      "description": "Horizontal tab bar for switching between Summary, Season, and monthly views.",
+      "html": "<div class=\"ds-tabs\"><button class=\"ds-tab ds-tab-active\">Summary</button><button class=\"ds-tab\">Season</button><button class=\"ds-tab\">March</button></div>",
+      "css": ".ds-tabs { display: flex; gap: 2px; border-bottom: 1px solid rgba(255,255,255,.06); } .ds-tab { background: none; border: none; border-bottom: 2px solid transparent; padding: 10px 16px; cursor: pointer; font-size: 13px; font-weight: 500; color: #52525B; font-family: 'Outfit', sans-serif; transition: all 0.15s; white-space: nowrap; } .ds-tab:hover { color: #A1A1AA; } .ds-tab-active { font-weight: 700; color: #EDEDEF; border-bottom-color: #EF6234; } .ds-tab:focus-visible { outline: 2px solid #EF6234; outline-offset: -2px; }"
+    },
+    {
+      "name": "Attendance Tier Badge",
+      "kind": "chip",
+      "refersTo": null,
+      "description": "Tiny classification chip showing player attendance tier (IRON, REG, PT, DROP, 1x).",
+      "html": "<span class=\"ds-tier ds-tier-iron\">IRON</span>",
+      "css": ".ds-tier { font-size: 8px; font-weight: 800; letter-spacing: 1px; padding: 2px 6px; border-radius: 3px; font-family: 'Outfit', sans-serif; display: inline-block; } .ds-tier-iron { background: rgba(239,98,52,0.09); color: #EF6234; } .ds-tier-reg { background: rgba(52,211,153,0.09); color: #34D399; } .ds-tier-pt { background: rgba(91,141,239,0.09); color: #5B8DEF; } .ds-tier-drop { background: rgba(251,191,36,0.09); color: #FBBF24; }"
+    },
+    {
+      "name": "Theme Toggle",
+      "kind": "button",
+      "refersTo": "theme-toggle",
+      "description": "Dark/light mode switch in the top-right corner of the header.",
+      "html": "<button class=\"ds-theme-toggle\">☀️ Light</button>",
+      "css": ".ds-theme-toggle { background: #16161A; border: 1px solid rgba(255,255,255,.06); border-radius: 8px; padding: 8px 14px; cursor: pointer; color: #A1A1AA; font-size: 11px; font-weight: 600; font-family: 'Outfit', sans-serif; display: flex; align-items: center; gap: 6px; transition: background 0.2s; } .ds-theme-toggle:hover { background: #1C1C20; } .ds-theme-toggle:focus-visible { outline: 2px solid #EF6234; outline-offset: 2px; }"
+    },
+    {
+      "name": "Progress Bar",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "Horizontal fill bar for win-rate visualization. Color follows the Three-Tier Stat Rule.",
+      "html": "<div class=\"ds-progress\"><div class=\"ds-progress-fill ds-progress-green\" style=\"width: 67%\"></div></div>",
+      "css": ".ds-progress { height: 6px; background: #0D0D0F; border-radius: 3px; overflow: hidden; } .ds-progress-fill { height: 100%; border-radius: 3px; } .ds-progress-green { background: #34D399; } .ds-progress-gold { background: #FBBF24; } .ds-progress-red { background: #F87171; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Group Chat Gazette",
+    "overview": "Morning Hoops is a sports dashboard that operates like a small-circulation newspaper written by and for a group of fifteen adults who play pickup basketball at 4:45 AM. The design system serves two masters simultaneously: dense statistical data (win-loss records, partnership matrices, attendance tracking) and a relentless editorial voice that treats a middle school gym like Madison Square Garden. The result is a product that looks like a stats dashboard but reads like a humor column.\n\nThe visual system is intentionally restrained so the writing can be loud. Dark surfaces, tight typography, and flat tonal layering create a stage; the orange-ember accent and the Instrument Serif display face provide just enough character to feel authored rather than generated. The system rejects anything that looks like a fantasy sports app, a corporate analytics tool, or a styled spreadsheet. It also rejects anything that takes itself too seriously.",
+    "keyCharacteristics": [
+      "Dark-first: designed for phones in a dim gym at 5 AM",
+      "Flat and tonal: depth through background tinting, never shadows",
+      "Serif + sans pairing: editorial headlines over functional body text",
+      "Single accent color at high saturation against near-black surfaces",
+      "Dense but scannable: lots of data, no wasted space, every section earns its scroll",
+      "Editorial commentary woven into every data section, not siloed"
+    ],
+    "rules": [
+      { "name": "The Ember Rule", "body": "Ember Orange is the only warm hue in the system. It marks editorial voice: section labels, commentary callouts, the title italic, tab indicators, and the 'Debrief' tag. If Ember is used on a non-editorial element, the system is drifting.", "section": "colors" },
+      { "name": "The Three-Tier Stat Rule", "body": "Player performance is always color-coded: Green (≥60%), Gold (45-59%), Red (<45%). These three colors are functional, not decorative. They never appear outside of stat contexts.", "section": "colors" },
+      { "name": "The Italic-Is-Ember Rule", "body": "Instrument Serif italic appears exactly twice: in the page title ('Hoops' set in accent color) and in the 'vs' separator between teams. Italic is never used for emphasis in body text.", "section": "typography" },
+      { "name": "The No-Shadow Rule", "body": "Shadows are prohibited. If a new component 'needs' a shadow, it needs a redesign. Use the tonal stack or a border.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do use Ember Orange exclusively for editorial voice elements: labels, commentary markers, the title accent, tab indicators.",
+      "Do maintain the three-tier tonal stack (void → card → inset) for all depth.",
+      "Do pair every stat with context. A number without commentary is a missed opportunity.",
+      "Do use Instrument Serif for display numbers, headlines, and the 'vs' separator.",
+      "Do keep editorial notes in 10px Ember italic below game rows.",
+      "Do test every new element in dark mode first.",
+      "Do respect mobile: content padded at 20px sides, tables use overflow-x auto."
+    ],
+    "donts": [
+      "Don't add shadows or box-shadow to any element.",
+      "Don't use Ember Orange for non-editorial elements (buttons, backgrounds, structural borders).",
+      "Don't make it look like a fantasy sports app. No ESPN card layouts, no player headshots in circles.",
+      "Don't make it look like a corporate SaaS dashboard. No 'metrics that matter' energy.",
+      "Don't make it look like a styled Google Sheet.",
+      "Don't take the design too seriously. If a component looks like it belongs in Datadog, it doesn't belong here.",
+      "Don't introduce new accent colors.",
+      "Don't use Inter, Roboto, Arial, or system-ui.",
+      "Don't nest cards inside cards."
+    ]
+  }
+}

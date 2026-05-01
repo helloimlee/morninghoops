@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 
 // ═══════════════════════════════════════════════════════════
 // SOURCE OF TRUTH: Morning_Hoops____3_.xlsx (verified cell colors)
@@ -192,7 +192,7 @@ function getStats(sessions) {
 }
 
 function Badge({ winner, score, dark }) {
-  if (!winner) return <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: 1, textTransform: "uppercase", padding: "3px 8px", borderRadius: 4, background: dark ? "rgba(255,255,255,.04)" : "rgba(0,0,0,.04)", color: dark ? "#444" : "#bbb" }}>No result</span>;
+  if (!winner) return <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: 1, textTransform: "uppercase", padding: "3px 8px", borderRadius: 4, background: dark ? "rgba(255,255,255,.04)" : "rgba(0,0,0,.04)", color: dark ? "#71717A" : "#6B7280" }}>No result</span>;
   const b = winner === "blue";
   return <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: 1, textTransform: "uppercase", padding: "3px 8px", borderRadius: 4, background: b ? (dark ? "rgba(91,141,239,.15)" : "rgba(59,107,245,.08)") : (dark ? "rgba(180,188,208,.1)" : "rgba(100,116,139,.08)"), color: b ? (dark ? "#5B8DEF" : "#3B6BF5") : (dark ? "#B4BCD0" : "#64748B") }}>{b ? "Blue" : "White"} {score || "W"}</span>;
 }
@@ -203,14 +203,32 @@ function Dot({ team, dark }) {
 
 export default function App() {
   const [tab, setTab] = useState("summary");
-  const [dark, setDark] = useState(true);
+  const [dark, setDark] = useState(() => {
+    if (typeof window === "undefined") return true;
+    const stored = localStorage.getItem("morning-hoops-theme");
+    if (stored) return stored === "dark";
+    if (window.matchMedia("(prefers-color-scheme: light)").matches) return false;
+    return true;
+  });
+  const [isMobile, setIsMobile] = useState(() => typeof window !== "undefined" && window.innerWidth < 640);
+
+  useEffect(() => {
+    localStorage.setItem("morning-hoops-theme", dark ? "dark" : "light");
+  }, [dark]);
+
+  useEffect(() => {
+    const onResize = () => setIsMobile(window.innerWidth < 640);
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+
   const stats = useMemo(() => getStats(SESSIONS), []);
   const { p: players, totalS, uniqueCount, avgPerSession, topRivals, topTeammates, playerLosses, teammateReport, bestPairs, worstPairs } = stats;
 
   const t = {
     bg: dark ? "#09090B" : "#F7F6F3", card: dark ? "#16161A" : "#FFFFFF", inset: dark ? "#0D0D0F" : "#EDECEB",
     border: dark ? "rgba(255,255,255,.06)" : "rgba(0,0,0,.06)", text: dark ? "#EDEDEF" : "#1A1A1A",
-    t2: dark ? "#A1A1AA" : "#6B7280", t3: dark ? "#52525B" : "#9CA3AF",
+    t2: dark ? "#A1A1AA" : "#6B7280", t3: dark ? "#71717A" : "#6B7280",
     accent: "#EF6234", blue: dark ? "#5B8DEF" : "#3B6BF5", white: dark ? "#B4BCD0" : "#64748B",
     green: "#34D399", gold: "#FBBF24", red: "#F87171",
   };
@@ -227,20 +245,43 @@ export default function App() {
 
   const renderGame = (s, i, len) => {
     const noGame = s.blue.length === 0 && s.white.length === 0;
+    const rowOpacity = !s.winner && !noGame ? 0.5 : noGame ? 0.35 : 1;
     return (
       <div key={i}>
-        <div style={{ display: "grid", gridTemplateColumns: "72px 1fr 24px 1fr 76px", alignItems: "center", padding: "12px 16px", borderBottom: i < len - 1 ? `1px solid ${t.border}` : "none", gap: 6, opacity: !s.winner && !noGame ? 0.5 : noGame ? 0.35 : 1 }}>
-          <div style={{ fontWeight: 600, fontSize: 12 }}>{s.day}</div>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "3px 8px", lineHeight: 1.6 }}>
-            {noGame ? <span style={{ fontSize: 11, color: t.t3, fontStyle: "italic" }}>{s.note || "No game"}</span> : s.blue.map((p, j) => <span key={j} style={{ display: "inline-flex", alignItems: "center" }}><Dot team="blue" dark={dark} /><span style={{ fontWeight: 500, fontSize: 12 }}>{p}</span></span>)}
+        {isMobile ? (
+          <div style={{ padding: "12px 16px", borderBottom: i < len - 1 ? `1px solid ${t.border}` : "none", opacity: rowOpacity }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: noGame ? 0 : 6 }}>
+              <div style={{ fontWeight: 600, fontSize: 12 }}>{s.day}</div>
+              {!noGame && <Badge winner={s.winner} score={s.score} dark={dark} />}
+            </div>
+            {noGame ? (
+              <div style={{ fontSize: 11, color: t.t3, fontStyle: "italic", marginTop: 4 }}>{s.note || "No game"}</div>
+            ) : (
+              <>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: "3px 8px", lineHeight: 1.6 }}>
+                  {s.blue.map((p, j) => <span key={j} style={{ display: "inline-flex", alignItems: "center" }}><Dot team="blue" dark={dark} /><span style={{ fontWeight: 500, fontSize: 12 }}>{p}</span></span>)}
+                </div>
+                <div style={{ ...S, fontSize: 11, color: t.t3, fontStyle: "italic", padding: "2px 0" }}>vs</div>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: "3px 8px", lineHeight: 1.6 }}>
+                  {s.white.map((p, j) => <span key={j} style={{ display: "inline-flex", alignItems: "center" }}><Dot team="white" dark={dark} /><span style={{ fontWeight: 500, fontSize: 12 }}>{p}</span></span>)}
+                </div>
+              </>
+            )}
           </div>
-          <div style={{ textAlign: "center", ...S, fontSize: 11, color: t.t3, fontStyle: "italic" }}>{noGame ? "" : "vs"}</div>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "3px 8px", lineHeight: 1.6 }}>
-            {!noGame && s.white.map((p, j) => <span key={j} style={{ display: "inline-flex", alignItems: "center" }}><Dot team="white" dark={dark} /><span style={{ fontWeight: 500, fontSize: 12 }}>{p}</span></span>)}
+        ) : (
+          <div style={{ display: "grid", gridTemplateColumns: "72px 1fr 24px 1fr 76px", alignItems: "center", padding: "12px 16px", borderBottom: i < len - 1 ? `1px solid ${t.border}` : "none", gap: 6, opacity: rowOpacity }}>
+            <div style={{ fontWeight: 600, fontSize: 12 }}>{s.day}</div>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "3px 8px", lineHeight: 1.6 }}>
+              {noGame ? <span style={{ fontSize: 11, color: t.t3, fontStyle: "italic" }}>{s.note || "No game"}</span> : s.blue.map((p, j) => <span key={j} style={{ display: "inline-flex", alignItems: "center" }}><Dot team="blue" dark={dark} /><span style={{ fontWeight: 500, fontSize: 12 }}>{p}</span></span>)}
+            </div>
+            <div style={{ textAlign: "center", ...S, fontSize: 11, color: t.t3, fontStyle: "italic" }}>{noGame ? "" : "vs"}</div>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "3px 8px", lineHeight: 1.6 }}>
+              {!noGame && s.white.map((p, j) => <span key={j} style={{ display: "inline-flex", alignItems: "center" }}><Dot team="white" dark={dark} /><span style={{ fontWeight: 500, fontSize: 12 }}>{p}</span></span>)}
+            </div>
+            <div style={{ textAlign: "right" }}>{!noGame && <Badge winner={s.winner} score={s.score} dark={dark} />}</div>
           </div>
-          <div style={{ textAlign: "right" }}>{!noGame && <Badge winner={s.winner} score={s.score} dark={dark} />}</div>
-        </div>
-        {s.note && !noGame && <div style={{ padding: "0 16px 10px 90px", fontSize: 10, color: t.accent, fontWeight: 600, fontStyle: "italic" }}>{s.note}</div>}
+        )}
+        {s.note && !noGame && <div style={{ padding: isMobile ? "0 16px 10px 16px" : "0 16px 10px 90px", fontSize: 10, color: t.accent, fontWeight: 600, fontStyle: "italic" }}>{s.note}</div>}
       </div>
     );
   };
@@ -254,7 +295,7 @@ export default function App() {
       <div>
         <div style={{ marginBottom: 24 }}>
           <div style={L}>{m.label} Recap</div>
-          <div style={{ ...S, fontSize: 28, color: t.text }}>{m.name}</div>
+          <h2 style={{ ...S, fontSize: 28, color: t.text, margin: 0, fontWeight: 400 }}>{m.name}</h2>
           <div style={{ fontSize: 12, fontWeight: 600, color: t.t3, marginTop: 4 }}>Blue {monthBW} – White {monthWW} · {monthDecided.length} decided series</div>
         </div>
         <div style={{ ...C({ padding: 0, overflow: "hidden" }), marginBottom: 20 }}>
@@ -279,23 +320,15 @@ export default function App() {
       <div>
         <div style={{ marginBottom: 24 }}>
           <div style={L}>Season Summary</div>
-          <div style={{ ...S, fontSize: 26, color: t.text }}>The State of the Gym</div>
+          <h2 style={{ ...S, fontSize: 26, color: t.text, margin: 0, fontWeight: 400 }}>The State of the Gym</h2>
           <div style={{ fontSize: 13, color: t.t2, marginTop: 6, lineHeight: 1.6, maxWidth: 600 }}>
             {decided.length} decided 7-game series. {uniquePlayers(players)} players. Blue leads {bW}–{wW}. Tyler is mortal but still elite. Gabe and Nathan are the structural beams of this league. Cal is a flamethrower who occasionally vanishes to Florida. The 7/7 Club has a third member as of Friday 5/1. Anyway, here's the summary.
           </div>
         </div>
 
-        {/* HEADLINE STATS */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(130px,1fr))", gap: 8, marginBottom: 28 }}>
-          {[
-            { v: String(decided.length), l: "Series Played", c: t.text },
-            { v: `${bW}–${wW}`, l: "Blue vs White", c: t.blue },
-            { v: String(sweeps), l: "Sweeps (4-0)", c: t.accent },
-            { v: String(uniquePlayers(players)), l: "Players", c: t.text },
-            { v: avgPerSession, l: "Avg/Session", c: t.text },
-          ].map((m, i) =>
-            <div key={i} style={C({ padding: 16, textAlign: "center" })}><div style={{ ...S, fontSize: 30, color: m.c, lineHeight: 1 }}>{m.v}</div><div style={{ fontSize: 10, fontWeight: 600, color: t.t3, marginTop: 4 }}>{m.l}</div></div>
-          )}
+        {/* HEADLINE STATS — editorial prose */}
+        <div style={{ ...S, fontSize: 19, fontStyle: "italic", color: t.t2, lineHeight: 1.7, marginBottom: 28, padding: "16px 0", maxWidth: 640 }}>
+          <span style={{ color: t.accent }}>{decided.length}</span> series decided. Blue leads <span style={{ color: t.accent }}>{bW}–{wW}</span> in the overall, with <span style={{ color: t.accent }}>{sweeps}</span> sweeps and <span style={{ color: t.accent }}>{uniquePlayers(players)}</span> players who've touched the court, averaging <span style={{ color: t.accent }}>{avgPerSession}</span> per session.
         </div>
 
         {/* TOP 5 WIN RATES */}
@@ -403,25 +436,34 @@ export default function App() {
       <div>
         <div style={{ marginBottom: 24 }}>
           <div style={L}>Full Season</div>
-          <div style={{ ...S, fontSize: 26, color: t.text }}>Every Series. Every Roaster.</div>
+          <h2 style={{ ...S, fontSize: 26, color: t.text, margin: 0, fontWeight: 400 }}>Every Series. Every Roaster.</h2>
           <div style={{ fontSize: 13, color: t.t2, marginTop: 6, lineHeight: 1.6, maxWidth: 600 }}>
             {decided.length} decided 7-game series. {uniquePlayers(players)} players. Played by 1s and 2s. {bW > wW ? `Blue leads ${bW}–${wW}` : bW < wW ? `White leads ${wW}–${bW}` : `Tied ${bW}–${wW}`}. Every stat below is computed live from game data.
           </div>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(130px,1fr))", gap: 8, marginBottom: 28 }}>
+        {/* SECTION JUMP NAV */}
+        <nav style={{ display: "flex", gap: 4, marginBottom: 22, overflowX: "auto", WebkitOverflowScrolling: "touch", paddingBottom: 2 }}>
           {[
-            { v: String(decided.length), l: "Decided Series", c: t.text },
-            { v: String(bW), l: "Blue Wins", c: t.blue },
-            { v: String(wW), l: "White Wins", c: t.white },
-            { v: String(uniquePlayers(players)), l: "Players", c: t.text },
-            { v: avgPerSession, l: "Avg/Session", c: t.text },
-          ].map((m, i) =>
-            <div key={i} style={C({ padding: 16, textAlign: "center" })}><div style={{ ...S, fontSize: 32, color: m.c, lineHeight: 1 }}>{m.v}</div><div style={{ fontSize: 10, fontWeight: 600, color: t.t3, marginTop: 4 }}>{m.l}</div></div>
-          )}
+            { label: "Overview", id: "season-overview" },
+            { label: "Head to Head", id: "season-h2h" },
+            { label: "Records", id: "season-records" },
+            { label: "Profiles", id: "season-profiles" },
+            { label: "Attendance", id: "season-attendance" },
+            { label: "Tyler Losses", id: "season-tyler" },
+            { label: "7/7 Club", id: "season-club" },
+            { label: "Algorithm", id: "season-algorithm" },
+          ].map((s, i) => (
+            <button key={i} onClick={() => document.getElementById(s.id)?.scrollIntoView({ behavior: "smooth", block: "start" })} style={{ background: "none", border: "none", padding: "4px 10px", cursor: "pointer", fontSize: 11, fontWeight: 500, color: t.t3, fontFamily: "'Outfit',sans-serif", whiteSpace: "nowrap", borderRadius: 4 }}>{s.label}</button>
+          ))}
+        </nav>
+
+        {/* HEADLINE STATS — editorial prose */}
+        <div id="season-overview" style={{ ...S, fontSize: 19, fontStyle: "italic", color: t.t2, lineHeight: 1.7, marginBottom: 28, padding: "16px 0", maxWidth: 640 }}>
+          <span style={{ color: t.accent }}>{decided.length}</span> decided series across the full season. Blue <span style={{ color: t.accent }}>{bW}</span>, White <span style={{ color: t.accent }}>{wW}</span>. <span style={{ color: t.accent }}>{uniquePlayers(players)}</span> players have stepped on the court, averaging <span style={{ color: t.accent }}>{avgPerSession}</span> per session. Every stat below is computed live from game data.
         </div>
 
-        <div style={L}>Head to Head</div>
+        <div id="season-h2h" style={L}>Head to Head</div>
         <div style={{ ...C(), marginBottom: 28 }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 14 }}>
             <div><div style={{ ...S, fontSize: 48, color: t.blue, lineHeight: 1 }}>{bW}</div><div style={{ fontSize: 10, fontWeight: 600, color: t.t3, marginTop: 2 }}>Blue Wins</div></div>
@@ -432,7 +474,7 @@ export default function App() {
             <div style={{ width: `${bW / (bW + wW) * 100}%`, background: t.blue }} />
             <div style={{ width: `${wW / (bW + wW) * 100}%`, background: "#94A3B8" }} />
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 8, marginTop: 18 }}>
+          <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr 1fr" : "1fr 1fr 1fr 1fr", gap: 8, marginTop: 18 }}>
             {[
               { v: String(sweeps), l: "Sweeps (4-0)", c: t.accent },
               { v: String(blowouts), l: "Blowouts (4-1)", c: t.green },
@@ -447,7 +489,7 @@ export default function App() {
           </div>
         </div>
 
-        <div style={L}>Player Win-Loss Records</div>
+        <div id="season-records" style={L}>Player Win-Loss Records</div>
         <div style={{ ...C({ padding: 0, overflow: "hidden" }), marginBottom: 28 }}>
           <div style={{ padding: "12px 16px", borderBottom: `1px solid ${t.border}`, fontSize: 11, color: t.t3, lineHeight: 1.5 }}>Series record. Minimum 3 decided series. Computed live.</div>
           {winSorted.map(([name, d], i) => {
@@ -464,7 +506,7 @@ export default function App() {
           })}
         </div>
 
-        <div style={L}>Player Profiles</div>
+        <div id="season-profiles" style={L}>Player Profiles</div>
         <div style={{ display: "grid", gap: 8, marginBottom: 28 }}>
           {CORRELATIONS.map((c, i) => {
             const d = players[c.name];
@@ -483,7 +525,7 @@ export default function App() {
           })}
         </div>
 
-        <div style={L}>Attendance</div>
+        <div id="season-attendance" style={L}>Attendance</div>
         <div style={{ ...C({ padding: 0, overflow: "hidden" }), marginBottom: 28 }}>
           <div style={{ overflowX: "auto" }}>
             <table style={{ width: "100%", borderCollapse: "collapse", minWidth: 500, fontSize: 12 }}>
@@ -521,11 +563,11 @@ export default function App() {
           const cursed = Object.entries(freq).filter(([,v]) => v === losses.length).map(([k]) => k);
           return (
             <>
-              <div style={L}>The Tyler Losses Files</div>
+              <div id="season-tyler" style={L}>The Tyler Losses Files</div>
               <div style={{ ...C(), marginBottom: 28 }}>
                 <div style={{ fontSize: 13, color: t.t2, lineHeight: 1.6, marginBottom: 14 }}>Tyler has lost exactly {losses.length} series. Every single one is catalogued below. The group text demanded forensic accountability.</div>
                 {losses.map((loss, i) => (
-                  <div key={i} style={{ padding: "12px 14px", background: t.inset, borderRadius: 10, marginBottom: 8, borderLeft: `3px solid ${t.red}` }}>
+                  <div key={i} style={{ padding: "12px 14px", background: dark ? 'rgba(239,68,68,.06)' : 'rgba(239,68,68,.05)', borderRadius: 10, marginBottom: 8 }}>
                     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
                       <div style={{ fontWeight: 700, fontSize: 13 }}>{loss.day}</div>
                       <div style={{ fontSize: 11, color: t.red, fontWeight: 600 }}>Lost {loss.score}</div>
@@ -545,21 +587,21 @@ export default function App() {
         })()}
 
         {/* THE 7/7 CLUB */}
-        <div style={L}>The 7/7 Club</div>
+        <div id="season-club" style={L}>The 7/7 Club</div>
         <div style={{ ...C(), marginBottom: 28, borderColor: dark ? "rgba(251,191,36,.2)" : "rgba(202,138,4,.15)", background: dark ? "rgba(251,191,36,.04)" : "rgba(202,138,4,.03)" }}>
           <div style={{ fontSize: 13, color: t.t2, lineHeight: 1.6, marginBottom: 14 }}>Three players have shot perfect from the field in a single game and scored every one of their team's seven points. This club is exclusive, unintentional, and possibly cursed.</div>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 10 }}>
-            <div style={{ padding: "14px", background: t.inset, borderRadius: 10, borderLeft: `3px solid ${t.gold}` }}>
+          <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr 1fr", gap: 10 }}>
+            <div style={{ padding: "14px", background: dark ? 'rgba(251,191,36,.06)' : 'rgba(251,191,36,.05)', borderRadius: 10, border: `1px solid ${dark ? "rgba(251,191,36,.15)" : "rgba(251,191,36,.2)"}` }}>
               <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: 1.5, color: t.gold, marginBottom: 4 }}>FOUNDING MEMBER</div>
               <div style={{ ...S, fontSize: 22, color: t.text }}>Gabe</div>
               <div style={{ fontSize: 11, color: t.t2, marginTop: 4, lineHeight: 1.5 }}>Mon 3/23 · Game 1<br />Three threes and a layup. Was mortal again by Game 2.</div>
             </div>
-            <div style={{ padding: "14px", background: t.inset, borderRadius: 10, borderLeft: `3px solid ${t.gold}` }}>
+            <div style={{ padding: "14px", background: dark ? 'rgba(251,191,36,.06)' : 'rgba(251,191,36,.05)', borderRadius: 10, border: `1px solid ${dark ? "rgba(251,191,36,.15)" : "rgba(251,191,36,.2)"}` }}>
               <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: 1.5, color: t.gold, marginBottom: 4 }}>SECOND MEMBER</div>
               <div style={{ ...S, fontSize: 22, color: t.text }}>Tyler</div>
               <div style={{ fontSize: 11, color: t.t2, marginTop: 4, lineHeight: 1.5 }}>Fri 3/27 · Game 2<br />Capped a 4-0 sweep. Tyler does this kind of thing.</div>
             </div>
-            <div style={{ padding: "14px", background: t.inset, borderRadius: 10, borderLeft: `3px solid ${t.gold}` }}>
+            <div style={{ padding: "14px", background: dark ? 'rgba(251,191,36,.06)' : 'rgba(251,191,36,.05)', borderRadius: 10, border: `1px solid ${dark ? "rgba(251,191,36,.15)" : "rgba(251,191,36,.2)"}` }}>
               <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: 1.5, color: t.gold, marginBottom: 4 }}>NEWEST MEMBER</div>
               <div style={{ ...S, fontSize: 22, color: t.text }}>Lee</div>
               <div style={{ fontSize: 11, color: t.t2, marginTop: 4, lineHeight: 1.5 }}>Fri 5/1 · Pivotal Game 5<br />Three threes and a layup. Team still lost the series 4-3. He insists on noting that he probably missed several open layups along the way, just to keep the cosmic ledger balanced.</div>
@@ -587,7 +629,7 @@ export default function App() {
           const diff = Math.abs(parseFloat(predA) - parseFloat(predB)).toFixed(0);
           return (
             <>
-              <div style={L}>The Algorithm's Matchup</div>
+              <div id="season-algorithm" style={L}>The Algorithm's Matchup</div>
               <div style={{ ...C(), marginBottom: 28, borderColor: dark ? "rgba(52,211,153,.2)" : "rgba(22,163,74,.15)", background: dark ? "rgba(52,211,153,.03)" : "rgba(22,163,74,.02)" }}>
                 <div style={{ fontSize: 13, color: t.t2, lineHeight: 1.6, marginBottom: 14 }}>
                   <strong style={{ color: t.green }}>Computed from actual data.</strong> Top 8 players by games played, sorted by win percentage, greedy-balanced to minimize predicted differential. No vibes, no feelings, just math at 4:45 AM.
@@ -632,33 +674,35 @@ export default function App() {
 
   return (
     <div style={{ background: t.bg, color: t.text, fontFamily: "'Outfit',sans-serif", minHeight: "100vh", transition: "background .3s,color .3s" }}>
-      <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
-      <div style={{ maxWidth: 920, margin: "0 auto", padding: "40px 20px 100px" }}>
+      <style dangerouslySetInnerHTML={{ __html: "@media(prefers-reduced-motion:reduce){*{transition:none!important}}" }} />
+      <main style={{ maxWidth: 920, margin: "0 auto", padding: "40px 20px 100px" }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 40 }}>
           <div>
             <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: 2, textTransform: "uppercase", color: t.accent, marginBottom: 8 }}>4:45 AM · Middle School Gym · 3 Months Deep</div>
             <h1 style={{ ...S, fontSize: "clamp(36px,5.5vw,56px)", fontWeight: 400, letterSpacing: -1, lineHeight: 1.05, margin: 0 }}>Morning <em style={{ fontStyle: "italic", color: t.accent }}>Hoops</em></h1>
             <p style={{ fontSize: 13, color: t.t2, marginTop: 8, maxWidth: 500, lineHeight: 1.6 }}>A group of grown adults wake up before the sun to play 7-game series where children learn fractions. Tyler is mortal. Gabe is everywhere. Cal is occasionally in Florida. Sean is asleep. Nobody has a real job.</p>
           </div>
-          <button onClick={() => setDark(!dark)} style={{ background: t.card, border: `1px solid ${t.border}`, borderRadius: 8, padding: "8px 14px", cursor: "pointer", color: t.t2, fontSize: 11, fontWeight: 600, fontFamily: "'Outfit',sans-serif", display: "flex", alignItems: "center", gap: 6, marginTop: 8 }}>{dark ? "☀️" : "🌙"} {dark ? "Light" : "Dark"}</button>
+          <button onClick={() => setDark(!dark)} aria-label="Toggle dark/light mode" style={{ background: t.card, border: `1px solid ${t.border}`, borderRadius: 8, padding: "8px 14px", cursor: "pointer", color: t.t2, fontSize: 11, fontWeight: 600, fontFamily: "'Outfit',sans-serif", display: "flex", alignItems: "center", gap: 6, marginTop: 8, minHeight: 44 }}>{dark ? "☀️" : "🌙"} {dark ? "Light" : "Dark"}</button>
         </div>
 
-        <div style={{ display: "flex", gap: 2, marginBottom: 28, borderBottom: `1px solid ${t.border}`, overflowX: "auto" }}>
-          {tabs.map(tb => <button key={tb.id} onClick={() => setTab(tb.id)} style={{ background: "none", border: "none", borderBottom: tab === tb.id ? `2px solid ${t.accent}` : "2px solid transparent", padding: "10px 16px", cursor: "pointer", fontSize: 13, fontWeight: tab === tb.id ? 700 : 500, color: tab === tb.id ? t.text : t.t3, fontFamily: "'Outfit',sans-serif", transition: "all .15s", whiteSpace: "nowrap" }}>{tb.label}</button>)}
-        </div>
+        <nav role="tablist" style={{ display: "flex", gap: 2, marginBottom: 28, borderBottom: `1px solid ${t.border}`, overflowX: "auto", WebkitOverflowScrolling: "touch" }}>
+          {tabs.map(tb => <button key={tb.id} role="tab" aria-selected={tab === tb.id} onClick={() => setTab(tb.id)} style={{ background: "none", border: "none", borderBottom: tab === tb.id ? `2px solid ${t.accent}` : "2px solid transparent", padding: "14px 16px", cursor: "pointer", fontSize: 13, fontWeight: tab === tb.id ? 700 : 500, color: tab === tb.id ? t.text : t.t3, fontFamily: "'Outfit',sans-serif", transition: "all .15s", whiteSpace: "nowrap", minHeight: 44 }}>{tb.label}</button>)}
+        </nav>
 
         <div style={{ display: "flex", gap: 16, marginBottom: 20, fontSize: 11, color: t.t3 }}>
           <span style={{ display: "flex", alignItems: "center", gap: 4 }}><Dot team="blue" dark={dark} /> Blue team</span>
           <span style={{ display: "flex", alignItems: "center", gap: 4 }}><Dot team="white" dark={dark} /> White team</span>
         </div>
 
-        {view}
-      </div>
+        <div role="tabpanel">
+          {view}
+        </div>
+      </main>
 
-      <div style={{ textAlign: "center", fontSize: 10, color: t.t3, paddingBottom: 40, lineHeight: 1.7 }}>
+      <footer style={{ textAlign: "center", fontSize: 10, color: t.t3, paddingBottom: 40, lineHeight: 1.7 }}>
         <span style={{ color: t.accent }}>Morning Hoops</span> · 7-Game Series · Verified from spreadsheet<br />
         Played at 4:45 AM. Tyler is mortal. Gabe is unkillable. Florida remains under investigation.
-      </div>
+      </footer>
     </div>
   );
 }
