@@ -6,8 +6,8 @@
 // ═══════════════════════════════════════════════════════════
 export const FALLBACK_SESSIONS = [
   { day: "Mon 3/2", month: "March", blue: ["Nathan","Ryan","Cal","Lee"], white: ["Chad","Wags","Sean","Gabe"], winner: "white", score: "4-3" },
-  { day: "Tue 3/3", month: "March", blue: ["Nathan","Wags","Cody","Ryan","Lee"], white: ["Chad","Sean","Gabe","Kyle","Jared"], winner: "blue", score: "W", note: "Blue beat that ass." },
-  { day: "Thu 3/5", month: "March", blue: ["Nathan","Jared","Sean","Ryan"], white: ["Wags","Mike","Gabe","Lee"], winner: "blue", score: "W", note: "Blue smacked ass again." },
+  { day: "Tue 3/3", month: "March", blue: ["Nathan","Wags","Cody","Ryan","Lee"], white: ["Chad","Sean","Gabe","Kyle","Jared"], winner: "blue", score: "W", note: "Blue opened the league. No mercy, no memories." },
+  { day: "Thu 3/5", month: "March", blue: ["Nathan","Jared","Sean","Ryan"], white: ["Wags","Mike","Gabe","Lee"], winner: "blue", score: "W", note: "Blue again. The pattern was forming before anyone noticed." },
   { day: "Fri 3/6", month: "March", blue: ["Nathan","Mike","Gabe","Cal","Lee"], white: ["Chad","Wags","Sean","Tyler","Ryan"], winner: "white", score: "4-3" },
   { day: "Mon 3/9", month: "March", blue: ["Nathan","Wags","Sean","Lee"], white: ["Jared","Cody","Gabe","Kyle"], winner: "blue", score: "W" },
   { day: "Tue 3/10", month: "March", blue: [], white: [], winner: null, score: null, note: "3 showed (Sean, Lee, Wags). That's a carpool, not a game." },

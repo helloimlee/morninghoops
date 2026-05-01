@@ -193,6 +193,17 @@ Cards with a tinted border and background for special sections (Florida Investig
 ### Theme Toggle
 A small button in the top-right corner. Card background, 1px border, 8px radius, 14px horizontal padding. Emoji prefix (☀️/🌙). Outfit 11px weight 600. Functional, not decorative.
 
+### Week Header
+A non-data separator row inserted before each week's games within month game tables. It visually groups sessions into weeks and provides a running win tally per week.
+
+**Structure:** Full-width row with inset background (`t.inset`), bordered top and bottom (`t.border`). Left side displays `WEEK N · date–date` in label typography (Outfit, uppercase, 700 weight, `t.t3` color). Right side shows a Blue/White win tally in respective team colors (`t.blue` / `t.white`), rendered only when there are decided games in that week.
+
+**When used:** Inside month-view game tables, before each week's game rows. Weeks are split on Monday boundaries (or at the first session of the month). The grouping logic (`groupSessionsByWeek()`) returns week objects with `weekNum`, `startDate`, `endDate`, `blueWins`, `whiteWins`, and `sessions`.
+
+**Design tokens:** `t.inset` (background), `t.t3` (label text), `t.blue` (blue win count), `t.white` (white win count), `t.border` (top and bottom borders). Responsive padding uses `var(--space-card-padding)` on compact breakpoints.
+
+**Pattern lineage:** Follows the existing "inset panel within card" approach used by attendance table headers and the Debrief footer — a recessed surface nested inside a card container to denote non-primary-data content.
+
 ## 6. Do's and Don'ts
 
 ### Do:

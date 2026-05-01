@@ -8,8 +8,8 @@ import { useState, useMemo, useEffect } from "react";
 const SESSIONS = [
   // MARCH
   { day: "Mon 3/2",  month: "March", blue: ["Nathan","Ryan","Cal","Lee"], white: ["Chad","Wags","Sean","Gabe"], winner: "white", score: "4-3" },
-  { day: "Tue 3/3",  month: "March", blue: ["Nathan","Wags","Cody","Ryan","Lee"], white: ["Chad","Sean","Gabe","Kyle","Jared"], winner: "blue", score: "W", note: "Blue beat that ass." },
-  { day: "Thu 3/5",  month: "March", blue: ["Nathan","Jared","Sean","Ryan"], white: ["Wags","Mike","Gabe","Lee"], winner: "blue", score: "W", note: "Blue smacked ass again." },
+  { day: "Tue 3/3",  month: "March", blue: ["Nathan","Wags","Cody","Ryan","Lee"], white: ["Chad","Sean","Gabe","Kyle","Jared"], winner: "blue", score: "W", note: "Blue opened the league. No mercy, no memories." },
+  { day: "Thu 3/5",  month: "March", blue: ["Nathan","Jared","Sean","Ryan"], white: ["Wags","Mike","Gabe","Lee"], winner: "blue", score: "W", note: "Blue again. The pattern was forming before anyone noticed." },
   { day: "Fri 3/6",  month: "March", blue: ["Nathan","Mike","Gabe","Cal","Lee"], white: ["Chad","Wags","Sean","Tyler","Ryan"], winner: "white", score: "4-3" },
   { day: "Mon 3/9",  month: "March", blue: ["Nathan","Wags","Sean","Lee"], white: ["Jared","Cody","Gabe","Kyle"], winner: "blue", score: "W" },
   { day: "Tue 3/10", month: "March", blue: [], white: [], winner: null, score: null, note: "3 showed (Sean, Lee, Wags). That's a carpool, not a game." },
@@ -74,8 +74,8 @@ const MONTHS = [
   {
     id: "may", label: "May", short: "May",
     name: "The 7/7 Club Gets a New Member",
-    commentary: "May opened with one game. One. But it was a Friday for the books. Dane debuted on White. Lee went 7/7 in a pivotal game 5 — three from beyond the arc and a layup — scoring every point for the winning Blue squad. Blue took the series 4-3. Lee joins Gabe (Mon 3/23) and Tyler (Fri 3/27) in the 7/7 Club. The spreadsheet has receipts. The dashboard has receipts. May has begun.",
-    insight: "May has exactly one decided series so far. The headline is Lee's 7/7 game, an absurd individual performance from a player whose season-long narrative has been less 'highlight reel' and more 'ongoing forensic investigation.' His team actually won this time, which is new for him. He still presumably missed several open layups along the way, because he is who he is, but for one game he was a basketball cheat code, and the dashboard is contractually obligated to acknowledge it.",
+    commentary: "Dane debuted on White and immediately got thrown into a game-7 series. Lee went 7/7 in game 5 — three threes and a layup — every Blue point. The 7/7 Club has a new member. May is young and already unhinged.",
+    insight: "Lee's 7/7 game is the headline, but Dane's debut adds fresh blood to a league that needed it. Nathan stayed structural. Tyler stayed elite. The real question: can anyone in this gym sustain greatness for more than one game? History suggests no.",
   },
 ];
 
@@ -95,7 +95,7 @@ const CORRELATIONS = [
   { name: "Cody", tag: "Bathroom Break", desc: "On Thursday 4/9 Cody missed the tip of game one because he was, to put it delicately, conducting important gastrointestinal business in the facilities. Blue opened the series down a body and got swept 0-4. The forensic asterisk will follow him until he retires or the plumbing is investigated, whichever comes first." },
   { name: "Chadwick", tag: "Chad's Distinguished Twin", desc: "Debuted Tuesday 4/14. Is supposedly Chad's twin. Nobody has ever seen Chad and Chadwick in the same room. The Witness Protection Program is one possibility. A long con is another. Currently cataloged as 'unsolved.'" },
   { name: "Dane", tag: "Newcomer", desc: "Debuted Friday 5/1 on Blue and won. A 1.000 lifetime win rate, which is technically tied with rookie-Tyler before the wheels came off. We'll see how this ages. Dane: enjoy the view from the top while it lasts." },
-  { name: "Lee", tag: "7/7 Club", desc: "Spent two months as the dashboard's punching bag, then walked into Friday 5/1 and scored every single point in a pivotal game 5: three from beyond the arc and a layup, 7/7 from the field. Joins Gabe and Tyler in the 7/7 Club. His Blue team won the series 4-3 — a rare instance of Lee being on the right side of history. For one game he was the best player in the gym. He probably also missed several open layups along the way to keep the cosmic ledger balanced." },
+  { name: "Lee", tag: "7/7 Club", desc: "Spent the early season as the league's most reliable losing streak — a weather system with a jump shot. Then went 7/7 on Fri 5/1: three threes and a layup, every Blue point in a pivotal Game 5. One perfect game in a sea of open-layup misses." },
 ];
 
 // ═══════════════════════════════════════════════════════════
@@ -191,6 +191,26 @@ function getStats(sessions) {
   return { p, totalS: sessions.length, uniqueCount: uniquePlayers.size, avgPerSession, topRivals, topTeammates, decided, pairRecords, playerLosses, playerWins, teammateReport, bestPairs, worstPairs };
 }
 
+function groupSessionsByWeek(sessions) {
+  const weeks = [];
+  let current = null;
+  sessions.forEach((s, i) => {
+    const parts = s.day.split(' ');
+    const dow = parts[0];
+    const date = parts[1];
+    if (i === 0 || dow === 'Mon') {
+      if (current) weeks.push(current);
+      current = { weekNum: weeks.length + 1, sessions: [], startDate: date, endDate: date, blueWins: 0, whiteWins: 0 };
+    }
+    current.sessions.push(s);
+    current.endDate = date;
+    if (s.winner === 'blue') current.blueWins++;
+    if (s.winner === 'white') current.whiteWins++;
+  });
+  if (current) weeks.push(current);
+  return weeks;
+}
+
 function Badge({ winner, score, dark }) {
   if (!winner) return <span style={{ fontSize: 'var(--type-label)', fontWeight: 700, letterSpacing: 1, textTransform: "uppercase", padding: "3px 8px", borderRadius: 4, background: dark ? "rgba(255,255,255,.04)" : "rgba(0,0,0,.04)", color: dark ? "#71717A" : "#6B7280" }}>No result</span>;
   const b = winner === "blue";
@@ -282,7 +302,7 @@ export default function App() {
             )}
           </div>
           {s.note && !noGame && (
-            <div style={{ padding: '0 var(--space-card-padding) 8px', borderLeft: `2px solid ${t.accent}`, marginLeft: 'var(--space-card-padding)', fontSize: 'var(--type-label)', color: t.accent, fontWeight: 600, fontStyle: "italic" }}>{s.note}</div>
+            <div style={{ padding: '0 var(--space-card-padding) 8px', borderLeft: `2px solid ${t.accent}`, marginLeft: 'var(--space-card-padding)', fontSize: 'var(--type-label)', color: t.accent, fontWeight: 600, fontStyle: "italic", letterSpacing: '0.025em' }}>{s.note}</div>
           )}
         </div>
       );
@@ -311,7 +331,7 @@ export default function App() {
               </>
             )}
           </div>
-          {s.note && !noGame && <div style={{ padding: "0 16px 10px 16px", fontSize: 'var(--type-label)', color: t.accent, fontWeight: 600, fontStyle: "italic" }}>{s.note}</div>}
+          {s.note && !noGame && <div style={{ padding: "0 16px 10px 16px", fontSize: 'var(--type-label)', color: t.accent, fontWeight: 600, fontStyle: "italic", letterSpacing: '0.025em' }}>{s.note}</div>}
         </div>
       );
     }
@@ -330,7 +350,52 @@ export default function App() {
           </div>
           <div style={{ textAlign: "right" }}>{!noGame && <Badge winner={s.winner} score={s.score} dark={dark} />}</div>
         </div>
-        {s.note && !noGame && <div style={{ padding: "0 16px 10px 90px", fontSize: 'var(--type-label)', color: t.accent, fontWeight: 600, fontStyle: "italic" }}>{s.note}</div>}
+        {s.note && !noGame && <div style={{ padding: "0 16px 10px 90px", fontSize: 'var(--type-label)', color: t.accent, fontWeight: 600, fontStyle: "italic", letterSpacing: '0.025em' }}>{s.note}</div>}
+      </div>
+    );
+  };
+
+  const renderWeekHeader = (week) => {
+    const decided = week.blueWins + week.whiteWins;
+    const tallyParts = [];
+    if (week.blueWins > 0) tallyParts.push({ label: `Blue ${week.blueWins}`, color: t.blue });
+    if (week.whiteWins > 0) tallyParts.push({ label: `White ${week.whiteWins}`, color: t.white });
+
+    return (
+      <div style={{
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        padding: isCompact ? '8px var(--space-card-padding)' : "8px 16px",
+        background: t.inset,
+        borderTop: `1px solid ${t.border}`,
+        borderBottom: `1px solid ${t.border}`,
+        gap: 8,
+      }}>
+        <div style={{
+          fontSize: 'var(--type-label)',
+          fontWeight: 700,
+          letterSpacing: '0.08em',
+          textTransform: "uppercase",
+          color: t.t3,
+          whiteSpace: "nowrap",
+        }}>
+          Week {week.weekNum} · {week.startDate}–{week.endDate}
+        </div>
+        {decided > 0 && (
+          <div style={{
+            display: "flex",
+            gap: 8,
+            fontSize: 'var(--type-label)',
+            fontWeight: 700,
+            letterSpacing: '0.08em',
+            flexShrink: 0,
+          }}>
+            {tallyParts.map((tp, j) => (
+              <span key={j} style={{ color: tp.color }}>{tp.label}</span>
+            ))}
+          </div>
+        )}
       </div>
     );
   };
@@ -340,6 +405,12 @@ export default function App() {
     const monthDecided = monthSessions.filter(s => s.winner);
     const monthBW = monthDecided.filter(s => s.winner === "blue").length;
     const monthWW = monthDecided.filter(s => s.winner === "white").length;
+    const weeks = groupSessionsByWeek(monthSessions);
+
+    // Flatten weeks into a renderable list with week headers
+    let globalIdx = 0;
+    const totalGames = monthSessions.length;
+
     return (
       <div>
         <div style={{ marginBottom: 24 }}>
@@ -349,7 +420,15 @@ export default function App() {
         </div>
         <div style={{ ...C({ padding: 0, overflow: "hidden" }), marginBottom: 'var(--space-section-gap)' }}>
           <div style={{ padding: "16px", borderBottom: `1px solid ${t.border}`, fontSize: 'var(--type-body)', color: t.t2, lineHeight: 1.65 }}>{m.commentary}</div>
-          {monthSessions.map((s, i) => renderGame(s, i, monthSessions.length))}
+          {weeks.map((week, wIdx) => (
+            <div key={wIdx}>
+              {renderWeekHeader(week)}
+              {week.sessions.map((s) => {
+                const idx = globalIdx++;
+                return renderGame(s, idx, totalGames);
+              })}
+            </div>
+          ))}
           <div style={{ padding: "14px 16px", paddingLeft: 18, background: t.inset, borderLeft: `2px solid ${t.accent}`, fontSize: 'var(--type-body-sm)', color: t.t3, lineHeight: 1.65, borderTop: `1px solid ${t.border}` }}><span style={{ color: t.accent, fontWeight: 700 }}>Debrief: </span>{m.insight}</div>
         </div>
       </div>
@@ -371,7 +450,7 @@ export default function App() {
           <div style={L}>Season Summary</div>
           <h2 style={{ ...S, fontSize: 'var(--type-headline)', color: t.text, margin: 0, fontWeight: 400 }}>The State of the Gym</h2>
           <div style={{ fontSize: 'var(--type-body)', color: t.t2, marginTop: 6, lineHeight: 1.6, maxWidth: 'var(--space-prose-max)' }}>
-            {decided.length} decided 7-game series. {uniquePlayers(players)} players. Blue leads {bW}–{wW}. Tyler is mortal but still elite. Gabe and Nathan are the structural beams of this league. Cal is a flamethrower who occasionally vanishes to Florida. The 7/7 Club has a third member as of Friday 5/1. Anyway, here's the summary.
+            {decided.length} decided 7-game series. {uniquePlayers(players)} players. Blue leads {bW}–{wW}. Tyler is mortal but still elite. Gabe and Nathan are the structural beams holding this gym together. Cal is a flamethrower who occasionally vanishes to Florida. Ryan has quietly become the most reliable player nobody talks about. The 7/7 Club has a third member. Anyway, here's the summary.
           </div>
         </div>
 
@@ -548,7 +627,7 @@ export default function App() {
         </div>
 
         <div style={{ fontSize: 'var(--type-body-sm)', color: t.t3, textAlign: "center", lineHeight: 1.6 }}>
-          More detail on the <strong style={{ color: t.accent }}>Season tab</strong>, month-by-month breakdowns on the <strong style={{ color: t.accent }}>March</strong> and <strong style={{ color: t.accent }}>April</strong> tabs.
+          If this summary isn't enough to ruin someone's morning, the <strong style={{ color: t.accent }}>Season tab</strong> has the full dossier. Month-by-month breakdowns live on the <strong style={{ color: t.accent }}>March</strong>, <strong style={{ color: t.accent }}>April</strong>, and <strong style={{ color: t.accent }}>May</strong> tabs.
         </div>
       </div>
     );
@@ -572,7 +651,7 @@ export default function App() {
           <div style={L}>Full Season</div>
           <h2 style={{ ...S, fontSize: 'var(--type-headline)', color: t.text, margin: 0, fontWeight: 400 }}>Every Series. Every Roaster.</h2>
           <div style={{ fontSize: 'var(--type-body)', color: t.t2, marginTop: 6, lineHeight: 1.6, maxWidth: 'var(--space-prose-max)' }}>
-            {decided.length} decided 7-game series. {uniquePlayers(players)} players. Played by 1s and 2s. {bW > wW ? `Blue leads ${bW}–${wW}` : bW < wW ? `White leads ${wW}–${bW}` : `Tied ${bW}–${wW}`}. Every stat below is computed live from game data.
+            {decided.length} decided 7-game series. {uniquePlayers(players)} players. Played by 1s and 2s. {bW > wW ? `Blue leads ${bW}–${wW}` : bW < wW ? `White leads ${wW}–${bW}` : `Tied ${bW}–${wW}`}. Every number below is real. The commentary, unfortunately, is also real.
           </div>
         </div>
 
@@ -594,7 +673,7 @@ export default function App() {
 
         {/* HEADLINE STATS — editorial pull-quote */}
         <div id="season-overview" style={{ ...S, fontSize: 'var(--type-title)', fontStyle: "italic", color: t.t2, lineHeight: 1.7, marginBottom: 'var(--space-section-gap)', padding: "20px 0 20px 20px", borderLeft: `2px solid ${t.accent}`, maxWidth: 'var(--space-prose-max)' }}>
-          <span style={{ color: t.accent }}>{decided.length}</span> decided series across the full season. Blue <span style={{ color: t.accent }}>{bW}</span>, White <span style={{ color: t.accent }}>{wW}</span>. <span style={{ color: t.accent }}>{uniquePlayers(players)}</span> players have stepped on the court, averaging <span style={{ color: t.accent }}>{avgPerSession}</span> per session. Every stat below is computed live from game data.
+          <span style={{ color: t.accent }}>{decided.length}</span> decided series across the full season. Blue <span style={{ color: t.accent }}>{bW}</span>, White <span style={{ color: t.accent }}>{wW}</span>. <span style={{ color: t.accent }}>{uniquePlayers(players)}</span> players have stepped on the court, averaging <span style={{ color: t.accent }}>{avgPerSession}</span> per session. The spreadsheet is the source of truth. The dashboard is just the messenger.
         </div>
 
         <div id="season-h2h" style={L}>Head to Head</div>
@@ -642,7 +721,7 @@ export default function App() {
         <SectionDivider />
         <div id="season-records" style={L}>Player Win-Loss Records</div>
         <div style={{ ...C({ padding: 0, overflow: "hidden" }), marginBottom: 'var(--space-section-gap)' }}>
-          <div style={{ padding: "12px 16px", borderBottom: `1px solid ${t.border}`, fontSize: 'var(--type-body-sm)', color: t.t3, lineHeight: 1.5 }}>Series record. Minimum 3 decided series. Computed live.</div>
+          <div style={{ padding: "12px 16px", borderBottom: `1px solid ${t.border}`, fontSize: 'var(--type-body-sm)', color: t.t3, lineHeight: 1.5 }}>Series record. Minimum 3 decided series, because judging someone on two games is tempting but statistically irresponsible.</div>
           {winSorted.map(([name, d], i) => {
             const dec = d.w + d.l; const pct = Math.round(d.w / dec * 100);
             const barColor = pct >= 60 ? t.green : pct >= 45 ? t.gold : t.red;
@@ -820,7 +899,7 @@ export default function App() {
             <div style={{ padding: "14px", background: dark ? 'rgba(251,191,36,.06)' : 'rgba(251,191,36,.05)', borderRadius: 10, border: `1px solid ${dark ? "rgba(251,191,36,.15)" : "rgba(251,191,36,.2)"}` }}>
               <div style={{ fontSize: 'var(--type-label)', fontWeight: 800, letterSpacing: 1.5, color: t.gold, marginBottom: 4 }}>NEWEST MEMBER</div>
               <div style={{ ...S, fontSize: 'var(--type-title)', color: t.text }}>Lee</div>
-              <div style={{ fontSize: 'var(--type-body-sm)', color: t.t2, marginTop: 4, lineHeight: 1.5 }}>Fri 5/1 · Pivotal Game 5<br />Three threes and a layup. Blue won the series 4-3. He insists on noting that he probably missed several open layups along the way, just to keep the cosmic ledger balanced.</div>
+              <div style={{ fontSize: 'var(--type-body-sm)', color: t.t2, marginTop: 4, lineHeight: 1.5 }}>Fri 5/1 · Pivotal Game 5<br />Three threes and a layup in a pivotal Game 5. Blue won the series 4-3.</div>
             </div>
           </div>
         </div>
@@ -875,7 +954,7 @@ export default function App() {
                   </div>
                 )}
                 <div style={{ fontSize: 'var(--type-body-sm)', color: t.t3, lineHeight: 1.55, marginTop: 12, paddingTop: 10, borderTop: `1px solid ${t.border}`, fontStyle: "italic" }}>
-                  Predicted differential: {diff} percentage points. Closer to zero = closer to fair. Lee is on one of these teams. He is either the ceiling or the anchor depending on which series you{"'"}re asking about.
+                  Predicted differential: {diff} percentage points. Closer to zero = closer to fair. Someone on this list is a ceiling. Someone else is an anchor. The spreadsheet knows. The spreadsheet always knows.
                 </div>
               </div>
             </>
@@ -900,7 +979,7 @@ export default function App() {
           <div>
             <div style={{ fontSize: 'var(--type-label)', fontWeight: 700, letterSpacing: 2, textTransform: "uppercase", color: t.accent, marginBottom: 8 }}>4:45 AM · Middle School Gym · 3 Months Deep</div>
             <h1 style={{ ...S, fontSize: "var(--type-display)", fontWeight: 400, letterSpacing: -1, lineHeight: 1.05, margin: 0 }}>Morning <em style={{ fontStyle: "italic", color: t.accent }}>Hoops</em></h1>
-            <p style={{ fontSize: 'var(--type-body)', color: t.t2, marginTop: 8, maxWidth: 500, lineHeight: 'var(--type-body-lh)' }}>A group of grown adults wake up before the sun to play 7-game series where children learn fractions. Tyler is mortal. Gabe is everywhere. Cal is occasionally in Florida. Sean is asleep. Nobody has a real job.</p>
+            <p style={{ fontSize: 'var(--type-body)', color: t.t2, marginTop: 8, maxWidth: 500, lineHeight: 'var(--type-body-lh)' }}>A group of grown adults wake up before the sun to play 7-game series where children learn fractions. Tyler is mortal. Gabe is everywhere. Cal is occasionally in Florida. Sean is asleep. Nobody has explained how they're all available at 4:45 AM.</p>
           </div>
           <button onClick={() => setDark(!dark)} aria-label="Toggle dark/light mode" style={{ background: t.card, border: `1px solid ${t.border}`, borderRadius: 8, padding: isCompact ? "6px 10px" : "8px 14px", cursor: "pointer", color: t.t2, fontSize: isCompact ? 10 : 11, fontWeight: 600, fontFamily: "'Outfit',sans-serif", display: "flex", alignItems: "center", gap: 6, marginTop: isCompact ? 0 : 8, minHeight: 44 }}>{dark ? "☀️" : "🌙"} {dark ? "Light" : "Dark"}</button>
         </div>
@@ -921,7 +1000,7 @@ export default function App() {
 
       <footer style={{ textAlign: "center", fontSize: 'var(--type-label)', color: t.t3, paddingBottom: 40, lineHeight: 1.7 }}>
         <span style={{ color: t.accent }}>Morning Hoops</span> · 7-Game Series · Verified from spreadsheet<br />
-        Played at 4:45 AM. Tyler is mortal. Gabe is unkillable. Florida remains under investigation.
+        Played at 4:45 AM. Tyler is mortal. Gabe is unkillable. Cal is under investigation. The spreadsheet is gospel.
       </footer>
     </div>
   );

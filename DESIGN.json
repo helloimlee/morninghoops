@@ -89,6 +89,14 @@
       "description": "Horizontal fill bar for win-rate visualization. Color follows the Three-Tier Stat Rule.",
       "html": "<div class=\"ds-progress\"><div class=\"ds-progress-fill ds-progress-green\" style=\"width: 67%\"></div></div>",
       "css": ".ds-progress { height: 6px; background: #0D0D0F; border-radius: 3px; overflow: hidden; } .ds-progress-fill { height: 100%; border-radius: 3px; } .ds-progress-green { background: #34D399; } .ds-progress-gold { background: #FBBF24; } .ds-progress-red { background: #F87171; }"
+    },
+    {
+      "name": "Week Header",
+      "kind": "row",
+      "refersTo": null,
+      "description": "Non-data separator row inserted before each week's games in month tables. Inset background with label typography showing 'WEEK N · date–date' on the left and a Blue/White win tally on the right. Follows the inset-panel-within-card pattern used by attendance table headers and Debrief footer.",
+      "html": "<div class=\"ds-week-header\"><span class=\"ds-week-header-label\">WEEK 1 · Mar 3–Mar 7</span><span class=\"ds-week-header-tally\"><span class=\"ds-week-header-blue\">Blue 3</span> <span class=\"ds-week-header-white\">White 2</span></span></div>",
+      "css": ".ds-week-header { display: flex; justify-content: space-between; align-items: center; background: #0D0D0F; border-top: 1px solid rgba(255,255,255,.06); border-bottom: 1px solid rgba(255,255,255,.06); padding: 8px 16px; font-family: 'Outfit', sans-serif; } .ds-week-header-label { font-size: 10px; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase; color: #52525B; } .ds-week-header-tally { font-size: 10px; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase; display: flex; gap: 10px; } .ds-week-header-blue { color: #5B8DEF; } .ds-week-header-white { color: #B4BCD0; }"
     }
   ],
   "narrative": {
