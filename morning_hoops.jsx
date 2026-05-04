@@ -55,6 +55,7 @@ const SESSIONS = [
   { day: "Wed 4/29", month: "April", blue: ["Lee","Mike","Jared","Tyler","Ryan"], white: ["Nathan","Chad","Cody","Sean","Gabe","Cal"], winner: "white", score: "4-0", note: "Seventh sweep in history. The spreadsheet refers to one participant as 'Sean aka big dumb b——,' which is the kind of editorial decision that earns this league its accreditation." },
   { day: "Thu 4/30", month: "April", blue: [], white: [], winner: null, score: null, note: "No game. Allegedly only Nathan and Lee showed up, which is two humans short of basketball and one human short of a meaningful conversation." },
   { day: "Fri 5/1", month: "May", blue: ["Nathan","Lee","Chad","Ryan"], white: ["Mike","Tyler","Dane","Cal"], winner: "blue", score: "4-3", note: "Dane debuted. Lee went 7/7 in game 5 — 3 from beyond the arc and a layup — scoring every point for the winning Blue squad. Blue took the series 4-3. Lee joins the season's exclusive 7/7 Club alongside Gabe (Mon 3/23) and Tyler (Fri 3/27)." },
+  { day: "Sun 5/4", month: "May", blue: ["Nathan","Wags","Lee","Cal"], white: ["Ryan","Kyle","Chad","Jared"], winner: "blue", score: "4-2", note: "The Dynasty reunited. Nathan, Wags, Lee & Cal — a superteam forged years ago through dozens of undefeated series — reassembled on Blue and dispatched White 4-2. They also won the in-season tournament, which is the one that actually matters. Four men. One shared delusion of grandeur. Zero apologies." },
 ];
 
 // Group sessions by month
@@ -73,18 +74,18 @@ const MONTHS = [
   },
   {
     id: "may", label: "May", short: "May",
-    name: "The 7/7 Club Gets a New Member",
-    commentary: "Dane debuted on White and immediately got thrown into a game-7 series. Lee went 7/7 in game 5 — three threes and a layup — every Blue point. The 7/7 Club has a new member. May is young and already unhinged.",
-    insight: "Lee's 7/7 game is the headline, but Dane's debut adds fresh blood to a league that needed it. Nathan stayed structural. Tyler stayed elite. The real question: can anyone in this gym sustain greatness for more than one game? History suggests no.",
+    name: "The Dynasty Returns",
+    commentary: "May opened with Dane's debut and Lee's 7/7 masterpiece on 5/1 — three threes and a layup, every Blue point in a game-7 series win. Then, on 5/4, the geopolitical landscape of Morning Hoops shifted permanently: The Dynasty reunited. Nathan, Wags, Lee & Cal — a superteam forged through dozens of undefeated series years ago — reassembled on Blue and dismantled White 4-2. They also won the in-season tournament. The one that actually matters. May is two sessions old and already the most consequential month in league history.",
+    insight: "Lee's 7/7 game was the headline until The Dynasty made it a footnote. The in-season tournament now belongs to Nathan, Wags, Lee & Cal. Whether this represents peak Morning Hoops or the opening salvo of an arms race remains to be seen. Dane's debut adds fresh blood. The Dynasty's reunion adds fresh anxiety for everyone else.",
   },
 ];
 
 const CORRELATIONS = [
-  { name: "Nathan", tag: "Structural Beam", desc: "The most-played human in this league by a country mile. Nathan has been on the court for nearly every series ever recorded, often on Blue, always doing what Nathan does, which the spreadsheet describes as 'showing up.' If Morning Hoops were a building, Nathan would be the load-bearing wall everyone takes for granted until they realize he's the only reason the roof is still up." },
+  { name: "Nathan", tag: "Structural Beam / Dynasty", desc: "The most-played human in this league by a country mile. Nathan has been on the court for nearly every series ever recorded, often on Blue, always doing what Nathan does, which the spreadsheet describes as 'showing up.' If Morning Hoops were a building, Nathan would be the load-bearing wall everyone takes for granted until they realize he's the only reason the roof is still up. Now also a Dynasty charter member, which means he's load-bearing in TWO organizations. The man is structurally critical to the league AND to a championship squad. OSHA should be notified." },
   { name: "Tyler", tag: "Still Elite, Fully Human", desc: "Started 6-0 lifetime. Has since lost a few and is no longer perfect, but still owns the best sustained win rate in the group. He scored all 7 in game 2 of Friday 3/27 going 7/7 from the field. He's now a charter member of the 7/7 Club and the only player whose absence from a session immediately becomes the explanation for why his team lost." },
   { name: "Gabe", tag: "Quietly Dominant", desc: "The workhorse. Plays almost every day, wins more than he loses. Back on Monday 3/23 he went 7/7 in game one (three threes and a layup, ones and twos), founding the 7/7 Club without realizing it. Gabe just keeps quietly winning basketball games at 4:45 in the morning like a machine with knee pads and an unimpeachable jumper." },
-  { name: "Cal", tag: "Flamethrower / Jet Setter", desc: "On Thursday 4/9 Cal hit six consecutive threes in the post-sweep tournament run like the gym had personally wronged him. On Wednesday 4/15 he got swept 0-4. Cal is a meteorological event: you can't predict him, you can only evacuate. He also spends a suspicious amount of time in Florida. The investigation continues." },
-  { name: "Wags", tag: "Solid Citizen", desc: "Plays a lot. Wins a respectable amount. Doesn't make headlines. Has a #23 inexplicably appended to his name in the spreadsheet, which we choose to believe is a Jordan tribute and not a uniform number, because there are no uniforms. Wags is the dictionary definition of 'reliable contributor,' which sports media calls a compliment but humans call boring. We mean it as a compliment." },
+  { name: "Cal", tag: "Flamethrower / Dynasty", desc: "On Thursday 4/9 Cal hit six consecutive threes in the post-sweep tournament run like the gym had personally wronged him. On Wednesday 4/15 he got swept 0-4. Cal is a meteorological event: you can't predict him, you can only evacuate. He also spends a suspicious amount of time in Florida. The investigation continues. Even The Dynasty couldn't predict when Cal would show up, but when he did on 5/4, championships happened. The Flamethrower now has a ring. The league should be terrified." },
+  { name: "Wags", tag: "Solid Citizen / Dynasty", desc: "Plays a lot. Wins a respectable amount. Doesn't make headlines. Has a #23 inexplicably appended to his name in the spreadsheet, which we choose to believe is a Jordan tribute and not a uniform number, because there are no uniforms. Wags is the dictionary definition of 'reliable contributor,' which sports media calls a compliment but humans call boring. We mean it as a compliment. The résumé now includes 'Dynasty member' and 'in-season tournament champion,' which upgrades 'reliable contributor' to 'reliable contributor with hardware.' Still boring. Still winning." },
   { name: "Ryan", tag: "Always There", desc: "Ryan plays. Ryan plays a lot. Ryan plays nearly as much as Nathan and Gabe but somehow gets less screentime in the group chat, which is a crime. Ryan once subbed in for an absent teammate at 4:45 AM, which puts him in a category of 'human beings willing to get out of bed for someone else's basketball commitment' that has approximately three members." },
   { name: "Jared", tag: "Streak Engine", desc: "Jared is wildly streaky. He once had back-to-back wins which the dashboard described as 'a spiritual awakening,' then immediately lost the next one. His career trajectory looks like a heart monitor. He shows up, he tries hard, and the universe decides what happens next." },
   { name: "Chad", tag: "The Disappearer", desc: "Chad once vanished for an entire week of games (Week 3) and reappeared with no explanation, no apology, just vibes. Has a 'distinguished twin' named Chadwick who debuted on 4/14, and the two have never been seen in the same building. This is suspicious." },
@@ -95,7 +96,7 @@ const CORRELATIONS = [
   { name: "Cody", tag: "Bathroom Break", desc: "On Thursday 4/9 Cody missed the tip of game one because he was, to put it delicately, conducting important gastrointestinal business in the facilities. Blue opened the series down a body and got swept 0-4. The forensic asterisk will follow him until he retires or the plumbing is investigated, whichever comes first." },
   { name: "Chadwick", tag: "Chad's Distinguished Twin", desc: "Debuted Tuesday 4/14. Is supposedly Chad's twin. Nobody has ever seen Chad and Chadwick in the same room. The Witness Protection Program is one possibility. A long con is another. Currently cataloged as 'unsolved.'" },
   { name: "Dane", tag: "Newcomer", desc: "Debuted Friday 5/1 on Blue and won. A 1.000 lifetime win rate, which is technically tied with rookie-Tyler before the wheels came off. We'll see how this ages. Dane: enjoy the view from the top while it lasts." },
-  { name: "Lee", tag: "7/7 Club", desc: "Spent the early season as the league's most reliable losing streak — a weather system with a jump shot. Then went 7/7 on Fri 5/1: three threes and a layup, every Blue point in a pivotal Game 5. One perfect game in a sea of open-layup misses." },
+  { name: "Lee", tag: "7/7 Club / Dynasty", desc: "Spent the early season as the league's most reliable losing streak — a weather system with a jump shot. Then went 7/7 on Fri 5/1: three threes and a layup, every Blue point in a pivotal Game 5. One perfect game in a sea of open-layup misses. Also a Dynasty founding member, which means the man went from a 7-game losing streak to a dynasty championship. Character arc of the century. Hollywood would option this if the production budget wasn't $0 and the venue wasn't a gym at 4:45 AM." },
 ];
 
 // ═══════════════════════════════════════════════════════════
@@ -472,7 +473,7 @@ export default function App() {
           <div style={L}>Season Summary</div>
           <h2 style={{ ...S, fontSize: 'var(--type-headline)', color: t.text, margin: 0, fontWeight: 400 }}>The State of the Gym</h2>
           <div style={{ fontSize: 'var(--type-body)', color: t.t2, marginTop: 6, lineHeight: 1.6, maxWidth: 'var(--space-prose-max)' }}>
-            {decided.length} decided 7-game series. {uniquePlayers(players)} players. Blue leads {bW}–{wW}. Tyler is mortal but still elite. Gabe and Nathan are the structural beams holding this gym together. Cal is a flamethrower who occasionally vanishes to Florida. Ryan has quietly become the most reliable player nobody talks about. The 7/7 Club has a third member. Anyway, here's the summary.
+            {decided.length} decided 7-game series. {uniquePlayers(players)} players. Blue leads {bW}–{wW}. Tyler is mortal but still elite. Gabe and Nathan are the structural beams holding this gym together. Cal is a flamethrower who occasionally vanishes to Florida. Ryan has quietly become the most reliable player nobody talks about. The 7/7 Club has a third member. <strong style={{ color: t.gold }}>Breaking:</strong> The Dynasty — Nathan, Wags, Lee & Cal — reunited on 5/4 and won both the series (4-2) and the in-season tournament. See the Season tab for the full forensic report. Anyway, here{"'"}s the summary.
           </div>
         </div>
 
@@ -687,6 +688,7 @@ export default function App() {
             { label: "Attendance", id: "season-attendance" },
             { label: "Tyler Losses", id: "season-tyler" },
             { label: "7/7 Club", id: "season-club" },
+            { label: "Dynasty", id: "season-dynasty" },
             { label: "Algorithm", id: "season-algorithm" },
           ].map((s, i) => (
             <button key={i} onClick={() => document.getElementById(s.id)?.scrollIntoView({ behavior: "smooth", block: "start" })} aria-label={`Jump to ${s.label} section`} style={{ background: t.inset, border: `1px solid ${t.border}`, padding: "8px 14px", cursor: "pointer", fontSize: 'var(--type-body-sm)', fontWeight: 600, color: t.t3, fontFamily: "'Outfit',sans-serif", whiteSpace: "nowrap", borderRadius: 6, minHeight: 44, flexShrink: 0 }}>{s.label}</button>
@@ -926,6 +928,53 @@ export default function App() {
           </div>
         </div>
 
+        {/* THE DYNASTY */}
+        <SectionDivider />
+        <div id="season-dynasty" style={{...L, scrollMarginTop: 64}}>🏆 The Dynasty</div>
+        <div style={{ ...C(), marginBottom: 'var(--space-section-gap)', borderColor: dark ? "rgba(251,191,36,.25)" : "rgba(202,138,4,.2)", background: dark ? "rgba(251,191,36,.06)" : "rgba(202,138,4,.04)" }}>
+          <div style={{ fontSize: 'var(--type-body)', color: t.t2, lineHeight: 1.7, marginBottom: 18, maxWidth: 'var(--space-prose-max)' }}>
+            Years ago, four men — Nathan, Wags, Lee & Cal — formed a fixed squad and proceeded to go undefeated across dozens of series. Nobody knows how. Science has no explanation. The film room footage is classified. They disbanded, went their separate ways, and the league moved on. Until 5/4, when they reassembled on Blue and reminded everyone why the word {"\""}dynasty{"\""} exists.
+          </div>
+
+          {/* ROSTER CARD */}
+          <div style={{ display: "grid", gridTemplateColumns: isCompact ? "1fr 1fr" : "1fr 1fr 1fr 1fr", gap: 10, marginBottom: 18 }}>
+            {[
+              { name: "Nathan", role: "Structural Beam" },
+              { name: "Wags", role: "Solid Citizen" },
+              { name: "Lee", role: "7/7 Club" },
+              { name: "Cal", role: "Flamethrower" },
+            ].map(m => (
+              <div key={m.name} style={{ padding: "14px", background: dark ? 'rgba(251,191,36,.08)' : 'rgba(251,191,36,.06)', borderRadius: 10, border: `1px solid ${dark ? "rgba(251,191,36,.18)" : "rgba(251,191,36,.22)"}`, textAlign: "center" }}>
+                <div style={{ fontSize: 'var(--type-title)', color: t.gold, marginBottom: 2 }}>👑</div>
+                <div style={{ ...S, fontSize: 'var(--type-title)', color: t.text, fontWeight: 700 }}>{m.name}</div>
+                <div style={{ fontSize: 'var(--type-label)', color: t.t3, marginTop: 2 }}>{m.role}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* MAY 4TH RESULT */}
+          <div style={{ background: dark ? 'rgba(251,191,36,.05)' : 'rgba(251,191,36,.04)', borderRadius: 10, padding: 'var(--space-card-padding)', border: `1px solid ${dark ? "rgba(251,191,36,.12)" : "rgba(251,191,36,.15)"}`, marginBottom: 18 }}>
+            <div style={{ fontSize: 'var(--type-label)', fontWeight: 800, letterSpacing: 1.5, color: t.gold, marginBottom: 6 }}>REUNION RESULT · SUN 5/4</div>
+            <div style={{ ...S, fontSize: 'var(--type-stat-lg)', color: t.text, lineHeight: 1.2 }}>Dynasty 4, White 2</div>
+            <div style={{ fontSize: 'var(--type-body-sm)', color: t.t2, marginTop: 8, lineHeight: 1.6 }}>
+              Ryan, Kyle, Chad & Jared showed up as White and left as footnotes. The Dynasty reassembled after years apart and played like the intervening time was a clerical error. Four games to two. Clinical. Surgical. Mildly disrespectful.
+            </div>
+          </div>
+
+          {/* IN-SEASON TOURNAMENT */}
+          <div style={{ background: dark ? 'rgba(251,191,36,.05)' : 'rgba(251,191,36,.04)', borderRadius: 10, padding: 'var(--space-card-padding)', border: `1px solid ${dark ? "rgba(251,191,36,.12)" : "rgba(251,191,36,.15)"}`, marginBottom: 18 }}>
+            <div style={{ fontSize: 'var(--type-label)', fontWeight: 800, letterSpacing: 1.5, color: t.gold, marginBottom: 6 }}>🏆 IN-SEASON TOURNAMENT CHAMPIONS</div>
+            <div style={{ fontSize: 'var(--type-body)', color: t.t2, lineHeight: 1.7 }}>
+              The Dynasty didn{"'"}t just win the series — they won the in-season tournament. This is the one that actually matters. The regular season is just cardio. The tournament is where legacies are made, and The Dynasty{"'"}s legacy was already extensive before they added {"\""}tournament champions{"\""} to the résumé. The trophy is theirs. It is non-negotiable.
+            </div>
+          </div>
+
+          {/* CLOSING QUIP */}
+          <div style={{ fontSize: 'var(--type-body)', color: t.accent, lineHeight: 1.7, fontStyle: "italic", maxWidth: 'var(--space-prose-max)', borderTop: `1px solid ${dark ? "rgba(251,191,36,.12)" : "rgba(251,191,36,.1)"}`, paddingTop: 14 }}>
+            Whether The Dynasty{"'"}s return is a one-time nostalgia tour or the beginning of a permanent restructuring of Morning Hoops power dynamics is unclear. What IS clear is that four guys showed up on a Sunday and chose violence. The league has been placed on notice. The film room footage remains classified. The investigation is ongoing. The trophy is not.
+          </div>
+        </div>
+
         {/* ALGORITHM MATCHUP */}
         {(() => {
           const candidates = Object.entries(players)
@@ -1036,7 +1085,8 @@ export default function App() {
 
       <footer style={{ textAlign: "center", fontSize: 'var(--type-label)', color: t.t3, paddingBottom: 40, lineHeight: 1.7 }}>
         <span style={{ color: t.accent }}>Morning Hoops</span> · 7-Game Series · Verified from spreadsheet<br />
-        Played at 4:45 AM. Tyler is mortal. Gabe is unkillable. Cal is under investigation. The spreadsheet is gospel.
+        Played at 4:45 AM. Tyler is mortal. Gabe is unkillable. Cal is under investigation. The spreadsheet is gospel.<br />
+        <span style={{ color: t.gold }}>The Dynasty{"'"}s tournament trophy is non-negotiable.</span> Now featuring dynasty-level delusions of grandeur.
       </footer>
     </div>
   );
