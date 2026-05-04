@@ -55,7 +55,7 @@ const SESSIONS = [
   { day: "Wed 4/29", month: "April", blue: ["Lee","Mike","Jared","Tyler","Ryan"], white: ["Nathan","Chad","Cody","Sean","Gabe","Cal"], winner: "white", score: "4-0", note: "Seventh sweep in history. The spreadsheet refers to one participant as 'Sean aka big dumb b——,' which is the kind of editorial decision that earns this league its accreditation." },
   { day: "Thu 4/30", month: "April", blue: [], white: [], winner: null, score: null, note: "No game. Allegedly only Nathan and Lee showed up, which is two humans short of basketball and one human short of a meaningful conversation." },
   { day: "Fri 5/1", month: "May", blue: ["Nathan","Lee","Chad","Ryan"], white: ["Mike","Tyler","Dane","Cal"], winner: "blue", score: "4-3", note: "Dane debuted. Lee went 7/7 in game 5 — 3 from beyond the arc and a layup — scoring every point for the winning Blue squad. Blue took the series 4-3. Lee joins the season's exclusive 7/7 Club alongside Gabe (Mon 3/23) and Tyler (Fri 3/27)." },
-  { day: "Sun 5/4", month: "May", blue: ["Nathan","Wags","Lee","Cal"], white: ["Ryan","Kyle","Chad","Jared"], winner: "blue", score: "4-2", note: "The Dynasty reunited. Nathan, Wags, Lee & Cal — a superteam forged years ago through dozens of undefeated series — reassembled on Blue and dispatched White 4-2. They also won the in-season tournament, which is the one that actually matters. Four men. One shared delusion of grandeur. Zero apologies." },
+  { day: "Mon 5/4", month: "May", blue: ["Nathan","Wags","Lee","Cal"], white: ["Ryan","Kyle","Chad","Jared"], winner: "blue", score: "4-2", note: "The Dynasty reunited. Nathan, Wags, Lee & Cal — a superteam forged years ago through dozens of undefeated series — reassembled on Blue and dispatched White 4-2. They also won the in-season tournament, which is the one that actually matters. Four men. One shared delusion of grandeur. Zero apologies." },
 ];
 
 // Group sessions by month
@@ -1068,9 +1068,9 @@ export default function App() {
           } else {
             return;
           }
-          setTab(tabIds[newIndex]);
+          setTab(tabIds[newIndex]); window.scrollTo(0, 0);
         }} style={{ display: "flex", gap: 6, marginBottom: 'var(--space-section-gap)', overflowX: "auto", WebkitOverflowScrolling: "touch", padding: 4, background: t.inset, borderRadius: 999, scrollbarWidth: "none", position: "sticky", top: 0, zIndex: 10, backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)", scrollSnapType: "x mandatory" }}>
-          {tabs.map(tb => <button key={tb.id} ref={tb.id === tab ? activeTabRef : null} role="tab" aria-selected={tab === tb.id} tabIndex={tb.id === tab ? 0 : -1} onClick={() => setTab(tb.id)} style={{ background: tab === tb.id ? t.card : "transparent", border: tab === tb.id ? `1px solid ${t.border}` : "1px solid transparent", borderRadius: 999, padding: "8px 16px", cursor: "pointer", fontSize: 'var(--type-body)', fontWeight: tab === tb.id ? 700 : 500, color: tab === tb.id ? t.accent : t.t2, fontFamily: "'Outfit',sans-serif", transition: "all .15s", whiteSpace: "nowrap", minHeight: 44, minWidth: 44, scrollSnapAlign: "center" }}>{tb.label}</button>)}
+          {tabs.map(tb => <button key={tb.id} ref={tb.id === tab ? activeTabRef : null} role="tab" aria-selected={tab === tb.id} tabIndex={tb.id === tab ? 0 : -1} onClick={() => { setTab(tb.id); window.scrollTo(0, 0); }} style={{ background: tab === tb.id ? t.card : "transparent", border: tab === tb.id ? `1px solid ${t.border}` : "1px solid transparent", borderRadius: 999, padding: "8px 16px", cursor: "pointer", fontSize: 'var(--type-body)', fontWeight: tab === tb.id ? 700 : 500, color: tab === tb.id ? t.accent : t.t2, fontFamily: "'Outfit',sans-serif", transition: "all .15s", whiteSpace: "nowrap", minHeight: 44, minWidth: 44, scrollSnapAlign: "center" }}>{tb.label}</button>)}
         </nav>
 
         <div style={{ display: "flex", gap: 16, marginBottom: 20, fontSize: 'var(--type-body-sm)', color: t.t3, justifyContent: isCompact ? "center" : "flex-start" }}>
