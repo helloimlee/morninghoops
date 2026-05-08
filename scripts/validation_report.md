@@ -1,13 +1,13 @@
 # Morning Hoops: Validation Report
 
-Generated: 2026-05-01T16:34:37.572Z
+Generated: 2026-05-08T16:48:40.496Z
 
 > ⚠️ **Could not fetch live data** — SHEET_TABS gids are still placeholder values ("PASTE_GID_HERE"). Fill them in with real gids from your Google Sheet.
 > Running comparison against legacy data only. Aggregate stats below are computed from the hardcoded legacy snapshot.
 
 ## Summary
 
-- Legacy sessions: 44
+- Legacy sessions: 49
 - Live sessions: 0 (fetch unavailable)
 - Comparison: N/A
 
@@ -46,17 +46,17 @@ Check these specific sessions that were previously flagged:
 
 | Stat | Hardcoded | Live | Match? |
 |------|-----------|------|--------|
-| Total decided series | 35 | N/A | — |
-| Blue wins | 23 | N/A | — |
+| Total decided series | 38 | N/A | — |
+| Blue wins | 26 | N/A | — |
 | White wins | 12 | N/A | — |
 | Sweeps (4-0) | 7 | N/A | — |
-| Tyler W-L | 14-4 | N/A | — |
-| Lee W-L | 14-15 | N/A | — |
-| Nathan attendance | 36 | N/A | — |
-| Gabe attendance | 31 | N/A | — |
-| Cal attendance | 26 | N/A | — |
-| Wags attendance | 23 | N/A | — |
-| Ryan attendance | 31 | N/A | — |
+| Tyler W-L | 16-4 | N/A | — |
+| Lee W-L | 16-16 | N/A | — |
+| Nathan attendance | 39 | N/A | — |
+| Gabe attendance | 33 | N/A | — |
+| Cal attendance | 29 | N/A | — |
+| Wags attendance | 24 | N/A | — |
+| Ryan attendance | 32 | N/A | — |
 
 ## 7/7 Club Verification
 

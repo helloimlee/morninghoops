@@ -769,5 +769,48 @@
     "winner": "blue",
     "score": "4-3",
     "note": "Dane debuted. Lee went 7/7 in game 5 — 3 from beyond the arc and a layup — scoring every point for the winning Blue squad. Blue took the series 4-3. Lee joins the season's exclusive 7/7 Club alongside Gabe (Mon 3/23) and Tyler (Fri 3/27)."
+  },
+  {
+    "day": "Mon 5/4",
+    "month": "May",
+    "blue": ["Nathan", "Wags", "Lee", "Cal"],
+    "white": ["Ryan", "Kyle", "Chad", "Jared"],
+    "winner": "blue",
+    "score": "4-2",
+    "note": "The Dynasty reunion."
+  },
+  {
+    "day": "Tue 5/5",
+    "month": "May",
+    "blue": [],
+    "white": [],
+    "winner": null,
+    "score": null,
+    "note": "2 showed (Nathan, Lee). No game."
+  },
+  {
+    "day": "Wed 5/6",
+    "month": "May",
+    "blue": ["Lee", "Mike", "Gabe", "Jared", "Tyler"],
+    "white": ["Nathan", "Chad", "Cal"],
+    "winner": "blue",
+    "score": "4-3"
+  },
+  {
+    "day": "Thu 5/7",
+    "month": "May",
+    "blue": [],
+    "white": [],
+    "winner": null,
+    "score": null,
+    "note": "6 showed (Nathan, Lee, Gabe, Wags, Jared, Cal). No game."
+  },
+  {
+    "day": "Fri 5/8",
+    "month": "May",
+    "blue": ["Nathan", "Kyle", "Tyler", "Cal"],
+    "white": ["Lee", "Mike", "Gabe", "Mitch"],
+    "winner": "blue",
+    "score": "4-1"
   }
 ]
