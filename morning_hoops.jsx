@@ -60,6 +60,14 @@ const SESSIONS = [
   { day: "Wed 5/6", month: "May", blue: ["Lee","Mike","Gabe","Jared","Tyler"], white: ["Nathan","Chad","Cal"], winner: "blue", score: "4-3" },
   { day: "Thu 5/7", month: "May", blue: [], white: [], winner: null, score: null, note: "6 showed (Nathan, Lee, Gabe, Wags, Jared, Cal). No game." },
   { day: "Fri 5/8", month: "May", blue: ["Nathan","Kyle","Tyler","Cal"], white: ["Lee","Mike","Gabe","Mitch"], winner: "blue", score: "4-1" },
+  { day: "Mon 5/11", month: "May", blue: ["Nathan","Gabe","Wags","Cal"], white: ["Sean","Ryan","Tyler","Jared"], winner: "blue", score: "4-3", note: "PHS GRADS vs All" },
+  { day: "Tue 5/12", month: "May", blue: [], white: [], winner: null, score: null, note: "No game. 6 showed (Nathan, Sean, Gabe, Ryan, Wags, Cal)." },
+  { day: "Wed 5/13", month: "May", blue: ["Nathan","Mike","Ryan","Tyler"], white: ["Gabe","Sean","Jared","Cal"], winner: "white", score: "4-3", note: "Old Vs Young" },
+  { day: "Thu 5/14", month: "May", blue: [], white: [], winner: null, score: null, note: "No game. 5 showed (Nathan, Sean, Gabe, Ryan, Wags)." },
+  { day: "Fri 5/15", month: "May", blue: [], white: [], winner: null, score: null, note: "No game. 8 showed (Nathan, Mike, Gabe, Ryan, Tyler, Mitch, Jared, Cal)." },
+  { day: "Mon 5/18", month: "May", blue: ["Lee","Tyler","Gabe","Mike"], white: ["Nathan","Wags","Ryan","Chad"], winner: "white", score: "4-3" },
+  { day: "Tue 5/19", month: "May", blue: [], white: [], winner: null, score: null, note: "No game." },
+  { day: "Wed 5/20", month: "May", blue: ["Lee","Mike","Tyler","Gabe"], white: ["Nathan","Chad","Wags","Ryan"], winner: "white", score: "4-2", note: "Ryan hit a sick game-winning 3. Classic Chad was a flamethrower post vacation. Gabe wants the record to reflect Lee only had two points the entire series." },
 ];
 
 // Group sessions by month
@@ -79,28 +87,28 @@ const MONTHS = [
   {
     id: "may", label: "May", short: "May",
     name: "The Dynasty Returns",
-    commentary: "May opened with Dane's debut and Lee's 7/7 masterpiece on 5/1 — three threes and a layup, every Blue point in a game-7 series win. On 5/4, The Dynasty reunited: Nathan, Wags, Lee & Cal reassembled on Blue, dismantled White 4-2, and won the in-season tournament. The one that actually matters. On 5/5, only Nathan and Lee showed up, which is two humans short of basketball and one short of a reason to have driven there. On 5/6, Blue fielded five (Lee/Mike/Gabe/Jared/Tyler) against White's three (Nathan/Chad/Cal) and won 4-3. Five adults beat three adults by one game. Heroic is one word for it. On 5/7, six showed but no game materialized. The gym collected dust. On 5/8, Blue (Nathan/Kyle/Tyler/Cal) beat White (Lee/Mike/Gabe/Mitch) 4-1. Kyle emerged from witness protection. Mitch fell to 1-2 lifetime. May is 4-0 Blue. White hasn't won a series all month. At this point it's a civil rights issue.",
-    insight: "Blue is undefeated in May (4-0). The league is approaching UN intervention territory. The 5/6 game was 5v3 and Blue still only won 4-3 — Nathan dragged two teammates through a near-upset like a man carrying furniture up a staircase. Mitch's career arc is a tragedy in three acts: win, loss, loss. His debut W is now the exception, not the rule. Kyle reappeared for 5/8 and won immediately, suggesting his strategy of 'not showing up' may actually be working. The Dynasty's tournament trophy remains non-negotiable. White's May résumé remains blank.",
+    commentary: "May opened with Dane's debut and Lee's 7/7 masterpiece on 5/1 — three threes and a layup, every Blue point in a game-7 series win. On 5/4, The Dynasty reunited: Nathan, Wags, Lee & Cal reassembled on Blue, dismantled White 4-2, and won the in-season tournament. The one that actually matters. On 5/5, only Nathan and Lee showed up — two humans short of basketball and one short of a reason to have driven there. On 5/6, five adults beat three adults 4-3 (heroic is one word). On 5/8, Blue (Nathan/Kyle/Tyler/Cal) beat White 4-1. On 5/11, PHS GRADS (Nathan/Gabe/Wags/Cal) clipped White 4-3. On 5/13, Old vs Young ended with White (Gabe/Sean/Jared/Cal) winning 4-3 — youth prevailed, or maybe just Cal. On 5/18, White (Nathan/Wags/Ryan/Chad) took down Blue (Lee/Tyler/Gabe/Mike) 4-3. May finished 5-2 Blue overall. Three no-games in a single week (5/12, 5/14, 5/15) suggest the league's attendance policy is 'optional, like deodorant at 4:45 AM.'",
+    insight: "Blue went 5-2 in May. The Dynasty reunion on 5/4 remains the emotional peak. The 5/13 Old vs Young showdown ended with 'Young' winning, though Cal's presence on either team should require an age waiver. The 5/18 session saw Tyler take a rare L on Blue — paired with Mike, whose 5-16 career record may qualify as a federal disaster area. Mitch's career stands at 1-4. The honeymoon didn't just end; it filed for divorce. White finally got a couple of wins late in May, preventing what would have been an actual humanitarian crisis.",
   },
 ];
 
 const CORRELATIONS = [
-  { name: "Nathan", tag: "Structural Beam / Dynasty", desc: "Has appeared in 39 of the league's sessions — every single day rosters were recorded. Blue in 23 of those 39. Nathan is not a player; he is a Blue jersey with legs and a pulse. If Morning Hoops were a building, Nathan would be the foundation, the walls, and most of the plumbing. Dynasty charter member, tournament champion, and the only man whose attendance record qualifies as a civil engineering project. OSHA has been notified. They sent a card." },
-  { name: "Tyler", tag: "Still Elite, Fully Human", desc: "Started 6-0 lifetime. Has since lost a few and is no longer perfect, but still owns the best sustained win rate in the group. He scored all 7 in game 2 of Friday 3/27 going 7/7 from the field. He's now a charter member of the 7/7 Club and the only player whose absence from a session immediately becomes the explanation for why his team lost." },
-  { name: "Gabe", tag: "Quietly Dominant", desc: "Plays nearly every day, wins more than he loses, and does it all with the public profile of a filing cabinet. Founded the 7/7 Club on Mon 3/23 without telling anyone. Played 5/6 (won, Blue) and 5/8 (lost, White) like a man clocking in and out of a shift. Gabe is the league's most reliable piece of furniture — always there, always functional, occasionally load-bearing." },
-  { name: "Cal", tag: "Flamethrower / Dynasty", desc: "On Thursday 4/9 Cal hit six consecutive threes in the post-sweep tournament run like the gym had personally wronged him. On Wednesday 4/15 he got swept 0-4. Cal is a meteorological event: you can't predict him, you can only evacuate. He also spends a suspicious amount of time in Florida. The investigation continues. Even The Dynasty couldn't predict when Cal would show up, but when he did on 5/4, championships happened. The Flamethrower now has a ring. The league should be terrified." },
-  { name: "Wags", tag: "Solid Citizen / Dynasty", desc: "Plays a lot. Wins a respectable amount. Doesn't make headlines. Has a #23 inexplicably appended to his name in the spreadsheet, which we choose to believe is a Jordan tribute and not a uniform number, because there are no uniforms. Wags is the dictionary definition of 'reliable contributor,' which sports media calls a compliment but humans call boring. We mean it as a compliment. The résumé now includes 'Dynasty member' and 'in-season tournament champion,' which upgrades 'reliable contributor' to 'reliable contributor with hardware.' Still boring. Still winning." },
-  { name: "Ryan", tag: "Always There", desc: "Ryan plays. Ryan plays a lot. Ryan plays nearly as much as Nathan and Gabe but somehow gets less screentime in the group chat, which is a crime. Ryan once subbed in for an absent teammate at 4:45 AM, which puts him in a category of 'human beings willing to get out of bed for someone else's basketball commitment' that has approximately three members." },
-  { name: "Jared", tag: "Streak Engine", desc: "Jared is wildly streaky. He once had back-to-back wins which the dashboard described as 'a spiritual awakening,' then immediately lost the next one. His career trajectory looks like a heart monitor. He shows up, he tries hard, and the universe decides what happens next." },
-  { name: "Chad", tag: "The Disappearer", desc: "Chad once vanished for an entire week of games (Week 3) and reappeared with no explanation, no apology, just vibes. Has a 'distinguished twin' named Chadwick who debuted on 4/14, and the two have never been seen in the same building. This is suspicious." },
-  { name: "Kyle", tag: "Ghost Mode", desc: "Kyle's attendance is so sporadic that each appearance feels like a season premiere. Showed up 5/4 (lost, White), vanished, then materialized on 5/8 (won, Blue) like a man emerging from witness protection with a fresh haircut and a W. His strategy of 'not being here' may genuinely be outperforming several people who are." },
-  { name: "Sean", tag: "Team Black Analyst", desc: "Predicted 'team black' from his couch in a league with blue and white jerseys, then returned to the court and kept losing. The Wednesday 4/29 spreadsheet refers to him as 'Sean aka big dumb b——,' which is the kind of in-group nickname you only earn by being deeply, lovingly insufferable. We mean it as a compliment." },
-  { name: "Mike", tag: "Birthday Boy", desc: "Got the day off Thursday 3/26 for his birthday. Came back Friday and got swept 0-4. Played 5/6 (won, Blue) and 5/8 (lost, White), continuing his career as a solid role player whose defense remains a thought experiment. Three months of data have upgraded the assessment from 'philosophical' to 'conceptual art.'" },
-  { name: "Mitch", tag: "The Honeymoon Is Over", desc: "Career record: 1-2. Won his debut week on 4/24 and briefly knew joy. Returned 5/8 on White and lost 4-1, because the universe remembered he was here. Mitch's career arc is a tragedy in three acts: swept, swept, won, then lost again. The honeymoon is over. The league is now just marriage." },
-  { name: "Cody", tag: "Bathroom Break", desc: "On Thursday 4/9 Cody missed the tip of game one because he was, to put it delicately, conducting important gastrointestinal business in the facilities. Blue opened the series down a body and got swept 0-4. The forensic asterisk will follow him until he retires or the plumbing is investigated, whichever comes first." },
-  { name: "Chadwick", tag: "Chad's Distinguished Twin", desc: "Debuted Tuesday 4/14. Is supposedly Chad's twin. Nobody has ever seen Chad and Chadwick in the same room. The Witness Protection Program is one possibility. A long con is another. Currently cataloged as 'unsolved.'" },
-  { name: "Dane", tag: "Retired Undefeated", desc: "Debuted Friday 5/1 on Blue. Won. Has not been seen since. Dane is 1-0 lifetime, which makes him the smartest man in Morning Hoops history — he showed up once, collected a win, and immediately retired at the top. An undefeated record is easy when you treat the league like a one-night stand." },
-  { name: "Lee", tag: "7/7 Club / Dynasty", desc: "Won a Dynasty championship on 5/4, rode the high through 5/6 (won, Blue in a 5v3), then lost on 5/8 (White) because the universe insists on .500. Lee's career is the most .500 thing in sports history — every triumph is immediately followed by a correction, like a stock market for people who can't guard a pick-and-roll. Still a 7/7 Club member. Still a Dynasty champion. Still, somehow, exactly average." },
+  { name: "Nathan", tag: "Structural Beam / Dynasty", desc: "26-15 lifetime. Has appeared in every single session rosters were recorded. Blue in 26 of 41. Nathan is not a player; he is a Blue jersey with legs and a pulse. If Morning Hoops were a building, Nathan would be the foundation, the walls, and most of the plumbing. Dynasty charter member, tournament champion, and the only man whose attendance record qualifies as a civil engineering project.", roast: "63% win rate sounds impressive until you realize he's been carried by Cal more times than a grocery bag. Shows up every single day like a man running from something — probably his alarm clock, possibly his life choices. Built the entire league just so he'd have somewhere to be at 4:45 AM, which is either dedication or a cry for help disguised as a jump shot. The 'Structural Beam' nickname is generous — more like the guy who won't leave the party because he organized it." },
+  { name: "Tyler", tag: "Still Elite, Fully Human", desc: "16-7 lifetime (69.6%). Started 6-0 and seemed immortal. Has since proven he bleeds. Scored all 7 in game 2 of Fri 3/27 going 7/7 from the field. Charter member of the 7/7 Club. Still owns the second-best win rate in the league, and the only player whose absence immediately becomes the explanation for why his team lost.", roast: "16-7 and a 70% win rate, which he'll remind you about while you're still putting your shoes on. Started the season undefeated and treated his first loss like a death in the family. The whole group chat held a vigil. Tyler doesn't play basketball — he conducts a TED Talk in athletic shorts about why he's better than you. The 7/7 game was genuinely filthy, but he's been dining out on it for three months like a guy who peaked in high school. Oh wait." },
+  { name: "Gabe", tag: "Quietly Dominant", desc: "21-14 lifetime (60.0%). Plays nearly every day, wins more than he loses, and does it all with the public profile of a filing cabinet. Founded the 7/7 Club on Mon 3/23 without telling anyone. Gabe is the league's most reliable piece of furniture — always there, always functional, occasionally load-bearing.", roast: "21-14 and nobody knows. Gabe has the personality of a well-maintained appliance. He shows up, shoots, wins 60% of the time, and goes home without making a single memory. Founded the 7/7 Club and didn't even celebrate — just clocked out like a man finishing a shift at the emotional factory. If Gabe were a spice, he'd be flour. If he were a book, he'd be the terms and conditions. His game is legitimately good. His vibes are legitimately nonexistent." },
+  { name: "Cal", tag: "Flamethrower / Dynasty", desc: "22-9 lifetime (71.0%) — best win rate in the league. On Thu 4/9 hit six consecutive threes in the post-sweep run. On Wed 4/15 got swept 0-4. A meteorological event: you can't predict him, you can only evacuate. Spends a suspicious amount of time in Florida. Dynasty charter member and in-season tournament champion.", roast: "71% win rate. Highest in the league. And somehow Cal acts like HE'S the underdog. Hit six straight threes on 4/9 like the rim owed him money, then got swept three days later because God needed to nerf him. Spends half his life in Florida and the other half making everyone in Indiana feel bad about themselves. The 'Flamethrower' nickname came from his shooting; the 'Flight Risk' nickname came from his attendance. If Cal ever committed to a full season the win rate would either hit 80% or implode from the pressure of actually having to show up on consecutive days." },
+  { name: "Wags", tag: "Solid Citizen / Dynasty", desc: "13-12 lifetime (52.0%). Plays a lot. Wins a respectable amount. Doesn't make headlines. Has a #23 inexplicably appended to his name in the spreadsheet. Dynasty charter member, in-season tournament champion, and the dictionary definition of 'reliable contributor' — which sports media calls a compliment but humans call boring.", roast: "13-12. Exactly one game over .500. Wags put '#23' next to his name like he's honoring Jordan, but his 52% win rate is honoring mediocrity. Dynasty member, tournament champion, and somehow still the fourth-most interesting person in a four-man group. Wags is the human equivalent of a Honda Civic — reliable, present, and absolutely nobody's first choice. He will show up. He will contribute. He will leave no lasting impression. The banner hangs in his heart. Nobody else notices it." },
+  { name: "Ryan", tag: "Always There, Never Remembered", desc: "17-17 lifetime (50.0%). Plays nearly as much as Nathan and Gabe but somehow gets less screentime in the group chat. A perfectly average record achieved through maximum attendance. Ryan is the .500 line made flesh.", roast: "17-17. Perfectly .500. Ryan has played 34 decided series and the universe has concluded he is exactly average. He shows up more than almost anyone and the reward is a record so unremarkable it could be a screensaver. Ryan is the human control group of Morning Hoops — remove him and the experiment stays the same. He once subbed in at 4:45 AM for someone who couldn't make it, which means he's not just mediocre, he's EAGERLY mediocre. Nobody has ever said 'we need Ryan on our team' with urgency." },
+  { name: "Jared", tag: "Streak Engine / L Collector", desc: "11-16 lifetime (40.7%). Wildly streaky — his career trajectory looks like a heart monitor. Shows up, tries hard, and the universe decides what happens next. The spreadsheet treats him less like a player and more like a weather pattern.", roast: "11-16. A 41% win rate, which is the statistical equivalent of bringing a pool noodle to a sword fight. Jared's career is a series of small tragedies connected by even smaller hopes. He'll win two in a row and you'll think 'okay, he's turning a corner,' and then he'll lose four straight like the corner was actually a cliff. The most dangerous place in Morning Hoops is between Jared and a losing streak — not because he'll hurt you, but because the sadness is contagious." },
+  { name: "Chad", tag: "The Disappearer", desc: "11-12 lifetime (47.8%). Vanishes for entire weeks without explanation, reappears with no apology, just vibes. Has a 'distinguished twin' named Chadwick who debuted on 4/14. The two have never been seen in the same building.", roast: "11-12. Chad has missed more sessions than some players have attended, and when he does show up, he plays like a man who just remembered basketball exists. His 'twin' Chadwick appeared once and lost, which means both versions of Chad are below .500. Chad doesn't have a basketball identity — he has a restraining order against consistency. Ghosts at least have the decency to haunt the same house. Chad can't even commit to that." },
+  { name: "Kyle", tag: "Ghost Mode", desc: "Kyle's attendance is so sporadic that each appearance feels like a season premiere. His strategy of 'not being here' may genuinely be outperforming several people who are.", roast: "Kyle's so absent from this league that listing him feels like an act of charity. Every time he shows up it's like a celebrity sighting — brief, confusing, and ultimately disappointing for everyone involved. His attendance record looks like a barcode. The league doesn't miss him so much as periodically remember he exists. Kyle treats Morning Hoops the way most people treat the gym in January: shows up twice, buys the outfit, vanishes by February." },
+  { name: "Sean", tag: "Team Black Prophet / 40% Effort", desc: "8-12 lifetime (40.0%). Predicted 'team black' from his couch in a league with blue and white jerseys, then returned to the court and kept losing. The Wed 4/29 spreadsheet refers to him as 'Sean aka big dumb b——,' which is an editorial decision that earned this league its accreditation.", roast: "8-12. A 40% win rate, which coincidentally matches his effort level. Sean predicted 'team black' from his couch for a league that only has blue and white jerseys — the kind of confidence that can only come from someone who doesn't let facts interfere with opinions. The spreadsheet literally calls him 'big dumb b——' and nobody objected, which tells you everything about his standing in the community. Sean shows up late, loses, and then explains in the group chat why it wasn't his fault. He is the human equivalent of a participation trophy — present, technically involved, and fooling nobody." },
+  { name: "Mike", tag: "Birthday Boy / Walking L", desc: "5-16 lifetime (23.8%) — worst win rate among regulars. Got swept on his birthday weekend. Defense remains a thought experiment across three months of data.", roast: "5-16. Twenty-three percent. Mike's win rate is lower than the interest rate on a savings account. He got the day off for his birthday, came back the next day, and got swept 0-4 — the gym's way of saying 'happy birthday, here's four Ls and a cupcake.' Mike has played 21 decided series and won five of them, which means putting Mike on your team is statistically worse than flipping a coin. His defense has been described as 'philosophical,' then upgraded to 'conceptual art,' and has now reached its final form: 'imaginary.' If losing were a skill, Mike would be the Tyler of losing." },
+  { name: "Mitch", tag: "Baptized at Birth", desc: "1-4 lifetime (20.0%). Got swept 0-4 in his debut on Fri 3/27. Won once on 4/24, then resumed losing. The honeymoon is over. The league is now just marriage.", roast: "1-4. Twenty percent win rate. Mitch showed up to his first-ever Morning Hoops session and got swept 0-4 like the gym was performing an exorcism. He won exactly once — on 4/24 — and has been chasing that high like a man who found twenty dollars on the ground and now checks every sidewalk. His career record is 1-4, which means four out of five times Mitch shows up, the other team thanks God. The 'Welcome to the League' playlist has been on repeat since March. At this point it's his entrance music." },
+  { name: "Lee", tag: "7/7 Club / Dynasty / Mr. .500", desc: "16-17 lifetime (48.5%). Won a Dynasty championship on 5/4. 7/7 Club member (Fri 5/1). The most .500 career in sports history — every triumph is immediately followed by a correction, like a stock market for people who can't guard a pick-and-roll.", roast: "16-17. Lee built the entire dashboard, computed everyone's stats, and STILL can't get his own record above .500. That's not irony — that's a hostage situation. He went 7/7 on 5/1 like a man possessed, then followed it up by continuing to hover around .500 like it's a lifestyle choice. Dynasty champion, 7/7 Club member, and the living proof that hardware doesn't fix your record. Lee's career is the basketball equivalent of running a marathon and finishing in the exact middle of the pack — impressive effort, aggressively average outcome. The man wakes up at 4:30 AM to be mediocre. Respect." },
+  { name: "Cody", tag: "Bathroom Break", desc: "On Thursday 4/9 Cody missed the tip of game one because he was conducting important gastrointestinal business in the facilities. Blue got swept 0-4. The forensic asterisk will follow him forever.", roast: "Cody's most memorable Morning Hoops moment happened in the bathroom. That's the tweet. That's the legacy. On 4/9 he missed tip-off because nature called and he answered on company time. His team got swept 0-4. Correlation isn't causation, but the jury is leaning heavily toward 'this is your fault.' The plumbing has not been investigated. The asterisk is permanent." },
+  { name: "Chadwick", tag: "Chad's Distinguished Twin", desc: "Debuted Tuesday 4/14. Is supposedly Chad's twin. Nobody has ever seen Chad and Chadwick in the same room. Currently cataloged as 'unsolved.'", roast: "Showed up once, lost, and vanished — which is exactly what a fake identity WOULD do. The investigation remains open." },
+  { name: "Dane", tag: "One and Done", desc: "Debuted Friday 5/1 on White. Lost. Has not been seen since. Dane is 0-1 lifetime — he showed up once, took an L, and retired at the bottom.", roast: "0-1 lifetime. Dane showed up to one session, lost, and was never seen again. Most people call that 'quitting.' Dane calls it 'unfinished business he has no intention of finishing.' The only player whose entire career can be summarized in a single word: 'no.'" },
 ];
 
 // ═══════════════════════════════════════════════════════════
@@ -119,12 +127,28 @@ function getStats(sessions) {
   sessions.forEach(s => {
     const process = (arr, team) => arr.forEach(n => {
       uniquePlayers.add(n);
-      if (!p[n]) p[n] = { g: 0, w: 0, l: 0, bt: 0, wt: 0, bw: 0, ww: 0 };
+      if (!p[n]) p[n] = { g: 0, w: 0, l: 0, bt: 0, wt: 0, bw: 0, ww: 0, gw: 0, gl: 0 };
       p[n].g++; p[n][team === "blue" ? "bt" : "wt"]++;
       if (s.winner === "blue") { p[n].bw++; if (team === "blue") p[n].w++; else p[n].l++; }
       else if (s.winner === "white") { p[n].ww++; if (team === "white") p[n].w++; else p[n].l++; }
     });
     process(s.blue, "blue"); process(s.white, "white");
+
+    // Parse individual game wins/losses from score (e.g. "4-2")
+    if (s.winner && s.score && s.score !== "W") {
+      const [winGames, loseGames] = s.score.split("-").map(Number);
+      if (!isNaN(winGames) && !isNaN(loseGames)) {
+        const blueWon = s.winner === "blue";
+        s.blue.forEach(n => {
+          p[n].gw += blueWon ? winGames : loseGames;
+          p[n].gl += blueWon ? loseGames : winGames;
+        });
+        s.white.forEach(n => {
+          p[n].gw += blueWon ? loseGames : winGames;
+          p[n].gl += blueWon ? winGames : loseGames;
+        });
+      }
+    }
 
     const addPair = (obj, a, b) => { const k = [a,b].sort().join("|||"); obj[k] = (obj[k]||0) + 1; };
     const addPairRec = (a, b, won) => {
@@ -234,6 +258,7 @@ function Dot({ team, dark }) {
 
 export default function App() {
   const [tab, setTab] = useState("summary");
+  const [statsMode, setStatsMode] = useState("series"); // "series" | "games"
   const [dark, setDark] = useState(() => {
     if (typeof window === "undefined") return true;
     const stored = localStorage.getItem("morning-hoops-theme");
@@ -241,8 +266,8 @@ export default function App() {
     if (window.matchMedia("(prefers-color-scheme: light)").matches) return false;
     return true;
   });
-  const [layout, setLayout] = useState(() => {
-    if (typeof window === "undefined") return "wide";
+  const [bp, setBp] = useState(() => {
+    if (typeof window === "undefined") return "regular";
     const w = window.innerWidth;
     return w < 480 ? "compact" : w < 768 ? "regular" : "wide";
   });
@@ -262,7 +287,7 @@ export default function App() {
   useEffect(() => {
     const onResize = () => {
       const w = window.innerWidth;
-      setLayout(w < 480 ? "compact" : w < 768 ? "regular" : "wide");
+      setBp(w < 480 ? "compact" : w < 768 ? "regular" : "wide");
     };
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
@@ -276,9 +301,10 @@ export default function App() {
     }
   }, [tab]);
 
-  const isCompact = layout === "compact";
-  const isWide = layout === "wide";
-  const isMobile = layout !== "wide";
+  const isCompact = bp === "compact";  // < 480px (phones)
+  const isRegular = bp === "regular";  // 480-767px (large phones, small tablets)
+  const isWide = bp === "wide";     // ≥ 768px (tablets, desktop)
+
 
   const stats = useMemo(() => getStats(SESSIONS), []);
   const { p: players, totalS, uniqueCount, avgPerSession, topRivals, topTeammates, playerLosses, teammateReport, bestPairs, worstPairs } = stats;
@@ -291,12 +317,12 @@ export default function App() {
     green: "#34D399", gold: "#FBBF24", red: "#F87171",
   };
 
-  const C = (x = {}) => ({ background: t.card, border: `1px solid ${t.border}`, borderRadius: 14, padding: 'var(--space-card-padding)', ...x });
+  const C = (x = {}) => ({ background: t.card, border: `1px solid ${t.border}`, borderRadius: 14, padding: 'var(--space-card-pad)', ...x });
   const L = { fontSize: 'var(--type-label-lg)', fontWeight: 700, letterSpacing: 1.6, textTransform: "uppercase", color: t.t3, marginBottom: 14 };
   const S = { fontFamily: "'Instrument Serif',serif" };
 
   const SectionDivider = () => (
-    <div style={{ borderTop: `1px solid ${t.border}`, margin: 'var(--space-section-gap) 0 20px', paddingTop: 20 }} />
+    <div style={{ borderTop: `1px solid ${t.border}`, margin: 'var(--space-section) 0 20px', paddingTop: 20 }} />
   );
 
   const tabs = [
@@ -313,7 +339,7 @@ export default function App() {
     if (isCompact) {
       return (
         <div key={i}>
-          <div style={{ padding: '10px var(--space-card-padding)', borderBottom: i < len - 1 ? `1px solid ${t.border}` : "none", opacity: rowOpacity }}>
+          <div style={{ padding: '14px var(--space-card-pad)', borderBottom: i < len - 1 ? `1px solid ${t.border}` : "none", opacity: rowOpacity }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: noGame ? 0 : 6 }}>
               <div style={{ fontWeight: 700, fontSize: 'var(--type-body)' }}>{s.day}</div>
               {!noGame && <Badge winner={s.winner} score={s.score} dark={dark} />}
@@ -329,7 +355,7 @@ export default function App() {
             )}
           </div>
           {s.note && !noGame && (
-            <div style={{ padding: '0 var(--space-card-padding) 8px', borderLeft: `2px solid ${t.accent}`, marginLeft: 'var(--space-card-padding)', fontSize: 'var(--type-label)', color: t.accent, fontWeight: 600, fontStyle: "italic", letterSpacing: '0.025em' }}>{s.note}</div>
+            <div style={{ padding: '0 var(--space-card-pad) 8px', borderLeft: `2px solid ${t.accent}`, marginLeft: 'var(--space-card-pad)', fontSize: 'var(--type-label)', color: t.accent, fontWeight: 600, fontStyle: "italic", letterSpacing: '0.025em' }}>{s.note}</div>
           )}
         </div>
       );
@@ -366,7 +392,7 @@ export default function App() {
     // Wide: 5-column grid with fluid columns
     return (
       <div key={i}>
-        <div style={{ display: "grid", gridTemplateColumns: "minmax(60px,72px) 1fr 24px 1fr minmax(60px,80px)", alignItems: "center", padding: "12px 16px", borderBottom: i < len - 1 ? `1px solid ${t.border}` : "none", gap: 6, opacity: rowOpacity }}>
+        <div style={{ display: "grid", gridTemplateColumns: "minmax(60px,72px) 1fr 24px 1fr minmax(60px,80px)", alignItems: "center", padding: "12px 16px", borderBottom: i < len - 1 ? `1px solid ${t.border}` : "none", gap: 'var(--space-card-gap)', opacity: rowOpacity }}>
           <div style={{ fontWeight: 600, fontSize: 'var(--type-body-sm)' }}>{s.day}</div>
           <div style={{ display: "flex", flexWrap: "wrap", gap: "3px 8px", lineHeight: 1.6 }}>
             {noGame ? <span style={{ fontSize: 'var(--type-body-sm)', color: t.t3, fontStyle: "italic" }}>{s.note || "No game"}</span> : s.blue.map((p, j) => <span key={j} style={{ display: "inline-flex", alignItems: "center" }}><Dot team="blue" dark={dark} /><span style={{ fontWeight: 500, fontSize: 'var(--type-body-sm)' }}>{p}</span></span>)}
@@ -393,11 +419,11 @@ export default function App() {
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
-        padding: isCompact ? '8px var(--space-card-padding)' : "8px 16px",
+        padding: isCompact ? '8px var(--space-card-pad)' : "8px 16px",
         background: t.inset,
         borderTop: `1px solid ${t.border}`,
         borderBottom: `1px solid ${t.border}`,
-        gap: 8,
+        gap: 'var(--space-card-gap)',
       }}>
         <div style={{
           fontSize: 'var(--type-label)',
@@ -412,7 +438,7 @@ export default function App() {
         {decided > 0 && (
           <div style={{
             display: "flex",
-            gap: 8,
+            gap: 'var(--space-card-gap)',
             fontSize: 'var(--type-label)',
             fontWeight: 700,
             letterSpacing: '0.08em',
@@ -445,8 +471,8 @@ export default function App() {
           <h2 style={{ ...S, fontSize: 'var(--type-headline)', color: t.text, margin: 0, fontWeight: 400 }}>{m.name}</h2>
           <div style={{ fontSize: 'var(--type-body-sm)', fontWeight: 600, color: t.t3, marginTop: 4 }}>Blue {monthBW} – White {monthWW} · {monthDecided.length} decided series</div>
         </div>
-        <div style={{ ...C({ padding: 0, overflow: "hidden" }), marginBottom: 'var(--space-section-gap)' }}>
-          <div style={{ padding: "16px", borderBottom: `1px solid ${t.border}`, fontSize: 'var(--type-body)', color: t.t2, lineHeight: 1.65 }}>{m.commentary}</div>
+        <div style={{ ...C({ padding: 0, overflow: "hidden" }), marginBottom: 'var(--space-section)' }}>
+          <div style={{ padding: 'var(--space-card-pad)', borderBottom: `1px solid ${t.border}`, fontSize: 'var(--type-body)', color: t.t2, lineHeight: 1.65 }}>{m.commentary}</div>
           {weeks.map((week, wIdx) => (
             <div key={wIdx}>
               {renderWeekHeader(week)}
@@ -456,7 +482,7 @@ export default function App() {
               })}
             </div>
           ))}
-          <div style={{ padding: "14px 16px", paddingLeft: 18, background: t.inset, borderLeft: `2px solid ${t.accent}`, fontSize: 'var(--type-body-sm)', color: t.t3, lineHeight: 1.65, borderTop: `1px solid ${t.border}` }}><span style={{ color: t.accent, fontWeight: 700 }}>Debrief: </span>{m.insight}</div>
+          <div style={{ padding: 'var(--space-card-pad)', paddingLeft: 18, background: t.inset, borderLeft: `2px solid ${t.accent}`, fontSize: 'var(--type-body-sm)', color: t.t3, lineHeight: 1.65, borderTop: `1px solid ${t.border}` }}><span style={{ color: t.accent, fontWeight: 700 }}>Debrief: </span>{m.insight}</div>
         </div>
       </div>
     );
@@ -467,7 +493,10 @@ export default function App() {
     const bW = decided.filter(s => s.winner === "blue").length;
     const wW = decided.filter(s => s.winner === "white").length;
     const sweeps = decided.filter(s => s.score === "4-0").length;
-    const winSorted = Object.entries(players).filter(([, d]) => d.w + d.l >= 3).sort((a, b) => (b[1].w / (b[1].w + b[1].l)) - (a[1].w / (a[1].w + a[1].l)));
+    const isByGames = statsMode === "games";
+    const getW = (d) => isByGames ? d.gw : d.w;
+    const getL = (d) => isByGames ? d.gl : d.l;
+    const winSorted = Object.entries(players).filter(([, d]) => getW(d) + getL(d) >= 3).sort((a, b) => (getW(b[1]) / (getW(b[1]) + getL(b[1]))) - (getW(a[1]) / (getW(a[1]) + getL(a[1]))));
     const topWinners = winSorted.slice(0, 5);
     const bottomWinners = [...winSorted].reverse().slice(0, 3);
 
@@ -477,17 +506,17 @@ export default function App() {
           <div style={L}>Season Summary</div>
           <h2 style={{ ...S, fontSize: 'var(--type-headline)', color: t.text, margin: 0, fontWeight: 400 }}>The State of the Gym</h2>
           <div style={{ fontSize: 'var(--type-body)', color: t.t2, marginTop: 6, lineHeight: 1.6, maxWidth: 'var(--space-prose-max)' }}>
-            {decided.length} decided 7-game series. {uniquePlayers(players)} players. Blue leads {bW}–{wW}. May is 4-0 Blue — White hasn{"'"}t won a series all month, which at this point qualifies as a humanitarian crisis. The Dynasty reunited on 5/4 and won both the series and the in-season tournament. On 5/6, five adults beat three adults 4-3, which is the kind of margin that gets investigated. Blue{"'"}s overall league dominance is no longer a trend; it{"'"}s a zoning violation. Anyway, here{"'"}s the summary.
+            {decided.length} decided 7-game series. {uniquePlayers(players)} players. Blue leads {bW}–{wW}. The Dynasty reunited on 5/4 and won both the series and the in-season tournament. May finished 5-2 Blue — White finally scratched out a couple late wins to prevent full-blown humanitarian intervention. Blue{"'"}s overall league dominance is no longer a trend; it{"'"}s a zoning violation. Anyway, here{"'"}s the summary.
           </div>
         </div>
 
         {/* HEADLINE STATS — editorial pull-quote */}
-        <div style={{ ...S, fontSize: 'var(--type-title)', fontStyle: "italic", color: t.t2, lineHeight: 1.7, marginBottom: 'var(--space-section-gap)', padding: "20px 0 20px 20px", borderLeft: `2px solid ${t.accent}`, maxWidth: 'var(--space-prose-max)' }}>
+        <div style={{ ...S, fontSize: 'var(--type-title)', fontStyle: "italic", color: t.t2, lineHeight: 1.7, marginBottom: 'var(--space-section)', padding: "20px 0 20px 20px", borderLeft: `2px solid ${t.accent}`, maxWidth: 'var(--space-prose-max)' }}>
           <span style={{ color: t.accent }}>{decided.length}</span> series decided. Blue leads <span style={{ color: t.accent }}>{bW}–{wW}</span> in the overall, with <span style={{ color: t.accent }}>{sweeps}</span> sweeps and <span style={{ color: t.accent }}>{uniquePlayers(players)}</span> players who{"'"}ve touched the court, averaging <span style={{ color: t.accent }}>{avgPerSession}</span> per session.
         </div>
 
         {/* SUMMARY STAT BOXES — compact: 2-col, regular: 3-col, wide: 4-col */}
-        <div style={{ display: "grid", gridTemplateColumns: isCompact ? "1fr 1fr" : isWide ? "1fr 1fr 1fr 1fr" : "1fr 1fr 1fr", gap: 8, marginBottom: 'var(--space-section-gap)' }}>
+        <div style={{ display: "grid", gridTemplateColumns: isCompact ? "1fr 1fr" : isWide ? "1fr 1fr 1fr 1fr" : "1fr 1fr 1fr", gap: 'var(--space-card-gap)', marginBottom: 'var(--space-section)' }}>
           {[
             { v: String(bW), l: "Blue Wins", c: t.blue },
             { v: String(wW), l: "White Wins", c: t.white },
@@ -502,22 +531,30 @@ export default function App() {
         </div>
 
         {/* TOP 5 WIN RATES */}
-        <div style={L}>Top 5 Win Rates (min 3 series)</div>
-        <div style={{ ...C({ padding: 0, overflow: "hidden" }), marginBottom: 'var(--space-section-gap)' }}>
+        {/* STATS MODE TOGGLE */}
+        <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
+          <div style={L}>Top 5 Win Rates {isByGames ? "(Individual Games)" : "(min 3 series)"}</div>
+          <div style={{ display: "flex", background: t.inset, borderRadius: 999, padding: 3, marginBottom: 14, border: `1px solid ${t.border}` }}>
+            {[{ id: "series", label: "Series" }, { id: "games", label: "Games" }].map(m => (
+              <button key={m.id} onClick={() => setStatsMode(m.id)} style={{ background: statsMode === m.id ? t.card : "transparent", border: statsMode === m.id ? `1px solid ${t.border}` : "1px solid transparent", borderRadius: 999, padding: "5px 12px", cursor: "pointer", fontSize: 'var(--type-label)', fontWeight: statsMode === m.id ? 700 : 500, color: statsMode === m.id ? t.accent : t.t3, fontFamily: "'Outfit',sans-serif", transition: "all .15s", whiteSpace: "nowrap", minHeight: 32 }}>{m.label}</button>
+            ))}
+          </div>
+        </div>
+        <div style={{ ...C({ padding: 0, overflow: "hidden" }), marginBottom: 'var(--space-section)' }}>
           {topWinners.map(([name, d], i) => {
-            const dec = d.w + d.l; const pct = Math.round(d.w / dec * 100);
+            const w = getW(d); const l = getL(d); const dec = w + l; const pct = Math.round(w / dec * 100);
             if (isCompact) {
               return (
-                <div key={name} style={{ padding: '12px var(--space-card-padding)', borderBottom: i < topWinners.length - 1 ? `1px solid ${t.border}` : "none" }}>
+                <div key={name} style={{ padding: '12px var(--space-card-pad)', borderBottom: i < topWinners.length - 1 ? `1px solid ${t.border}` : "none" }}>
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
-                    <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
+                    <div style={{ display: "flex", alignItems: "baseline", gap: 'var(--space-card-gap)' }}>
                       <span style={{ ...S, fontSize: 'var(--type-stat-md)', color: t.accent }}>{i + 1}</span>
                       <span style={{ fontWeight: 700, fontSize: 'var(--type-body)' }}>{name}</span>
                     </div>
                     <div style={{ ...S, fontSize: 'var(--type-stat-md)', color: t.green, flexShrink: 0 }}>{pct}%</div>
                   </div>
                   <div style={{ display: "flex", alignItems: "center", gap: 10, marginTop: 6 }}>
-                    <div style={{ fontSize: 'var(--type-body-sm)', color: t.t2, fontWeight: 600, minWidth: 40 }}>{d.w}-{d.l}</div>
+                    <div style={{ fontSize: 'var(--type-body-sm)', color: t.t2, fontWeight: 600, minWidth: 40 }}>{w}-{l}</div>
                     <div style={{ flex: 1, height: 6, background: t.inset, borderRadius: 3, overflow: "hidden" }} role="progressbar" aria-valuenow={pct} aria-valuemin={0} aria-valuemax={100} aria-label={`${name} win rate: ${pct}%`}>
                       <div style={{ height: "100%", width: `${pct}%`, background: t.green, borderRadius: 3 }} />
                     </div>
@@ -526,10 +563,10 @@ export default function App() {
               );
             }
             return (
-              <div key={name} style={{ display: "grid", gridTemplateColumns: "24px 1fr 80px 1fr 60px", alignItems: "center", padding: "12px 16px", borderBottom: i < topWinners.length - 1 ? `1px solid ${t.border}` : "none", gap: 10 }}>
+              <div key={name} style={{ display: "grid", gridTemplateColumns: "24px 1fr 80px 1fr 60px", alignItems: "center", padding: "12px var(--space-card-pad)", borderBottom: i < topWinners.length - 1 ? `1px solid ${t.border}` : "none", gap: 10 }}>
                 <div style={{ ...S, fontSize: 'var(--type-stat-md)', color: t.accent }}>{i + 1}</div>
                 <div style={{ fontWeight: 700, fontSize: 'var(--type-body)' }}>{name}</div>
-                <div style={{ fontSize: 'var(--type-body-sm)', color: t.t2, fontWeight: 600 }}>{d.w}-{d.l}</div>
+                <div style={{ fontSize: 'var(--type-body-sm)', color: t.t2, fontWeight: 600 }}>{w}-{l}</div>
                 <div style={{ height: 6, background: t.inset, borderRadius: 3, overflow: "hidden" }} role="progressbar" aria-valuenow={pct} aria-valuemin={0} aria-valuemax={100} aria-label={`${name} win rate: ${pct}%`}><div style={{ height: "100%", width: `${pct}%`, background: t.green, borderRadius: 3 }} /></div>
                 <div style={{ ...S, fontSize: 'var(--type-stat-md)', color: t.green, textAlign: "right" }}>{pct}%</div>
               </div>
@@ -540,12 +577,12 @@ export default function App() {
         {/* TOP PARTNERSHIPS */}
         <SectionDivider />
         <div style={L}>Best Partnerships (min 3 series together)</div>
-        <div style={{ ...C({ padding: 0, overflow: "hidden" }), marginBottom: 'var(--space-section-gap)' }}>
-          <div style={{ padding: "12px 16px", borderBottom: `1px solid ${t.border}`, fontSize: 'var(--type-body-sm)', color: t.t3, lineHeight: 1.5 }}>The pairs that win together. If you want to engineer a W, put these two on the same team and get out of their way.</div>
+        <div style={{ ...C({ padding: 0, overflow: "hidden" }), marginBottom: 'var(--space-section)' }}>
+          <div style={{ padding: 'var(--space-card-pad)', borderBottom: `1px solid ${t.border}`, fontSize: 'var(--type-body-sm)', color: t.t3, lineHeight: 1.5 }}>The pairs that win together. If you want to engineer a W, put these two on the same team and get out of their way.</div>
           {bestPairs.map((pair, i) => isCompact ? (
-            <div key={i} style={{ padding: '10px var(--space-card-padding)', borderBottom: i < bestPairs.length - 1 ? `1px solid ${t.border}` : "none" }}>
+            <div key={i} style={{ padding: '10px var(--space-card-pad)', borderBottom: i < bestPairs.length - 1 ? `1px solid ${t.border}` : "none" }}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
-                <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
+                <div style={{ display: "flex", alignItems: "baseline", gap: 'var(--space-card-gap)' }}>
                   <span style={{ ...S, fontSize: 'var(--type-stat-md)', color: t.green }}>{i + 1}</span>
                   <span style={{ fontWeight: 600, fontSize: 'var(--type-body)' }}>{pair.a} + {pair.b}</span>
                 </div>
@@ -554,7 +591,7 @@ export default function App() {
               <div style={{ fontSize: 'var(--type-body-sm)', color: t.t2, fontWeight: 600, marginTop: 2, paddingLeft: 28 }}>{pair.w}-{pair.l}</div>
             </div>
           ) : (
-            <div key={i} style={{ display: "grid", gridTemplateColumns: "24px 1fr 80px 60px", alignItems: "center", padding: "10px 16px", borderBottom: i < bestPairs.length - 1 ? `1px solid ${t.border}` : "none", gap: 10 }}>
+            <div key={i} style={{ display: "grid", gridTemplateColumns: "24px 1fr 80px 60px", alignItems: "center", padding: "10px var(--space-card-pad)", borderBottom: i < bestPairs.length - 1 ? `1px solid ${t.border}` : "none", gap: 10 }}>
               <div style={{ ...S, fontSize: 'var(--type-stat-md)', color: t.green }}>{i + 1}</div>
               <div style={{ fontWeight: 600, fontSize: 'var(--type-body)' }}>{pair.a} + {pair.b}</div>
               <div style={{ fontSize: 'var(--type-body-sm)', color: t.t2, fontWeight: 600 }}>{pair.w}-{pair.l}</div>
@@ -565,12 +602,12 @@ export default function App() {
 
         {/* WORST PARTNERSHIPS */}
         <div style={L}>Worst Partnerships (min 3 series together)</div>
-        <div style={{ ...C({ padding: 0, overflow: "hidden" }), marginBottom: 'var(--space-section-gap)' }}>
-          <div style={{ padding: "12px 16px", borderBottom: `1px solid ${t.border}`, fontSize: 'var(--type-body-sm)', color: t.t3, lineHeight: 1.5 }}>The pairs that lose together. Separate them at the door. For their sake, for the gym{"'"}s sake, for the integrity of the spreadsheet.</div>
+        <div style={{ ...C({ padding: 0, overflow: "hidden" }), marginBottom: 'var(--space-section)' }}>
+          <div style={{ padding: 'var(--space-card-pad)', borderBottom: `1px solid ${t.border}`, fontSize: 'var(--type-body-sm)', color: t.t3, lineHeight: 1.5 }}>The pairs that lose together. Separate them at the door. For their sake, for the gym{"'"}s sake, for the integrity of the spreadsheet.</div>
           {worstPairs.map((pair, i) => isCompact ? (
-            <div key={i} style={{ padding: '10px var(--space-card-padding)', borderBottom: i < worstPairs.length - 1 ? `1px solid ${t.border}` : "none" }}>
+            <div key={i} style={{ padding: '10px var(--space-card-pad)', borderBottom: i < worstPairs.length - 1 ? `1px solid ${t.border}` : "none" }}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
-                <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
+                <div style={{ display: "flex", alignItems: "baseline", gap: 'var(--space-card-gap)' }}>
                   <span style={{ ...S, fontSize: 'var(--type-stat-md)', color: t.red }}>{i + 1}</span>
                   <span style={{ fontWeight: 600, fontSize: 'var(--type-body)' }}>{pair.a} + {pair.b}</span>
                 </div>
@@ -579,7 +616,7 @@ export default function App() {
               <div style={{ fontSize: 'var(--type-body-sm)', color: t.t2, fontWeight: 600, marginTop: 2, paddingLeft: 28 }}>{pair.w}-{pair.l}</div>
             </div>
           ) : (
-            <div key={i} style={{ display: "grid", gridTemplateColumns: "24px 1fr 80px 60px", alignItems: "center", padding: "10px 16px", borderBottom: i < worstPairs.length - 1 ? `1px solid ${t.border}` : "none", gap: 10 }}>
+            <div key={i} style={{ display: "grid", gridTemplateColumns: "24px 1fr 80px 60px", alignItems: "center", padding: "10px var(--space-card-pad)", borderBottom: i < worstPairs.length - 1 ? `1px solid ${t.border}` : "none", gap: 10 }}>
               <div style={{ ...S, fontSize: 'var(--type-stat-md)', color: t.red }}>{i + 1}</div>
               <div style={{ fontWeight: 600, fontSize: 'var(--type-body)' }}>{pair.a} + {pair.b}</div>
               <div style={{ fontSize: 'var(--type-body-sm)', color: t.t2, fontWeight: 600 }}>{pair.w}-{pair.l}</div>
@@ -591,12 +628,12 @@ export default function App() {
         {/* BIGGEST RIVALRIES */}
         <SectionDivider />
         <div style={L}>Biggest Rivalries (opposite teams most often)</div>
-        <div style={{ ...C({ padding: 0, overflow: "hidden" }), marginBottom: 'var(--space-section-gap)' }}>
-          <div style={{ padding: "12px 16px", borderBottom: `1px solid ${t.border}`, fontSize: 'var(--type-body-sm)', color: t.t3, lineHeight: 1.5 }}>The guys who seem to always be trying to beat each other, either by design or by the cruel hand of the jersey assignment fairy.</div>
+        <div style={{ ...C({ padding: 0, overflow: "hidden" }), marginBottom: 'var(--space-section)' }}>
+          <div style={{ padding: 'var(--space-card-pad)', borderBottom: `1px solid ${t.border}`, fontSize: 'var(--type-body-sm)', color: t.t3, lineHeight: 1.5 }}>The guys who seem to always be trying to beat each other, either by design or by the cruel hand of the jersey assignment fairy.</div>
           {topRivals.map((r, i) => isCompact ? (
-            <div key={i} style={{ padding: '10px var(--space-card-padding)', borderBottom: i < topRivals.length - 1 ? `1px solid ${t.border}` : "none" }}>
+            <div key={i} style={{ padding: '10px var(--space-card-pad)', borderBottom: i < topRivals.length - 1 ? `1px solid ${t.border}` : "none" }}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
-                <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
+                <div style={{ display: "flex", alignItems: "baseline", gap: 'var(--space-card-gap)' }}>
                   <span style={{ ...S, fontSize: 'var(--type-stat-md)', color: t.accent }}>{i + 1}</span>
                   <span style={{ fontWeight: 600, fontSize: 'var(--type-body)' }}>{r.pair[0]} vs {r.pair[1]}</span>
                 </div>
@@ -604,7 +641,7 @@ export default function App() {
               </div>
             </div>
           ) : (
-            <div key={i} style={{ display: "grid", gridTemplateColumns: "24px 1fr 60px", alignItems: "center", padding: "10px 16px", borderBottom: i < topRivals.length - 1 ? `1px solid ${t.border}` : "none", gap: 10 }}>
+            <div key={i} style={{ display: "grid", gridTemplateColumns: "24px 1fr 60px", alignItems: "center", padding: "10px var(--space-card-pad)", borderBottom: i < topRivals.length - 1 ? `1px solid ${t.border}` : "none", gap: 10 }}>
               <div style={{ ...S, fontSize: 'var(--type-stat-md)', color: t.accent }}>{i + 1}</div>
               <div style={{ fontWeight: 600, fontSize: 'var(--type-body)' }}>{r.pair[0]} vs {r.pair[1]}</div>
               <div style={{ ...S, fontSize: 'var(--type-stat-md)', color: t.accent, textAlign: "right" }}>{r.count}x</div>
@@ -615,7 +652,7 @@ export default function App() {
         {/* THE FLORIDA INVESTIGATION */}
         <SectionDivider />
         <div style={L}>The Florida Investigation</div>
-        <div style={{ ...C(), marginBottom: 'var(--space-section-gap)', borderColor: dark ? "rgba(239,98,52,.2)" : "rgba(239,98,52,.15)", background: dark ? "rgba(239,98,52,.03)" : "rgba(239,98,52,.02)" }}>
+        <div style={{ ...C(), marginBottom: 'var(--space-section)', borderColor: dark ? "rgba(239,98,52,.2)" : "rgba(239,98,52,.15)", background: dark ? "rgba(239,98,52,.03)" : "rgba(239,98,52,.02)" }}>
           <div style={{ fontSize: 'var(--type-body)', color: t.t2, lineHeight: 1.65 }}>
             <strong style={{ color: t.accent }}>An open case.</strong> Two members of this gym are alleged to spend a suspicious amount of time in Florida. Neither has produced clear evidence of a traditional 9-to-5. The dashboard is forced to consider three possibilities: (1) two extremely flexible freelancers, (2) the same person operating a long con, or (3) Florida is where Morning Hoops players go to recover from being Morning Hoops players. Evidence is inconclusive. Investigation ongoing. The good news for the league is that whichever of them is in town tends to win, and whichever is in Florida tends to be missed. So functionally Florida might just be where this league sends people for emotional regulation.
           </div>
@@ -623,18 +660,18 @@ export default function App() {
 
         {/* BOTTOM RECORDS */}
         <div style={L}>Currently Struggling (bottom 3 win rates)</div>
-        <div style={{ ...C({ padding: 0, overflow: "hidden" }), marginBottom: 'var(--space-section-gap)' }}>
+        <div style={{ ...C({ padding: 0, overflow: "hidden" }), marginBottom: 'var(--space-section)' }}>
           {bottomWinners.map(([name, d], i) => {
-            const dec = d.w + d.l; const pct = Math.round(d.w / dec * 100);
+            const w = getW(d); const l = getL(d); const dec = w + l; const pct = Math.round(w / dec * 100);
             if (isCompact) {
               return (
-                <div key={name} style={{ padding: '12px var(--space-card-padding)', borderBottom: i < bottomWinners.length - 1 ? `1px solid ${t.border}` : "none" }}>
+                <div key={name} style={{ padding: '12px var(--space-card-pad)', borderBottom: i < bottomWinners.length - 1 ? `1px solid ${t.border}` : "none" }}>
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
                     <span style={{ fontWeight: 700, fontSize: 'var(--type-body)' }}>{name}</span>
                     <div style={{ ...S, fontSize: 'var(--type-stat-md)', color: t.red, flexShrink: 0 }}>{pct}%</div>
                   </div>
                   <div style={{ display: "flex", alignItems: "center", gap: 10, marginTop: 6 }}>
-                    <div style={{ fontSize: 'var(--type-body-sm)', color: t.t2, fontWeight: 600, minWidth: 40 }}>{d.w}-{d.l}</div>
+                    <div style={{ fontSize: 'var(--type-body-sm)', color: t.t2, fontWeight: 600, minWidth: 40 }}>{w}-{l}</div>
                     <div style={{ flex: 1, height: 6, background: t.inset, borderRadius: 3, overflow: "hidden" }} role="progressbar" aria-valuenow={pct} aria-valuemin={0} aria-valuemax={100} aria-label={`${name} win rate: ${pct}%`}>
                       <div style={{ height: "100%", width: `${pct}%`, background: t.red, borderRadius: 3 }} />
                     </div>
@@ -643,9 +680,9 @@ export default function App() {
               );
             }
             return (
-              <div key={name} style={{ display: "grid", gridTemplateColumns: "1fr 80px 1fr 60px", alignItems: "center", padding: "12px 16px", borderBottom: i < bottomWinners.length - 1 ? `1px solid ${t.border}` : "none", gap: 10 }}>
+              <div key={name} style={{ display: "grid", gridTemplateColumns: "1fr 80px 1fr 60px", alignItems: "center", padding: "12px var(--space-card-pad)", borderBottom: i < bottomWinners.length - 1 ? `1px solid ${t.border}` : "none", gap: 10 }}>
                 <div style={{ fontWeight: 700, fontSize: 'var(--type-body)' }}>{name}</div>
-                <div style={{ fontSize: 'var(--type-body-sm)', color: t.t2, fontWeight: 600 }}>{d.w}-{d.l}</div>
+                <div style={{ fontSize: 'var(--type-body-sm)', color: t.t2, fontWeight: 600 }}>{w}-{l}</div>
                 <div style={{ height: 6, background: t.inset, borderRadius: 3, overflow: "hidden" }} role="progressbar" aria-valuenow={pct} aria-valuemin={0} aria-valuemax={100} aria-label={`${name} win rate: ${pct}%`}><div style={{ height: "100%", width: `${pct}%`, background: t.red, borderRadius: 3 }} /></div>
                 <div style={{ ...S, fontSize: 'var(--type-stat-md)', color: t.red, textAlign: "right" }}>{pct}%</div>
               </div>
@@ -664,8 +701,11 @@ export default function App() {
     const decided = SESSIONS.filter(s => s.winner);
     const bW = decided.filter(s => s.winner === "blue").length;
     const wW = decided.filter(s => s.winner === "white").length;
+    const isByGames = statsMode === "games";
+    const getW = (d) => isByGames ? d.gw : d.w;
+    const getL = (d) => isByGames ? d.gl : d.l;
     const sorted = Object.entries(players).sort((a, b) => b[1].g - a[1].g);
-    const winSorted = Object.entries(players).filter(([, d]) => d.w + d.l >= 3).sort((a, b) => (b[1].w / (b[1].w + b[1].l)) - (a[1].w / (a[1].w + a[1].l)));
+    const winSorted = Object.entries(players).filter(([, d]) => getW(d) + getL(d) >= 3).sort((a, b) => (getW(b[1]) / (getW(b[1]) + getL(b[1]))) - (getW(a[1]) / (getW(a[1]) + getL(a[1]))));
 
     const sweeps = decided.filter(s => s.score === "4-0").length;
     const blowouts = decided.filter(s => s.score === "4-1").length;
@@ -683,7 +723,7 @@ export default function App() {
         </div>
 
         {/* SECTION JUMP NAV */}
-        <nav style={{ display: "flex", gap: 6, marginBottom: 22, overflowX: "auto", WebkitOverflowScrolling: "touch", paddingBottom: 4, scrollbarWidth: "none", maskImage: "linear-gradient(to right, black 90%, transparent)", WebkitMaskImage: "linear-gradient(to right, black 90%, transparent)" }}>
+        <nav style={{ display: "flex", gap: 'var(--space-card-gap)', marginBottom: 22, overflowX: "auto", WebkitOverflowScrolling: "touch", paddingBottom: 4, scrollbarWidth: "none", maskImage: "linear-gradient(to right, black 90%, transparent)", WebkitMaskImage: "linear-gradient(to right, black 90%, transparent)" }}>
           {[
             { label: "Overview", id: "season-overview" },
             { label: "Head to Head", id: "season-h2h" },
@@ -700,12 +740,12 @@ export default function App() {
         </nav>
 
         {/* HEADLINE STATS — editorial pull-quote */}
-        <div id="season-overview" style={{ ...S, fontSize: 'var(--type-title)', fontStyle: "italic", color: t.t2, lineHeight: 1.7, marginBottom: 'var(--space-section-gap)', padding: "20px 0 20px 20px", borderLeft: `2px solid ${t.accent}`, maxWidth: 'var(--space-prose-max)', scrollMarginTop: 64 }}>
+        <div id="season-overview" style={{ ...S, fontSize: 'var(--type-title)', fontStyle: "italic", color: t.t2, lineHeight: 1.7, marginBottom: 'var(--space-section)', padding: "20px 0 20px 20px", borderLeft: `2px solid ${t.accent}`, maxWidth: 'var(--space-prose-max)', scrollMarginTop: 64 }}>
           <span style={{ color: t.accent }}>{decided.length}</span> decided series across the full season. Blue <span style={{ color: t.accent }}>{bW}</span>, White <span style={{ color: t.accent }}>{wW}</span>. <span style={{ color: t.accent }}>{uniquePlayers(players)}</span> players have stepped on the court, averaging <span style={{ color: t.accent }}>{avgPerSession}</span> per session. The spreadsheet is the source of truth. The dashboard is just the messenger.
         </div>
 
         <div id="season-h2h" style={{...L, scrollMarginTop: 64}}>Head to Head</div>
-        <div style={{ ...C(), marginBottom: 'var(--space-section-gap)' }}>
+        <div style={{ ...C(), marginBottom: 'var(--space-section)' }}>
           {isCompact ? (
             <div style={{ textAlign: "center", marginBottom: 14 }}>
               <div style={{ ...S, fontSize: 'var(--type-stat-hero)', color: t.blue, lineHeight: 1 }}>{bW}</div>
@@ -730,14 +770,14 @@ export default function App() {
               </div>
             </>
           )}
-          <div style={{ display: "grid", gridTemplateColumns: isCompact ? "1fr 1fr" : isWide ? "1fr 1fr 1fr 1fr" : "1fr 1fr", gap: 8, marginTop: 18 }}>
+          <div style={{ display: "grid", gridTemplateColumns: isCompact ? "1fr 1fr" : isWide ? "1fr 1fr 1fr 1fr" : "1fr 1fr", gap: 'var(--space-card-gap)', marginTop: 18 }}>
             {[
               { v: String(sweeps), l: "Sweeps (4-0)", c: t.accent },
               { v: String(blowouts), l: "Blowouts (4-1)", c: t.green },
               { v: String(comfortable), l: "Comfortable (4-2)", c: t.gold },
               { v: String(nailbiters), l: "Nail-biters (4-3)", c: t.red },
             ].map((m, i) => (
-              <div key={i} data-stat-card="" style={{ textAlign: "center", background: t.inset, borderRadius: 8, padding: isCompact ? '10px 8px' : 12 }}>
+              <div key={i} data-stat-card="" style={{ textAlign: "center", background: t.inset, borderRadius: 8, padding: isCompact ? '10px var(--space-card-gap)' : 'var(--space-card-pad)' }}>
                 <div style={{ ...S, fontSize: 'var(--type-stat-lg)', color: m.c, lineHeight: 1 }}>{m.v}</div>
                 <div style={{ fontSize: 'var(--type-label)', color: t.t3, fontWeight: 600, marginTop: 3 }}>{m.l}</div>
               </div>
@@ -747,21 +787,30 @@ export default function App() {
 
         {/* WIN-LOSS RECORDS */}
         <SectionDivider />
-        <div id="season-records" style={{...L, scrollMarginTop: 64}}>Player Win-Loss Records</div>
-        <div style={{ ...C({ padding: 0, overflow: "hidden" }), marginBottom: 'var(--space-section-gap)' }}>
-          <div style={{ padding: "12px 16px", borderBottom: `1px solid ${t.border}`, fontSize: 'var(--type-body-sm)', color: t.t3, lineHeight: 1.5 }}>Series record. Minimum 3 decided series, because judging someone on two games is tempting but statistically irresponsible.</div>
+        <div id="season-records" style={{ scrollMarginTop: 64 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
+            <div style={L}>Player {isByGames ? "Game" : "Series"} Records</div>
+            <div style={{ display: "flex", background: t.inset, borderRadius: 999, padding: 3, marginBottom: 14, border: `1px solid ${t.border}` }}>
+              {[{ id: "series", label: "Series" }, { id: "games", label: "Games" }].map(m => (
+                <button key={m.id} onClick={() => setStatsMode(m.id)} style={{ background: statsMode === m.id ? t.card : "transparent", border: statsMode === m.id ? `1px solid ${t.border}` : "1px solid transparent", borderRadius: 999, padding: "5px 12px", cursor: "pointer", fontSize: 'var(--type-label)', fontWeight: statsMode === m.id ? 700 : 500, color: statsMode === m.id ? t.accent : t.t3, fontFamily: "'Outfit',sans-serif", transition: "all .15s", whiteSpace: "nowrap", minHeight: 32 }}>{m.label}</button>
+              ))}
+            </div>
+          </div>
+        </div>
+        <div style={{ ...C({ padding: 0, overflow: "hidden" }), marginBottom: 'var(--space-section)' }}>
+          <div style={{ padding: 'var(--space-card-pad)', borderBottom: `1px solid ${t.border}`, fontSize: 'var(--type-body-sm)', color: t.t3, lineHeight: 1.5 }}>{isByGames ? "Individual game record within each series. Toggle to Series to see best-of-7 wins." : "Series record. Minimum 3 decided series, because judging someone on two games is tempting but statistically irresponsible."}</div>
           {winSorted.map(([name, d], i) => {
-            const dec = d.w + d.l; const pct = Math.round(d.w / dec * 100);
+            const w = getW(d); const l = getL(d); const dec = w + l; const pct = Math.round(w / dec * 100);
             const barColor = pct >= 60 ? t.green : pct >= 45 ? t.gold : t.red;
             if (isCompact) {
               return (
-                <div key={name} style={{ padding: '12px var(--space-card-padding)', borderBottom: i < winSorted.length - 1 ? `1px solid ${t.border}` : "none" }}>
+                <div key={name} style={{ padding: '12px var(--space-card-pad)', borderBottom: i < winSorted.length - 1 ? `1px solid ${t.border}` : "none" }}>
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 4 }}>
                     <div style={{ fontWeight: 700, fontSize: 'var(--type-body)' }}>{name}</div>
                     <div style={{ ...S, fontSize: 'var(--type-stat-md)', color: barColor }}>{pct}%</div>
                   </div>
                   <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                    <div style={{ fontSize: 'var(--type-body-sm)', color: t.t2, fontWeight: 600, minWidth: 40 }}>{d.w}-{d.l}</div>
+                    <div style={{ fontSize: 'var(--type-body-sm)', color: t.t2, fontWeight: 600, minWidth: 40 }}>{w}-{l}</div>
                     <div style={{ flex: 1, height: 6, background: t.inset, borderRadius: 3, overflow: "hidden" }} role="progressbar" aria-valuenow={pct} aria-valuemin={0} aria-valuemax={100} aria-label={`${name} win rate: ${pct}%`}>
                       <div style={{ height: "100%", width: `${pct}%`, background: barColor, borderRadius: 3 }} />
                     </div>
@@ -772,7 +821,7 @@ export default function App() {
             return (
               <div key={name} style={{ display: "grid", gridTemplateColumns: "minmax(80px,120px) 60px 1fr 50px", alignItems: "center", padding: "10px 16px", borderBottom: i < winSorted.length - 1 ? `1px solid ${t.border}` : "none", gap: 10 }}>
                 <div style={{ fontWeight: 600, fontSize: 'var(--type-body)' }}>{name}</div>
-                <div style={{ fontSize: 'var(--type-body)', color: t.t2, fontWeight: 600 }}>{d.w}-{d.l}</div>
+                <div style={{ fontSize: 'var(--type-body)', color: t.t2, fontWeight: 600 }}>{w}-{l}</div>
                 <div style={{ height: 6, background: t.inset, borderRadius: 3, overflow: "hidden" }} role="progressbar" aria-valuenow={pct} aria-valuemin={0} aria-valuemax={100} aria-label={`${name} win rate: ${pct}%`}><div style={{ height: "100%", width: `${pct}%`, background: barColor, borderRadius: 3 }} /></div>
                 <div style={{ ...S, fontSize: 'var(--type-stat-md)', color: barColor, textAlign: "right" }}>{pct}%</div>
               </div>
@@ -783,7 +832,7 @@ export default function App() {
         {/* PLAYER PROFILES */}
         <SectionDivider />
         <div id="season-profiles" style={{...L, scrollMarginTop: 64}}>Player Profiles</div>
-        <div style={{ display: "grid", gap: 'var(--space-card-gap)', marginBottom: 'var(--space-section-gap)' }}>
+        <div style={{ display: "grid", gap: 'var(--space-card-gap)', marginBottom: 'var(--space-section)' }}>
           {CORRELATIONS.map((c, i) => {
             const d = players[c.name];
             const dec = d ? d.w + d.l : 0;
@@ -800,16 +849,30 @@ export default function App() {
                     </div>
                   </div>
                   <div style={{ fontSize: 'var(--type-body-sm)', color: t.t2, lineHeight: 1.55 }}>{c.desc}</div>
+                  {c.roast && (
+                    <div style={{ marginTop: 10, padding: '10px 12px', background: dark ? 'rgba(248,113,113,.06)' : 'rgba(239,68,68,.04)', borderRadius: 8, borderLeft: `2px solid ${t.red}` }}>
+                      <div style={{ fontSize: 'var(--type-label)', fontWeight: 800, letterSpacing: 1.2, color: t.red, marginBottom: 4 }}>🔥 SCOUTING REPORT</div>
+                      <div style={{ fontSize: 'var(--type-body-sm)', color: dark ? '#FCA5A5' : '#B91C1C', lineHeight: 1.55, fontStyle: 'italic' }}>{c.roast}</div>
+                    </div>
+                  )}
                 </div>
               );
             }
             return (
-              <div key={i} style={{ ...C(), display: "flex", alignItems: "center", gap: 14 }}>
-                <div style={{ ...S, fontSize: 'var(--type-title)', color: pct !== null ? (pct >= 60 ? t.green : pct >= 45 ? t.gold : t.red) : t.t3, minWidth: 64, textAlign: "center" }}>{rec}</div>
-                <div style={{ flex: 1 }}>
-                  <div style={{ fontWeight: 700, fontSize: 'var(--type-body)' }}>{c.name} <span style={{ fontSize: 'var(--type-label)', fontWeight: 600, color: t.accent, marginLeft: 4 }}>{c.tag}</span></div>
-                  <div style={{ fontSize: 'var(--type-body-sm)', color: t.t2, lineHeight: 1.5, marginTop: 2 }}>{c.desc}</div>
+              <div key={i} style={{ ...C() }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+                  <div style={{ ...S, fontSize: 'var(--type-title)', color: pct !== null ? (pct >= 60 ? t.green : pct >= 45 ? t.gold : t.red) : t.t3, minWidth: 64, textAlign: "center" }}>{rec}</div>
+                  <div style={{ flex: 1 }}>
+                    <div style={{ fontWeight: 700, fontSize: 'var(--type-body)' }}>{c.name} <span style={{ fontSize: 'var(--type-label)', fontWeight: 600, color: t.accent, marginLeft: 4 }}>{c.tag}</span></div>
+                    <div style={{ fontSize: 'var(--type-body-sm)', color: t.t2, lineHeight: 1.5, marginTop: 2 }}>{c.desc}</div>
+                  </div>
                 </div>
+                {c.roast && (
+                  <div style={{ marginTop: 12, padding: '12px 14px', background: dark ? 'rgba(248,113,113,.06)' : 'rgba(239,68,68,.04)', borderRadius: 8, borderLeft: `3px solid ${t.red}` }}>
+                    <div style={{ fontSize: 'var(--type-label)', fontWeight: 800, letterSpacing: 1.2, color: t.red, marginBottom: 4 }}>🔥 SCOUTING REPORT</div>
+                    <div style={{ fontSize: 'var(--type-body-sm)', color: dark ? '#FCA5A5' : '#B91C1C', lineHeight: 1.55, fontStyle: 'italic' }}>{c.roast}</div>
+                  </div>
+                )}
               </div>
             );
           })}
@@ -818,7 +881,7 @@ export default function App() {
         {/* ATTENDANCE */}
         <SectionDivider />
         <div id="season-attendance" style={{...L, scrollMarginTop: 64}}>Attendance</div>
-        <div style={{ ...C({ padding: 0, overflow: "hidden" }), marginBottom: 'var(--space-section-gap)' }}>
+        <div style={{ ...C({ padding: 0, overflow: "hidden" }), marginBottom: 'var(--space-section)' }}>
           {isCompact ? (
             /* Compact: card list sorted by sessions descending */
             [...sorted].sort((a, b) => b[1].g - a[1].g).map(([name, d], i, arr) => {
@@ -827,11 +890,11 @@ export default function App() {
               const wpct = dec > 0 ? Math.round(d.w / dec * 100) : null;
               const tier = rate >= 90 ? ["IRON", t.accent] : rate >= 70 ? ["REG", t.green] : rate >= 40 ? ["PT", t.blue] : rate >= 15 ? ["DROP", t.gold] : ["1x", t.t3];
               return (
-                <div key={name} style={{ padding: '12px var(--space-card-padding)', borderBottom: i < arr.length - 1 ? `1px solid ${t.border}` : "none" }}>
+                <div key={name} style={{ padding: '12px var(--space-card-pad)', borderBottom: i < arr.length - 1 ? `1px solid ${t.border}` : "none" }}>
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                    <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 'var(--space-card-gap)' }}>
                       <span style={{ fontWeight: 600, fontSize: 'var(--type-body)' }}>{name}</span>
-                      <span style={{ fontSize: 8, fontWeight: 800, letterSpacing: 1, padding: "2px 6px", borderRadius: 3, background: `${tier[1]}18`, color: tier[1] }}>{tier[0]}</span>
+                      <span style={{ fontSize: 'var(--type-label)', fontWeight: 800, letterSpacing: 1, padding: "2px 6px", borderRadius: 3, background: `${tier[1]}18`, color: tier[1] }}>{tier[0]}</span>
                     </div>
                     <div style={{ ...S, fontSize: 'var(--type-stat-md)', color: tier[1] }}>{rate}%</div>
                   </div>
@@ -859,7 +922,7 @@ export default function App() {
                     const tier = rate >= 90 ? ["IRON", t.accent] : rate >= 70 ? ["REG", t.green] : rate >= 40 ? ["PT", t.blue] : rate >= 15 ? ["DROP", t.gold] : ["1x", t.t3];
                     return (
                       <tr key={name} style={{ borderBottom: `1px solid ${t.border}` }}>
-                        <td style={{ padding: "9px 16px", fontWeight: 600, fontSize: 'var(--type-body)' }}>{name}<span style={{ fontSize: 8, fontWeight: 800, letterSpacing: 1, padding: "2px 6px", borderRadius: 3, background: `${tier[1]}18`, color: tier[1], marginLeft: 8 }}>{tier[0]}</span></td>
+                        <td style={{ padding: "9px 16px", fontWeight: 600, fontSize: 'var(--type-body)' }}>{name}<span style={{ fontSize: 'var(--type-label)', fontWeight: 800, letterSpacing: 1, padding: "2px 6px", borderRadius: 3, background: `${tier[1]}18`, color: tier[1], marginLeft: 8 }}>{tier[0]}</span></td>
                         <td style={{ textAlign: "center", color: t.t2 }}>{d.g}/{totalS}</td>
                         <td style={{ textAlign: "center", ...S, fontSize: 'var(--type-stat-md)', color: tier[1] }}>{rate}%</td>
                         <td style={{ textAlign: "center", color: t.blue, fontWeight: 600 }}>{d.bt}</td>
@@ -886,7 +949,7 @@ export default function App() {
             <>
               <SectionDivider />
               <div id="season-tyler" style={{...L, scrollMarginTop: 64}}>The Tyler Losses Files</div>
-              <div style={{ ...C(), marginBottom: 'var(--space-section-gap)', borderColor: dark ? "rgba(248,113,113,.2)" : "rgba(248,113,113,.15)", background: dark ? "rgba(248,113,113,.03)" : "rgba(248,113,113,.02)" }}>
+              <div style={{ ...C(), marginBottom: 'var(--space-section)', borderColor: dark ? "rgba(248,113,113,.2)" : "rgba(248,113,113,.15)", background: dark ? "rgba(248,113,113,.03)" : "rgba(248,113,113,.02)" }}>
                 <div style={{ fontSize: 'var(--type-body)', color: t.t2, lineHeight: 1.6, marginBottom: 14 }}>Tyler has lost exactly {losses.length} series. Every single one is catalogued below. The group text demanded forensic accountability.</div>
                 {losses.map((loss, i) => (
                   <div key={i} style={{ padding: isCompact ? '10px 12px' : "12px 14px", background: dark ? 'rgba(239,68,68,.06)' : 'rgba(239,68,68,.05)', borderRadius: 10, marginBottom: 8 }}>
@@ -903,6 +966,37 @@ export default function App() {
                     <strong style={{ color: t.red }}>The Curse Suspects:</strong> {cursed.join(", ")} {cursed.length === 1 ? "has" : "have"} been on Tyler{"'"}s team for every single one of his losses. Cosmic coincidence or smoking gun? Jury{"'"}s out.
                   </div>
                 )}
+
+                {/* ANALYST'S FINDINGS */}
+                <div style={{ marginTop: 16, padding: isCompact ? '14px 14px' : '18px 20px', background: dark ? 'rgba(248,113,113,.06)' : 'rgba(239,68,68,.04)', borderRadius: 12, border: `1px solid ${dark ? "rgba(248,113,113,.18)" : "rgba(248,113,113,.15)"}` }}>
+                  <div style={{ fontSize: 'var(--type-label)', fontWeight: 800, letterSpacing: 1.5, color: t.red, marginBottom: 12 }}>🗂️ ANALYST{"'"}S FINDINGS — CLASSIFIED</div>
+                  <div style={{ fontSize: 'var(--type-body-sm)', color: t.t2, lineHeight: 1.7, marginBottom: 8, fontStyle: 'italic' }}>
+                    After exhaustive review of the Tyler Losses Files, the following conclusions have been entered into the permanent record:
+                  </div>
+                  <ul style={{ margin: 0, paddingLeft: isCompact ? 18 : 22, fontSize: 'var(--type-body-sm)', color: dark ? '#FCA5A5' : '#B91C1C', lineHeight: 1.75 }}>
+                    <li style={{ marginBottom: 8 }}>
+                      <strong>Mike</strong> appears in 5 of Tyler{"'"}s 7 losses. At some point this stops being a coincidence and starts being a strategy. If Mike texts {"\""}I{"'"}m on your team today{"\""} just fake an ankle injury in the parking lot.
+                    </li>
+                    <li style={{ marginBottom: 8 }}>
+                      <strong>Nathan</strong> is on the team that beats Tyler in 5 of the 7 losses. This isn{"'"}t a rivalry — it{"'"}s a restraining order that Tyler keeps violating by showing up to the gym.
+                    </li>
+                    <li style={{ marginBottom: 8 }}>
+                      <strong>Cal{"'"}s team</strong> has won against Tyler in 4 of 7 losses. Cal doesn{"'"}t even need to be on the same side of the court as Tyler to ruin his week. He just needs to exist in the building.
+                    </li>
+                    <li style={{ marginBottom: 8 }}>
+                      Tyler{"'"}s only sweep — <strong>4/29, lost 4-0</strong> — came when he had both Mike AND Ryan on his team. Pairing those two with Tyler should be classified as a Geneva Convention violation.
+                    </li>
+                    <li style={{ marginBottom: 8 }}>
+                      6 of 7 losses were by a score of <strong>4-3</strong>. Tyler doesn{"'"}t get blown out — he specializes in giving you hope and then methodically extinguishing it in Game 7. It{"'"}s almost a talent.
+                    </li>
+                    <li>
+                      Tyler lost <strong>4 times in May alone</strong> (5/1, 5/11, 5/13, 5/18) — more than March and April combined. His game isn{"'"}t declining. It{"'"}s in hospice.
+                    </li>
+                  </ul>
+                  <div style={{ marginTop: 14, paddingTop: 12, borderTop: `1px solid ${dark ? "rgba(248,113,113,.12)" : "rgba(248,113,113,.1)"}`, fontSize: 'var(--type-body-sm)', color: t.red, fontStyle: 'italic', fontWeight: 600 }}>
+                    Case status: Open. Tyler remains at large. The losses continue to accumulate.
+                  </div>
+                </div>
               </div>
             </>
           );
@@ -911,9 +1005,9 @@ export default function App() {
         {/* THE 7/7 CLUB */}
         <SectionDivider />
         <div id="season-club" style={{...L, scrollMarginTop: 64}}>The 7/7 Club</div>
-        <div style={{ ...C(), marginBottom: 'var(--space-section-gap)', borderColor: dark ? "rgba(251,191,36,.2)" : "rgba(202,138,4,.15)", background: dark ? "rgba(251,191,36,.04)" : "rgba(202,138,4,.03)" }}>
+        <div style={{ ...C(), marginBottom: 'var(--space-section)', borderColor: dark ? "rgba(251,191,36,.2)" : "rgba(202,138,4,.15)", background: dark ? "rgba(251,191,36,.04)" : "rgba(202,138,4,.03)" }}>
           <div style={{ fontSize: 'var(--type-body)', color: t.t2, lineHeight: 1.6, marginBottom: 14 }}>Three players have shot perfect from the field in a single game and scored every one of their team{"'"}s seven points. This club is exclusive, unintentional, and possibly cursed.</div>
-          <div style={{ display: "grid", gridTemplateColumns: isCompact ? "1fr" : isWide ? "1fr 1fr 1fr" : "1fr 1fr", gap: 10 }}>
+          <div style={{ display: "grid", gridTemplateColumns: isCompact ? "1fr" : isRegular ? "1fr 1fr" : "1fr 1fr 1fr", gap: 10 }}>
             <div style={{ padding: "14px", background: dark ? 'rgba(251,191,36,.06)' : 'rgba(251,191,36,.05)', borderRadius: 10, border: `1px solid ${dark ? "rgba(251,191,36,.15)" : "rgba(251,191,36,.2)"}` }}>
               <div style={{ fontSize: 'var(--type-label)', fontWeight: 800, letterSpacing: 1.5, color: t.gold, marginBottom: 4 }}>FOUNDING MEMBER</div>
               <div style={{ ...S, fontSize: 'var(--type-title)', color: t.text }}>Gabe</div>
@@ -935,13 +1029,13 @@ export default function App() {
         {/* THE DYNASTY */}
         <SectionDivider />
         <div id="season-dynasty" style={{...L, scrollMarginTop: 64}}>🏆 The Dynasty</div>
-        <div style={{ ...C(), marginBottom: 'var(--space-section-gap)', borderColor: dark ? "rgba(251,191,36,.25)" : "rgba(202,138,4,.2)", background: dark ? "rgba(251,191,36,.06)" : "rgba(202,138,4,.04)" }}>
+        <div style={{ ...C(), marginBottom: 'var(--space-section)', borderColor: dark ? "rgba(251,191,36,.25)" : "rgba(202,138,4,.2)", background: dark ? "rgba(251,191,36,.06)" : "rgba(202,138,4,.04)" }}>
           <div style={{ fontSize: 'var(--type-body)', color: t.t2, lineHeight: 1.7, marginBottom: 18, maxWidth: 'var(--space-prose-max)' }}>
             Years ago, four men — Nathan, Wags, Lee & Cal — formed a fixed squad and proceeded to go undefeated across dozens of series. Nobody knows how. Science has no explanation. The film room footage is classified. They disbanded, went their separate ways, and the league moved on. Until 5/4, when they reassembled on Blue and reminded everyone why the word {"\""}dynasty{"\""} exists.
           </div>
 
           {/* ROSTER CARD */}
-          <div style={{ display: "grid", gridTemplateColumns: isCompact ? "1fr 1fr" : "1fr 1fr 1fr 1fr", gap: 10, marginBottom: 18 }}>
+          <div style={{ display: "grid", gridTemplateColumns: isCompact ? "1fr 1fr" : isRegular ? "1fr 1fr" : "1fr 1fr 1fr 1fr", gap: 10, marginBottom: 18 }}>
             {[
               { name: "Nathan", role: "Structural Beam" },
               { name: "Wags", role: "Solid Citizen" },
@@ -957,7 +1051,7 @@ export default function App() {
           </div>
 
           {/* MAY 4TH RESULT */}
-          <div style={{ background: dark ? 'rgba(251,191,36,.05)' : 'rgba(251,191,36,.04)', borderRadius: 10, padding: 'var(--space-card-padding)', border: `1px solid ${dark ? "rgba(251,191,36,.12)" : "rgba(251,191,36,.15)"}`, marginBottom: 18 }}>
+          <div style={{ background: dark ? 'rgba(251,191,36,.05)' : 'rgba(251,191,36,.04)', borderRadius: 10, padding: 'var(--space-card-pad)', border: `1px solid ${dark ? "rgba(251,191,36,.12)" : "rgba(251,191,36,.15)"}`, marginBottom: 18 }}>
             <div style={{ fontSize: 'var(--type-label)', fontWeight: 800, letterSpacing: 1.5, color: t.gold, marginBottom: 6 }}>REUNION RESULT · MON 5/4</div>
             <div style={{ ...S, fontSize: 'var(--type-stat-lg)', color: t.text, lineHeight: 1.2 }}>Dynasty 4, White 2</div>
             <div style={{ fontSize: 'var(--type-body-sm)', color: t.t2, marginTop: 8, lineHeight: 1.6 }}>
@@ -966,7 +1060,7 @@ export default function App() {
           </div>
 
           {/* IN-SEASON TOURNAMENT */}
-          <div style={{ background: dark ? 'rgba(251,191,36,.05)' : 'rgba(251,191,36,.04)', borderRadius: 10, padding: 'var(--space-card-padding)', border: `1px solid ${dark ? "rgba(251,191,36,.12)" : "rgba(251,191,36,.15)"}`, marginBottom: 18 }}>
+          <div style={{ background: dark ? 'rgba(251,191,36,.05)' : 'rgba(251,191,36,.04)', borderRadius: 10, padding: 'var(--space-card-pad)', border: `1px solid ${dark ? "rgba(251,191,36,.12)" : "rgba(251,191,36,.15)"}`, marginBottom: 18 }}>
             <div style={{ fontSize: 'var(--type-label)', fontWeight: 800, letterSpacing: 1.5, color: t.gold, marginBottom: 6 }}>🏆 IN-SEASON TOURNAMENT CHAMPIONS</div>
             <div style={{ fontSize: 'var(--type-body)', color: t.t2, lineHeight: 1.7 }}>
               The Dynasty didn{"'"}t just win the series — they won the in-season tournament. This is the one that actually matters. The regular season is just cardio. The tournament is where legacies are made, and The Dynasty{"'"}s legacy was already extensive before they added {"\""}tournament champions{"\""} to the résumé. The trophy is theirs. It is non-negotiable.
@@ -998,7 +1092,7 @@ export default function App() {
           const predB = (sumB / teamB.length * 100).toFixed(0);
           const diff = Math.abs(parseFloat(predA) - parseFloat(predB)).toFixed(0);
           const renderTeamPanel = (team, label, color, pred) => (
-            <div style={{ padding: 'var(--space-card-padding)', background: t.inset, borderRadius: 10 }}>
+            <div style={{ padding: 'var(--space-card-pad)', background: t.inset, borderRadius: 10 }}>
               <div style={{ fontSize: 'var(--type-label)', fontWeight: 800, letterSpacing: 1.5, color, marginBottom: 8 }}>{label} · AVG {pred}%</div>
               {team.map((p, i) => (
                 <div key={i} style={{ display: "flex", justifyContent: "space-between", padding: "3px 0", fontSize: 'var(--type-body)' }}>
@@ -1012,7 +1106,7 @@ export default function App() {
             <>
               <SectionDivider />
               <div id="season-algorithm" style={{...L, scrollMarginTop: 64}}>The Algorithm{"'"}s Matchup</div>
-              <div style={{ ...C(), marginBottom: 'var(--space-section-gap)', borderColor: dark ? "rgba(52,211,153,.2)" : "rgba(22,163,74,.15)", background: dark ? "rgba(52,211,153,.03)" : "rgba(22,163,74,.02)" }}>
+              <div style={{ ...C(), marginBottom: 'var(--space-section)', borderColor: dark ? "rgba(52,211,153,.2)" : "rgba(22,163,74,.15)", background: dark ? "rgba(52,211,153,.03)" : "rgba(22,163,74,.02)" }}>
                 <div style={{ fontSize: 'var(--type-body)', color: t.t2, lineHeight: 1.6, marginBottom: 14 }}>
                   <strong style={{ color: t.green }}>Computed from actual data.</strong> Top 8 players by games played, sorted by win percentage, greedy-balanced to minimize predicted differential. No vibes, no feelings, just math at 4:45 AM.
                 </div>
@@ -1050,13 +1144,13 @@ export default function App() {
     <div style={{ background: t.bg, color: t.text, fontFamily: "'Outfit',sans-serif", minHeight: "100vh", transition: "background .3s,color .3s" }}>
       <style dangerouslySetInnerHTML={{ __html: "button{transition:transform 0.1s ease-out}button:active{transform:scale(0.97)}:focus-visible{outline:2px solid #EF6234;outline-offset:2px}button:focus:not(:focus-visible){outline:none}@media(hover:hover){[data-stat-card]:hover{transform:scale(1.02);transition:transform 0.15s ease-out}}@media(prefers-reduced-motion:reduce){*{transition:none!important}}" }} />
       <main style={{ maxWidth: 'var(--content-max)', margin: "0 auto", padding: "var(--space-page-top) var(--space-page-x) var(--space-page-bot)" }}>
-        <div style={{ display: "flex", flexDirection: isCompact ? "column" : "row", justifyContent: "space-between", alignItems: isCompact ? "flex-start" : "flex-start", gap: isCompact ? 16 : 0, marginBottom: 'var(--space-section-gap)', paddingBottom: 'var(--space-section-gap)', borderBottom: `1px solid ${t.border}` }}>
+        <div style={{ display: "flex", flexDirection: isCompact ? "column" : "row", justifyContent: "space-between", alignItems: isCompact ? "flex-start" : "flex-start", gap: isCompact ? 16 : 0, marginBottom: 'var(--space-section)', paddingBottom: 'var(--space-section)', borderBottom: `1px solid ${t.border}` }}>
           <div>
             <div style={{ fontSize: 'var(--type-label)', fontWeight: 700, letterSpacing: 2, textTransform: "uppercase", color: t.accent, marginBottom: 8 }}>4:45 AM · Middle School Gym · 3 Months Deep</div>
             <h1 style={{ ...S, fontSize: "var(--type-display)", fontWeight: 400, letterSpacing: -1, lineHeight: 1.05, margin: 0 }}>Morning <em style={{ fontStyle: "italic", color: t.accent }}>Hoops</em></h1>
             <p style={{ fontSize: 'var(--type-body)', color: t.t2, marginTop: 8, maxWidth: 500, lineHeight: 'var(--type-body-lh)' }}>A group of grown adults wake up before the sun to play 7-game series where children learn fractions. Tyler is mortal. Gabe is everywhere. Cal is occasionally in Florida. Sean is asleep. Nobody has explained how they're all available at 4:45 AM.</p>
           </div>
-          <button onClick={() => setDark(!dark)} aria-label="Toggle dark/light mode" style={{ background: t.card, border: `1px solid ${t.border}`, borderRadius: 8, padding: isCompact ? "6px 10px" : "8px 14px", cursor: "pointer", color: t.t2, fontSize: isCompact ? 10 : 11, fontWeight: 600, fontFamily: "'Outfit',sans-serif", display: "flex", alignItems: "center", gap: 6, marginTop: isCompact ? 0 : 8, minHeight: 44 }}>{dark ? "☀️" : "🌙"} {dark ? "Light" : "Dark"}</button>
+          <button onClick={() => setDark(!dark)} aria-label="Toggle dark/light mode" style={{ background: t.card, border: `1px solid ${t.border}`, borderRadius: 8, padding: isCompact ? "6px 10px" : "8px 14px", cursor: "pointer", color: t.t2, fontSize: isCompact ? 'var(--type-label)' : 'var(--type-label-lg)', fontWeight: 600, fontFamily: "'Outfit',sans-serif", display: "flex", alignItems: "center", gap: 'var(--space-card-gap)', marginTop: isCompact ? 0 : 8, minHeight: 44 }}>{dark ? "☀️" : "🌙"} {dark ? "Light" : "Dark"}</button>
         </div>
 
         <nav role="tablist" onKeyDown={(e) => {
@@ -1073,7 +1167,7 @@ export default function App() {
             return;
           }
           setTab(tabIds[newIndex]); window.scrollTo(0, 0);
-        }} style={{ display: "flex", gap: 6, marginBottom: 'var(--space-section-gap)', overflowX: "auto", WebkitOverflowScrolling: "touch", padding: 4, background: t.inset, borderRadius: 999, scrollbarWidth: "none", position: "sticky", top: 0, zIndex: 10, backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)", scrollSnapType: "x mandatory" }}>
+        }} style={{ display: "flex", gap: 'var(--space-card-gap)', marginBottom: 'var(--space-section)', overflowX: "auto", WebkitOverflowScrolling: "touch", padding: '4px 0', background: t.inset, borderRadius: 999, scrollbarWidth: "none", position: "sticky", top: 0, zIndex: 10, backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)", scrollSnapType: "x mandatory" }}>
           {tabs.map(tb => <button key={tb.id} ref={tb.id === tab ? activeTabRef : null} role="tab" aria-selected={tab === tb.id} tabIndex={tb.id === tab ? 0 : -1} onClick={() => { setTab(tb.id); window.scrollTo(0, 0); }} style={{ background: tab === tb.id ? t.card : "transparent", border: tab === tb.id ? `1px solid ${t.border}` : "1px solid transparent", borderRadius: 999, padding: "8px 16px", cursor: "pointer", fontSize: 'var(--type-body)', fontWeight: tab === tb.id ? 700 : 500, color: tab === tb.id ? t.accent : t.t2, fontFamily: "'Outfit',sans-serif", transition: "all .15s", whiteSpace: "nowrap", minHeight: 44, minWidth: 44, scrollSnapAlign: "center" }}>{tb.label}</button>)}
         </nav>
 
