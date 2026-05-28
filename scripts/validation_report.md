@@ -1,13 +1,13 @@
 # Morning Hoops: Validation Report
 
-Generated: 2026-05-08T16:48:40.496Z
+Generated: 2026-05-28T12:49:04.340Z
 
 > ⚠️ **Could not fetch live data** — SHEET_TABS gids are still placeholder values ("PASTE_GID_HERE"). Fill them in with real gids from your Google Sheet.
 > Running comparison against legacy data only. Aggregate stats below are computed from the hardcoded legacy snapshot.
 
 ## Summary
 
-- Legacy sessions: 49
+- Legacy sessions: 63
 - Live sessions: 0 (fetch unavailable)
 - Comparison: N/A
 
@@ -46,17 +46,17 @@ Check these specific sessions that were previously flagged:
 
 | Stat | Hardcoded | Live | Match? |
 |------|-----------|------|--------|
-| Total decided series | 38 | N/A | — |
-| Blue wins | 26 | N/A | — |
-| White wins | 12 | N/A | — |
-| Sweeps (4-0) | 7 | N/A | — |
-| Tyler W-L | 16-4 | N/A | — |
-| Lee W-L | 16-16 | N/A | — |
-| Nathan attendance | 39 | N/A | — |
-| Gabe attendance | 33 | N/A | — |
-| Cal attendance | 29 | N/A | — |
-| Wags attendance | 24 | N/A | — |
-| Ryan attendance | 32 | N/A | — |
+| Total decided series | 46 | N/A | — |
+| Blue wins | 29 | N/A | — |
+| White wins | 17 | N/A | — |
+| Sweeps (4-0) | 8 | N/A | — |
+| Tyler W-L | 17-9 | N/A | — |
+| Lee W-L | 17-21 | N/A | — |
+| Nathan attendance | 47 | N/A | — |
+| Gabe attendance | 40 | N/A | — |
+| Cal attendance | 33 | N/A | — |
+| Wags attendance | 29 | N/A | — |
+| Ryan attendance | 40 | N/A | — |
 
 ## 7/7 Club Verification
 
@@ -77,8 +77,11 @@ Every Tyler loss with Curse Suspects (teammates when Tyler lost):
 | Wed 4/8 | white | Lee, Ryan, Chad, Mike | 4-1 |
 | Wed 4/29 | blue | Lee, Mike, Jared, Ryan | 4-0 |
 | Fri 5/1 | white | Mike, Dane, Cal | 4-3 |
-
-**Curse Suspects:** Mike — present on Tyler's team for every single one of his 4 losses.
+| Mon 5/11 | white | Sean, Ryan, Jared | 4-3 |
+| Wed 5/13 | blue | Nathan, Mike, Ryan | 4-3 |
+| Mon 5/18 | blue | Lee, Gabe, Mike | 4-3 |
+| Wed 5/20 | blue | Lee, Mike, Gabe | 4-2 |
+| Fri 5/22 | blue | Chad, Lee, Jared, Mike | 4-1 |
 
 ## Suspected Sheet Errors — Please Review Manually
 

@@ -15,3 +15,8 @@ Thumbs.db
 # Env
 .env
 .env.*
+
+# Project Specific
+*.xlsx
+package-lock 2.json
+*.log

@@ -1099,3 +1099,28 @@ All text-on-surface pairs must pass WCAG AA (4.5:1 for normal text, 3:1 for larg
 - Ember-colored text used for editorial notes in game rows (currently `fontSize: 10, fontWeight: 600`) is acceptable because it meets the 3:1 large/bold text threshold at weight 600+.
 - The pull-quote left border (7.5.2) uses ember as a decorative element, not text, so contrast doesn't apply.
 - No body text (weight 400, < 14px) should be set in ember. All current uses are labels or bold markers, which is correct.
+
+---
+
+## 8. Component Architecture (Phase 1-5 Implemented)
+
+The monolith `morning_hoops.jsx` has been broken down into a modern React architecture. The app uses a hub-and-spoke navigation model.
+
+### Data & State
+- `src/data/sessions.js`: The core truth, 76 hardcoded session records.
+- `src/data/months.js`: Editorial month contexts.
+- `src/data/players.js`: Profile and roasting data.
+- `src/lib/stats.js`: Computes head-to-head, win rates, attendance, streaks, algorithms, teammate affinities.
+- `src/App.jsx`: State container (`view`, `statsMode`, `bp`, `dark`) coordinating navigation. No router dependency.
+
+### Views
+1. **Home (`HomeView.jsx`)**: The front page. Hero stats, quick grid, top 5 leaderboard, featured editorial spotlight, tappable month cards, compact roster grid.
+2. **Month Detail (`MonthDetailView.jsx`)**: Game-by-game logs, mini-leaderboards, and debrief notes.
+3. **Player Detail (`PlayerDetailView.jsx`)**: Individual deep-dives. Stat pills, streak indicators, best/worst teammate records.
+4. **Season Full Records (`SeasonView.jsx`)**: The deep dive. Full attendance, 17-player win-loss table, Tyler Losses, 7/7 Club, and The Dynasty editorial sections.
+
+### Shared UI
+- **Primitives**: `StatPill`, `RecordBadge`, `PlayerAvatar` (with color-coded tiers), `TogglePill`, `Badge`, `Dot`, `ProgressBar`.
+- **Layout**: Slim `Header` and mobile-friendly `NavBar` (bottom tab-bar on compact, inline on regular+). `SectionDivider` for editorial column breaks.
+
+The structure is heavily componentized, separating the data-vis tables (`AttendanceTable`, `PlayerRecordsTable`) from editorial content (`TylerLosses`, `DynastySection`), achieving the goal of a digital sports magazine that hits like a group chat.
