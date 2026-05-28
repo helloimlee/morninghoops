@@ -61,5 +61,11 @@ export const FALLBACK_SESSIONS = [
   { day: "Fri 5/15", month: "May", blue: [], white: [], winner: null, score: null, note: "No game. 8 showed (Nathan, Mike, Gabe, Ryan, Tyler, Mitch, Jared, Cal)." },
   { day: "Mon 5/18", month: "May", blue: ["Lee","Tyler","Gabe","Mike"], white: ["Nathan","Wags","Ryan","Chad"], winner: "white", score: "4-3" },
   { day: "Tue 5/19", month: "May", blue: [], white: [], winner: null, score: null, note: "No game." },
-  { day: "Wed 5/20", month: "May", blue: ["Lee","Mike","Tyler","Gabe"], white: ["Nathan","Chad","Wags","Ryan"], winner: "white", score: "4-2", note: "Ryan hit a sick game-winning 3. Classic Chad was a flamethrower post vacation. Gabe wants the record to reflect Lee only had two points the entire series." }
+  { day: "Wed 5/20", month: "May", blue: ["Lee","Mike","Tyler","Gabe"], white: ["Nathan","Chad","Wags","Ryan"], winner: "white", score: "4-2", note: "Ryan hit a sick game-winning 3. Classic Chad was a flamethrower post vacation. Gabe wants the record to reflect Lee only had two points the entire series." },
+  { day: "Thu 5/21", month: "May", blue: [], white: [], winner: null, score: null },
+  { day: "Fri 5/22", month: "May", blue: ["Chad", "Lee", "Jared", "Mike", "Tyler"], white: ["Nathan", "Kyle", "Ryan", "Gabe", "Cody"], winner: "white", score: "4-1" },
+  { day: "Mon 5/25", month: "May", blue: ["Mike", "Tyler", "Kyle", "Jared"], white: ["Nathan", "Chad", "Lee", "Ryan"], winner: "blue", score: "4-0", note: "Lee slept in past his alarm on a Monday. A Monday. The man who built this app couldn't even set a working alarm for it. His team got swept 4-0 while he was horizontal. Lee posted a lifetime-worst performance of being asleep. Dynasty founder. App creator. Alarm clock casualty." },
+  { day: "Tue 5/26", month: "May", blue: [], white: [], winner: null, score: null },
+  { day: "Wed 5/27", month: "May", blue: ["Lee", "Ryan", "Nathan", "Gabe"], white: ["Jared", "Mike", "Wags", "Cal"], winner: "white", score: "4-1" },
+  { day: "Thu 5/28", month: "May", blue: ["Lee", "Wags", "Nathan", "Cal"], white: ["Jared", "Cody", "Ryan", "Gabe"], winner: "blue", score: "4-3", note: "The Dynasty returned in the Amici's Pizza Memorial Gymnasium — affectionately known as the Gaybe Gym — and won a tight one 4-3. The brotherhood doesn't forget how to win." }
 ];
