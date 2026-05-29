@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useTheme } from "../../lib/theme";
+import { X, ExternalLink, Dribbble } from "lucide-react";
 
 export default function InstallPrompt() {
   const { t } = useTheme();
@@ -74,8 +75,8 @@ export default function InstallPrompt() {
       return (
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "12px" }}>
           <div style={{ flex: 1 }}>
-            <div style={{ fontSize: "var(--type-body)", fontWeight: 600, marginBottom: "4px" }}>
-              🏀 Add Morning Hoops
+            <div style={{ fontSize: "var(--type-body)", fontWeight: 600, marginBottom: "4px", display: "flex", alignItems: "center", gap: 8 }}>
+              <Dribbble size={20} strokeWidth={2} style={{ color: t.accent }} /> Add Morning Hoops
             </div>
             <div style={{ fontSize: "var(--type-body-sm)", color: t.t2 }}>
               Add to home screen for the full experience
@@ -105,11 +106,11 @@ export default function InstallPrompt() {
     if (platform === "ios") {
       return (
         <div>
-          <div style={{ fontSize: "var(--type-body)", fontWeight: 600, marginBottom: "4px" }}>
-            🏀 Add to Home Screen
+          <div style={{ fontSize: "var(--type-body)", fontWeight: 600, marginBottom: "4px", display: "flex", alignItems: "center", gap: 8 }}>
+            <Dribbble size={20} strokeWidth={2} style={{ color: t.accent }} /> Add to Home Screen
           </div>
-          <div style={{ fontSize: "var(--type-body-sm)", color: t.t2 }}>
-            Tap the share button <span style={{ fontSize: "1.1em" }}>↗</span> then "Add to Home Screen"
+          <div style={{ fontSize: "var(--type-body-sm)", color: t.t2, display: "flex", alignItems: "center", flexWrap: "wrap", gap: 4 }}>
+            Tap the share button <ExternalLink size={16} strokeWidth={2} /> then "Add to Home Screen"
           </div>
         </div>
       );
@@ -117,8 +118,8 @@ export default function InstallPrompt() {
 
     return (
       <div>
-        <div style={{ fontSize: "var(--type-body)", fontWeight: 600, marginBottom: "4px" }}>
-          🏀 Install Morning Hoops
+        <div style={{ fontSize: "var(--type-body)", fontWeight: 600, marginBottom: "4px", display: "flex", alignItems: "center", gap: 8 }}>
+          <Dribbble size={20} strokeWidth={2} style={{ color: t.accent }} /> Install Morning Hoops
         </div>
         <div style={{ fontSize: "var(--type-body-sm)", color: t.t2 }}>
           Use your browser's install option to add this app
@@ -179,7 +180,6 @@ export default function InstallPrompt() {
             background: t.inset,
             border: "none",
             color: t.t3,
-            fontSize: "14px",
             cursor: "pointer",
             width: "28px",
             height: "28px",
@@ -191,7 +191,7 @@ export default function InstallPrompt() {
           }}
           aria-label="Dismiss"
         >
-          ✕
+          <X size={18} strokeWidth={2.5} />
         </button>
         <div style={{ paddingRight: "32px" }}>
           {renderContent()}

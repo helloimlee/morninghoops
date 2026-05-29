@@ -1,4 +1,5 @@
 import { useTheme } from "../../lib/theme.jsx";
+import { Sun, Moon } from "lucide-react";
 
 export function ThemeToggle({ compact }) {
   const { dark, setDark, t } = useTheme();
@@ -26,7 +27,9 @@ export function ThemeToggle({ compact }) {
         transition: "all .15s, transform 0.1s ease"
       }}
     >
-      <span style={{ fontSize: "1.2em" }}>{dark ? "☀️" : "🌙"}</span>
+      <span style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+        {dark ? <Sun size={18} strokeWidth={2} /> : <Moon size={18} strokeWidth={2} />}
+      </span>
       <span>{dark ? "Light" : "Dark"}</span>
     </button>
   );

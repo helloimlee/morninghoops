@@ -2,6 +2,7 @@ import { useTheme } from "../../lib/theme.jsx";
 import { CORRELATIONS } from "../../data/players";
 import PlayerProfile from "./PlayerProfile";
 import PlayerRoast from "./PlayerRoast";
+import { ArrowLeft } from "lucide-react";
 
 export default function PlayerDetailView({ playerName, stats, sessions, bp, navigate }) {
   const { t } = useTheme();
@@ -42,7 +43,7 @@ export default function PlayerDetailView({ playerName, stats, sessions, bp, navi
           transition: "transform 0.1s ease"
         }}
       >
-        ← Back
+        <ArrowLeft size={20} strokeWidth={2} /> Back
       </button>
 
       <div style={{ marginBottom: 'var(--space-section)' }}>

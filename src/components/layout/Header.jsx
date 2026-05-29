@@ -1,5 +1,6 @@
 import { useTheme } from "../../lib/theme.jsx";
 import { ThemeToggle } from "../ui/ThemeToggle";
+import { Dribbble } from "lucide-react";
 
 export default function Header({ view, navigate, bp }) {
   const { t } = useTheme();
@@ -32,7 +33,7 @@ export default function Header({ view, navigate, bp }) {
           color: t.text
         }}
       >
-        <span style={{ fontSize: "1.25rem" }}>🏀</span>
+        <Dribbble size={20} strokeWidth={2} style={{ color: t.accent }} />
         {!isDesktop && <span>Morning Hoops</span>}
         {isDesktop && <span style={{ fontFamily: "'Instrument Serif', serif", fontSize: "var(--type-title)", letterSpacing: -0.5 }}>Morning <em style={{ fontStyle: "italic", color: t.accent }}>Hoops</em></span>}
       </div>

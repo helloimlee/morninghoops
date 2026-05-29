@@ -1,5 +1,6 @@
 import { useTheme } from "../../lib/theme.jsx";
 import { useRef, useEffect } from "react";
+import { Home, Users } from "lucide-react";
 
 export default function NavBar({ view, navigate, bp }) {
   const { t } = useTheme();
@@ -17,8 +18,8 @@ export default function NavBar({ view, navigate, bp }) {
   if (bp === "wide") return null;
 
   const items = [
-    { id: "home", label: "Home", icon: "🏠" },
-    { id: "season", label: "Players", icon: "👤" }
+    { id: "home", label: "Home", icon: <Home size={20} strokeWidth={2} /> },
+    { id: "season", label: "Players", icon: <Users size={20} strokeWidth={2} /> }
   ];
 
   return (
@@ -72,7 +73,7 @@ export default function NavBar({ view, navigate, bp }) {
             flexShrink: 0
           }}
         >
-          <span style={{ fontSize: "1.25rem" }}>{item.icon}</span>
+          <span style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>{item.icon}</span>
           <span style={{ 
             fontSize: "var(--type-label)", 
             fontWeight: view === item.id ? 700 : 500,

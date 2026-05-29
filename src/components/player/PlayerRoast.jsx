@@ -1,4 +1,5 @@
 import { useTheme } from "../../lib/theme.jsx";
+import { Flame } from "lucide-react";
 
 export default function PlayerRoast({ roast }) {
   const { dark, t } = useTheme();
@@ -18,9 +19,12 @@ export default function PlayerRoast({ roast }) {
         fontWeight: 800, 
         letterSpacing: 1.2, 
         color: t.red, 
-        marginBottom: 4 
+        marginBottom: 4,
+        display: "flex",
+        alignItems: "center",
+        gap: 6
       }}>
-        🔥 SCOUTING REPORT
+        <Flame size={16} strokeWidth={2.5} /> SCOUTING REPORT
       </div>
       <div style={{ 
         fontSize: 'var(--type-body-sm)', 

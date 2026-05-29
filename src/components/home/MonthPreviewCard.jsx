@@ -1,6 +1,7 @@
 import { useTheme } from "../../lib/theme.jsx";
 import { MONTHS } from "../../data/months";
 import { SESSIONS } from "../../data/sessions";
+import { ArrowRight } from "lucide-react";
 
 export default function MonthPreviewCard({ month, navigate, bp }) {
   const { t } = useTheme();
@@ -54,11 +55,12 @@ export default function MonthPreviewCard({ month, navigate, bp }) {
           </div>
         </div>
         <div style={{ 
-          fontSize: 18,
           color: t.t3,
-          opacity: 0.5
+          opacity: 0.5,
+          display: "flex",
+          alignItems: "center"
         }}>
-          →
+          <ArrowRight size={20} strokeWidth={2} />
         </div>
       </div>
 

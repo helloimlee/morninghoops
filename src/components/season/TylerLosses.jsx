@@ -1,5 +1,6 @@
 import { useTheme } from "../../lib/theme";
 import SectionDivider from "../layout/SectionDivider";
+import { FileSearch } from "lucide-react";
 
 export default function TylerLosses({ playerLosses, bp }) {
   const { t, dark } = useTheme();
@@ -65,8 +66,8 @@ export default function TylerLosses({ playerLosses, bp }) {
 
         {/* ANALYST'S FINDINGS */}
         <div style={{ marginTop: 16, padding: isCompact ? '14px 14px' : '18px 20px', background: dark ? 'rgba(248,113,113,.06)' : 'rgba(239,68,68,.04)', borderRadius: 12, border: `1px solid ${dark ? "rgba(248,113,113,.18)" : "rgba(248,113,113,.15)"}` }}>
-          <div style={{ fontSize: 'var(--type-label)', fontWeight: 800, letterSpacing: 1.5, color: t.red, marginBottom: 12 }}>
-            🗂️ ANALYST{"'"}S FINDINGS — CLASSIFIED
+          <div style={{ fontSize: 'var(--type-label)', fontWeight: 800, letterSpacing: 1.5, color: t.red, marginBottom: 12, display: "flex", alignItems: "center", gap: 8 }}>
+            <FileSearch size={18} strokeWidth={2.5} /> ANALYST{"'"}S FINDINGS — CLASSIFIED
           </div>
           <div style={{ fontSize: 'var(--type-body-sm)', color: t.t2, lineHeight: 1.7, marginBottom: 8, fontStyle: 'italic' }}>
             After exhaustive review of the Tyler Losses Files, the following conclusions have been entered into the permanent record:

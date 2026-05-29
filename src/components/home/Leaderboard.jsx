@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useTheme } from "../../lib/theme.jsx";
 import { TogglePill } from "../ui/TogglePill";
 import ProgressBar from "../ui/ProgressBar";
+import { ArrowRight } from "lucide-react";
 
 export default function Leaderboard({ stats, bp, statsMode, setStatsMode, navigate }) {
   const { t } = useTheme();
@@ -147,10 +148,13 @@ export default function Leaderboard({ stats, bp, statsMode, setStatsMode, naviga
             fontWeight: 700, 
             cursor: "pointer",
             padding: "10px var(--space-card-pad)",
-            minHeight: 44
+            minHeight: 44,
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 6
           }}
         >
-          View all records →
+          View all records <ArrowRight size={18} strokeWidth={2} />
         </button>
       </div>
     </section>

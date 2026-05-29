@@ -1,5 +1,6 @@
 import { useTheme } from "../../lib/theme";
 import SectionDivider from "../layout/SectionDivider";
+import { Trophy, Crown } from "lucide-react";
 
 export default function DynastySection({ bp }) {
   const { t, dark } = useTheme();
@@ -16,9 +17,12 @@ export default function DynastySection({ bp }) {
         textTransform: "uppercase", 
         color: t.accent, 
         marginBottom: 16, 
-        scrollMarginTop: 64
+        scrollMarginTop: 64,
+        display: "flex",
+        alignItems: "center",
+        gap: 8
       }}>
-        🏆 The Dynasty
+        <Trophy size={20} strokeWidth={2.5} /> The Dynasty
       </div>
       <div style={{ 
         padding: 'var(--space-card-pad)', 
@@ -42,7 +46,9 @@ export default function DynastySection({ bp }) {
             { name: "Cal", role: "Flamethrower" },
           ].map(m => (
             <div key={m.name} style={{ padding: "14px", background: dark ? 'rgba(251,191,36,.08)' : 'rgba(251,191,36,.06)', borderRadius: 10, border: `1px solid ${dark ? "rgba(251,191,36,.18)" : "rgba(251,191,36,.22)"}`, textAlign: "center" }}>
-              <div style={{ fontSize: 'var(--type-title)', color: t.gold, marginBottom: 2 }}>👑</div>
+              <div style={{ color: t.gold, marginBottom: 8, display: "flex", justifyContent: "center" }}>
+                <Crown size={24} strokeWidth={2.5} />
+              </div>
               <div style={{ fontFamily: "'Instrument Serif', serif", fontSize: 'var(--type-title)', color: t.text, fontWeight: 700 }}>{m.name}</div>
               <div style={{ fontSize: 'var(--type-label)', color: t.t3, marginTop: 2 }}>{m.role}</div>
             </div>
@@ -72,7 +78,9 @@ export default function DynastySection({ bp }) {
 
         {/* IN-SEASON TOURNAMENT */}
         <div style={{ background: dark ? 'rgba(251,191,36,.05)' : 'rgba(251,191,36,.04)', borderRadius: 10, padding: 'var(--space-card-pad)', border: `1px solid ${dark ? "rgba(251,191,36,.12)" : "rgba(251,191,36,.15)"}`, marginBottom: 18 }}>
-          <div style={{ fontSize: 'var(--type-label)', fontWeight: 800, letterSpacing: 1.5, color: t.gold, marginBottom: 6 }}>🏆 IN-SEASON TOURNAMENT CHAMPIONS</div>
+          <div style={{ fontSize: 'var(--type-label)', fontWeight: 800, letterSpacing: 1.5, color: t.gold, marginBottom: 8, display: "flex", alignItems: "center", gap: 8 }}>
+            <Trophy size={18} strokeWidth={2.5} /> IN-SEASON TOURNAMENT CHAMPIONS
+          </div>
           <div style={{ fontSize: 'var(--type-body)', color: t.t2, lineHeight: 1.7 }}>
             The Dynasty didn{"'"}t just win the series — they won the in-season tournament. This is the one that actually matters. The regular season is just cardio. The tournament is where legacies are made, and The Dynasty{"'"}s legacy was already extensive before they added {"\""}tournament champions{"\""} to the résumé. The trophy is theirs. It is non-negotiable.
           </div>

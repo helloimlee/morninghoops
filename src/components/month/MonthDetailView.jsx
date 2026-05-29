@@ -2,6 +2,7 @@ import { useTheme } from "../../lib/theme.jsx";
 import { groupSessionsByWeek } from "../../lib/stats";
 import GameRow from "./GameRow";
 import WeekHeader from "./WeekHeader";
+import { ArrowLeft } from "lucide-react";
 
 function getMonthMiniLeaderboard(monthSessions) {
   const players = {};
@@ -65,7 +66,7 @@ export default function MonthDetailView({ month, sessions, bp, navigate }) {
           marginBottom: 16
         }}
       >
-        ← Back
+        <ArrowLeft size={20} strokeWidth={2} /> Back
       </button>
 
       <div style={{ marginBottom: "var(--space-section)" }}>

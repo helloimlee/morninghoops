@@ -1,4 +1,5 @@
 import { useTheme } from "../../lib/theme.jsx";
+import { Trophy } from "lucide-react";
 
 export default function FeaturedEditorial({ bp }) {
   const { t, dark } = useTheme();
@@ -19,9 +20,12 @@ export default function FeaturedEditorial({ bp }) {
         fontWeight: 800, 
         letterSpacing: 1.5, 
         color: t.gold, 
-        marginBottom: 8 
+        marginBottom: 8,
+        display: "flex",
+        alignItems: "center",
+        gap: 8
       }}>
-        🏆 FEATURED STORY
+        <Trophy size={16} strokeWidth={2.5} /> FEATURED STORY
       </div>
       
       <h2 style={{ 
