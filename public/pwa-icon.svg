@@ -1,8 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <circle cx="256" cy="256" r="240" fill="#F88158"/>
-  <circle cx="256" cy="256" r="240" fill="none" stroke="#000" stroke-width="14"/>
-  <path d="M256 16v480" stroke="#000" stroke-width="12" fill="none"/>
-  <path d="M16 256h480" stroke="#000" stroke-width="12" fill="none"/>
-  <path d="M70 120 C 180 180 180 332 70 392" stroke="#000" stroke-width="12" fill="none"/>
-  <path d="M442 120 C 332 180 332 332 442 392" stroke="#000" stroke-width="12" fill="none"/>
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <rect width="512" height="512" fill="#09090B"/>
+  <g transform="translate(76.8, 76.8) scale(14.933)">
+    <circle cx="12" cy="12" r="10" stroke="#EF6234" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M5 20c4.5-3.5 4.5-12.5 0-16" stroke="#EF6234" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M19 4c-4.5 3.5-4.5 12.5 0 16" stroke="#EF6234" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M12 2v20" stroke="#EF6234" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M2 12h20" stroke="#EF6234" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </g>
 </svg>

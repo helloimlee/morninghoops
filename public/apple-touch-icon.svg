@@ -1,9 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180">
-  <rect width="180" height="180" fill="#F88158"/>
-  <circle cx="90" cy="90" r="80" fill="#F88158"/>
-  <circle cx="90" cy="90" r="80" fill="none" stroke="#000" stroke-width="6"/>
-  <path d="M90 10v160" stroke="#000" stroke-width="5" fill="none"/>
-  <path d="M10 90h160" stroke="#000" stroke-width="5" fill="none"/>
-  <path d="M30 45 C 65 65 65 115 30 135" stroke="#000" stroke-width="5" fill="none"/>
-  <path d="M150 45 C 115 65 115 115 150 135" stroke="#000" stroke-width="5" fill="none"/>
+<svg width="180" height="180" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
+  <rect width="180" height="180" fill="#EF6234"/>
+  <g transform="translate(27, 27) scale(5.25)">
+    <circle cx="12" cy="12" r="10" stroke="#09090B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M5 20c4.5-3.5 4.5-12.5 0-16" stroke="#09090B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M19 4c-4.5 3.5-4.5 12.5 0 16" stroke="#09090B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M12 2v20" stroke="#09090B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M2 12h20" stroke="#09090B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </g>
 </svg>
