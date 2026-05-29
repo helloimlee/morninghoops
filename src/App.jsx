@@ -105,7 +105,8 @@ function AppContent() {
       minHeight: "var(--app-height)",
       transition: "background .3s, color .3s",
       display: "flex",
-      flexDirection: "column"
+      flexDirection: "column",
+      overscrollBehaviorY: "contain"
     }}>
       <Header view={view} navigate={navigate} bp={bp} />
       
@@ -114,7 +115,7 @@ function AppContent() {
         maxWidth: "var(--content-max)", 
         margin: "0 auto", 
         width: "100%",
-        padding: "var(--space-page-top) var(--space-page-x) var(--space-page-bot)" 
+        padding: "var(--space-page-top) var(--page-pad-x-right) var(--page-pad-bot) var(--page-pad-x-left)" 
       }}>
         {view === "home" && (
           <div key="home" style={{ animation: "fadeIn 0.3s ease-out forwards" }}>

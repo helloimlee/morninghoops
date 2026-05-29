@@ -42,9 +42,10 @@ export default function PlayerRecordsTable({ players, statsMode, setStatsMode, b
                   fontWeight: statsMode === m.id ? 700 : 500, 
                   color: statsMode === m.id ? t.accent : t.t3, 
                   fontFamily: "'Outfit',sans-serif", 
-                  transition: "all .15s", 
+                  transition: "all .15s, transform 0.1s ease", 
                   whiteSpace: "nowrap", 
-                  minHeight: 32 
+                  minHeight: 44,
+                  minWidth: 64
                 }}
               >
                 {m.label}
@@ -57,7 +58,7 @@ export default function PlayerRecordsTable({ players, statsMode, setStatsMode, b
         padding: 0, 
         overflow: "hidden", 
         background: t.card, 
-        borderRadius: 14, 
+        borderRadius: "var(--radius-lg)", 
         border: `1px solid ${t.border}`,
         marginBottom: 'var(--space-section)' 
       }}>
@@ -78,15 +79,22 @@ export default function PlayerRecordsTable({ players, statsMode, setStatsMode, b
                   <div style={{ fontWeight: 700, fontSize: 'var(--type-body)' }}>{name}</div>
                   <div style={{ fontFamily: "'Instrument Serif', serif", fontSize: 'var(--type-stat-md)', color: barColor }}>{pct}%</div>
                 </div>
-                <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                  <div style={{ fontSize: 'var(--type-body-sm)', color: t.t2, fontWeight: 600, minWidth: 40 }}>{w}-{l}</div>
+                <div style={{ display: "flex", alignItems: "center", gap: "var(--space-card-gap)" }}>
+                  <div style={{ fontSize: 'var(--type-body-sm)', color: t.t2, fontWeight: 600, minWidth: 44 }}>{w}-{l}</div>
                   <ProgressBar pct={pct} color={barColor} label={`${name} win rate: ${pct}%`} />
                 </div>
               </div>
             );
           }
           return (
-            <div key={name} style={{ display: "grid", gridTemplateColumns: "minmax(80px,120px) 60px 1fr 50px", alignItems: "center", padding: "10px 16px", borderBottom: i < winSorted.length - 1 ? `1px solid ${t.border}` : "none", gap: 10 }}>
+            <div key={name} style={{ 
+              display: "grid", 
+              gridTemplateColumns: "minmax(100px, 1.2fr) 80px 3fr 60px", 
+              alignItems: "center", 
+              padding: "var(--space-card-gap) var(--space-card-pad)", 
+              borderBottom: i < winSorted.length - 1 ? `1px solid ${t.border}` : "none", 
+              gap: "var(--space-card-gap)" 
+            }}>
               <div style={{ fontWeight: 600, fontSize: 'var(--type-body)' }}>{name}</div>
               <div style={{ fontSize: 'var(--type-body)', color: t.t2, fontWeight: 600 }}>{w}-{l}</div>
               <ProgressBar pct={pct} color={barColor} label={`${name} win rate: ${pct}%`} />

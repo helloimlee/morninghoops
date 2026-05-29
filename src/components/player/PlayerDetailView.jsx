@@ -30,14 +30,16 @@ export default function PlayerDetailView({ playerName, stats, sessions, bp, navi
         style={{ 
           background: "transparent", 
           border: "none", 
-          padding: "8px 0", 
+          padding: "var(--space-card-gap) 0", 
           color: t.accent, 
           fontWeight: 600, 
           cursor: "pointer",
           display: "flex",
           alignItems: "center",
-          gap: 6,
-          marginBottom: 16
+          gap: "var(--space-card-gap)",
+          marginBottom: "var(--space-card-pad)",
+          minHeight: 44,
+          transition: "transform 0.1s ease"
         }}
       >
         ← Back
@@ -56,20 +58,20 @@ export default function PlayerDetailView({ playerName, stats, sessions, bp, navi
       </div>
       
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 'var(--space-card-gap)', marginBottom: 'var(--space-section)' }}>
-        <div data-stat-card="" style={{ textAlign: "center", background: t.inset, borderRadius: 8, padding: 12 }}>
+        <div data-stat-card="" style={{ textAlign: "center", background: t.inset, borderRadius: "var(--radius-md)", padding: "var(--space-card-pad)" }}>
           <div style={{ ...S, fontSize: 'var(--type-stat-lg)', color: t.blue, lineHeight: 1 }}>{playerStats.bt}</div>
-          <div style={{ fontSize: 'var(--type-label)', color: t.t3, fontWeight: 600, marginTop: 3 }}>Blue Games</div>
+          <div style={{ fontSize: 'var(--type-label)', color: t.t3, fontWeight: 600, marginTop: "var(--space-card-gap)" }}>Blue Games</div>
         </div>
-        <div data-stat-card="" style={{ textAlign: "center", background: t.inset, borderRadius: 8, padding: 12 }}>
+        <div data-stat-card="" style={{ textAlign: "center", background: t.inset, borderRadius: "var(--radius-md)", padding: "var(--space-card-pad)" }}>
           <div style={{ ...S, fontSize: 'var(--type-stat-lg)', color: t.white, lineHeight: 1 }}>{playerStats.wt}</div>
-          <div style={{ fontSize: 'var(--type-label)', color: t.t3, fontWeight: 600, marginTop: 3 }}>White Games</div>
+          <div style={{ fontSize: 'var(--type-label)', color: t.t3, fontWeight: 600, marginTop: "var(--space-card-gap)" }}>White Games</div>
         </div>
       </div>
 
       <div style={L}>Teammate Report</div>
       <div style={{ ...C(), marginBottom: 'var(--space-section)' }}>
-        <div style={{ marginBottom: 16 }}>
-          <div style={{ fontSize: 'var(--type-label)', fontWeight: 800, letterSpacing: 1, color: t.green, marginBottom: 4 }}>BEST TEAMMATE</div>
+        <div style={{ marginBottom: "var(--space-card-pad)" }}>
+          <div style={{ fontSize: 'var(--type-label)', fontWeight: 800, letterSpacing: 1, color: t.green, marginBottom: "var(--space-card-gap)" }}>BEST TEAMMATE</div>
           {teammateReport.best ? (
             <div style={{ fontSize: 'var(--type-body)', color: t.t2 }}>
               <strong style={{ color: t.text }}>{teammateReport.best.partner}</strong> ({teammateReport.best.w}-{teammateReport.best.l} together, {Math.round(teammateReport.best.pct * 100)}%)
@@ -80,7 +82,7 @@ export default function PlayerDetailView({ playerName, stats, sessions, bp, navi
         </div>
         
         <div>
-          <div style={{ fontSize: 'var(--type-label)', fontWeight: 800, letterSpacing: 1, color: t.red, marginBottom: 4 }}>WORST TEAMMATE</div>
+          <div style={{ fontSize: 'var(--type-label)', fontWeight: 800, letterSpacing: 1, color: t.red, marginBottom: "var(--space-card-gap)" }}>WORST TEAMMATE</div>
           {teammateReport.worst ? (
             <div style={{ fontSize: 'var(--type-body)', color: t.t2 }}>
               <strong style={{ color: t.text }}>{teammateReport.worst.partner}</strong> ({teammateReport.worst.w}-{teammateReport.worst.l} together, {Math.round(teammateReport.worst.pct * 100)}%)
@@ -106,14 +108,14 @@ export default function PlayerDetailView({ playerName, stats, sessions, bp, navi
               resColor = won ? t.green : t.red;
             }
             return (
-              <div key={i} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: '12px var(--space-card-pad)', borderBottom: i < recentSessions.length - 1 ? `1px solid ${t.border}` : "none" }}>
+              <div key={i} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: 'var(--space-card-pad)', borderBottom: i < recentSessions.length - 1 ? `1px solid ${t.border}` : "none" }}>
                 <div>
                   <div style={{ fontWeight: 600, fontSize: 'var(--type-body)' }}>{s.day}</div>
                   <div style={{ fontSize: 'var(--type-body-sm)', color: t.t3 }}>Played on <span style={{ color: teamColor, fontWeight: 500 }}>{teamStr}</span></div>
                 </div>
-                <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "var(--space-card-gap)" }}>
                   {s.winner && <div style={{ fontSize: 'var(--type-body-sm)', color: t.t2, fontWeight: 600 }}>{s.score}</div>}
-                  <div style={{ ...S, fontSize: 'var(--type-stat-md)', color: resColor }}>{result}</div>
+                  <div style={{ ...S, fontSize: 'var(--type-stat-md)', color: resColor, minWidth: 24, textAlign: "right" }}>{result}</div>
                 </div>
               </div>
             );

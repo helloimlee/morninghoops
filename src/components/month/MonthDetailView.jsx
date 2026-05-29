@@ -68,7 +68,7 @@ export default function MonthDetailView({ month, sessions, bp, navigate }) {
         ← Back
       </button>
 
-      <div style={{ marginBottom: 24 }}>
+      <div style={{ marginBottom: "var(--space-section)" }}>
         <div style={L}>{month.label} Recap</div>
         <h2 style={{ ...S, fontSize: 'var(--type-headline)', color: t.text, margin: 0, fontWeight: 400 }}>{month.name}</h2>
         <div style={{ fontSize: 'var(--type-body-sm)', fontWeight: 600, color: t.t3, marginTop: 4 }}>Blue {monthBW} – White {monthWW} · {monthDecided.length} decided series</div>
@@ -77,10 +77,18 @@ export default function MonthDetailView({ month, sessions, bp, navigate }) {
       {/* Month Leaderboard */}
       {miniLeaderboard.length > 0 && (
         <div style={{ marginBottom: 'var(--space-section)' }}>
-          <div style={{ fontSize: 'var(--type-label)', fontWeight: 700, letterSpacing: 1, textTransform: "uppercase", color: t.t3, marginBottom: 10 }}>Month Leaders</div>
-          <div style={{ display: "flex", gap: 12, overflowX: "auto", paddingBottom: 8, scrollbarWidth: "none" }}>
+          <div style={{ fontSize: 'var(--type-label)', fontWeight: 700, letterSpacing: 1, textTransform: "uppercase", color: t.t3, marginBottom: "var(--space-card-gap)" }}>Month Leaders</div>
+          <div style={{ 
+            display: "flex", 
+            gap: "var(--space-card-gap)", 
+            overflowX: "auto", 
+            paddingBottom: "var(--space-card-gap)", 
+            scrollbarWidth: "none", 
+            overscrollBehaviorX: "contain",
+            WebkitOverflowScrolling: "touch" 
+          }}>
             {miniLeaderboard.map((p, i) => (
-              <div key={p.name} style={{ background: t.card, border: `1px solid ${t.border}`, borderRadius: 8, padding: "8px 12px", minWidth: 100 }}>
+              <div key={p.name} style={{ background: t.card, border: `1px solid ${t.border}`, borderRadius: "var(--radius-md)", padding: "var(--space-card-gap) var(--space-card-pad)", minWidth: 100 }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 4 }}>
                   <div style={{ fontWeight: 700, fontSize: 'var(--type-body-sm)' }}>{p.name}</div>
                   <div style={{ ...S, fontSize: 'var(--type-body)', color: p.pct >= 0.6 ? t.green : p.pct >= 0.45 ? t.gold : t.red }}>{Math.round(p.pct * 100)}%</div>

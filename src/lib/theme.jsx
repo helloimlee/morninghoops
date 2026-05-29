@@ -15,7 +15,7 @@ export function ThemeProvider({ children }) {
     localStorage.setItem("morning-hoops-theme", dark ? "dark" : "light");
     const metaThemeColor = document.querySelector('meta[name="theme-color"][media="(prefers-color-scheme: dark)"]');
     const metaThemeColorLight = document.querySelector('meta[name="theme-color"][media="(prefers-color-scheme: light)"]');
-    const color = dark ? '#111113' : '#FAFAF8';
+    const color = dark ? '#09090B' : '#F7F6F3';
     if (metaThemeColor) metaThemeColor.setAttribute('content', color);
     if (metaThemeColorLight) metaThemeColorLight.setAttribute('content', color);
     

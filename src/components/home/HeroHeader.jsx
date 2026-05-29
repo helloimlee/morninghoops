@@ -19,7 +19,7 @@ export default function HeroHeader({ stats, bp }) {
         letterSpacing: 2, 
         textTransform: "uppercase", 
         color: t.accent, 
-        marginBottom: 8 
+        marginBottom: "var(--space-card-gap)" 
       }}>
         4:45 AM · Middle School Gym · 3 Months Deep
       </div>
@@ -30,7 +30,7 @@ export default function HeroHeader({ stats, bp }) {
         fontWeight: 400, 
         letterSpacing: -1, 
         lineHeight: 1.05, 
-        margin: "0 0 12px 0" 
+        margin: `0 0 var(--space-card-gap) 0`
       }}>
         Morning <em style={{ fontStyle: "italic", color: t.accent }}>Hoops</em>
       </h1>
@@ -38,8 +38,8 @@ export default function HeroHeader({ stats, bp }) {
       <p style={{ 
         fontSize: "var(--type-body)", 
         color: t.t2, 
-        maxWidth: 600, 
-        margin: isCompact ? "0 0 16px 0" : "0 auto 16px", 
+        maxWidth: "var(--type-body-max-w)", 
+        margin: isCompact ? "0 0 var(--space-card-pad) 0" : "0 auto var(--space-card-pad)", 
         lineHeight: "var(--type-body-lh)" 
       }}>
         A group of grown adults wake up before the sun to play 7-game series where children learn fractions. 
@@ -48,7 +48,7 @@ export default function HeroHeader({ stats, bp }) {
 
       <div style={{ 
         display: "flex", 
-        gap: 8, 
+        gap: "var(--space-card-gap)", 
         fontSize: "var(--type-body-sm)", 
         fontWeight: 600, 
         color: t.t3,

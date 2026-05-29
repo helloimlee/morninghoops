@@ -31,9 +31,9 @@ export default function Leaderboard({ stats, bp, statsMode, setStatsMode, naviga
         display: "flex", 
         justifyContent: "space-between", 
         alignItems: "center",
-        marginBottom: 16,
+        marginBottom: "var(--space-card-pad)",
         flexWrap: "wrap",
-        gap: 12
+        gap: "var(--space-card-gap)"
       }}>
         <div style={{ 
           fontSize: "var(--type-label-lg)", 
@@ -45,7 +45,7 @@ export default function Leaderboard({ stats, bp, statsMode, setStatsMode, naviga
           Leaderboard
         </div>
         
-        <div style={{ display: "flex", gap: 8 }}>
+        <div style={{ display: "flex", gap: "var(--space-card-gap)" }}>
           <TogglePill 
             value={listMode}
             onChange={setListMode}
@@ -68,7 +68,7 @@ export default function Leaderboard({ stats, bp, statsMode, setStatsMode, naviga
       <div style={{ 
         background: t.card, 
         border: `1px solid ${t.border}`, 
-        borderRadius: 14, 
+        borderRadius: "var(--radius-lg)", 
         overflow: "hidden" 
       }}>
         {displayList.map(([name, d], i) => {
@@ -83,14 +83,18 @@ export default function Leaderboard({ stats, bp, statsMode, setStatsMode, naviga
             <div 
               key={name}
               onClick={() => navigate("player", { player: name })}
+              className="interactive-card"
+              role="button"
+              tabIndex={0}
               style={{ 
-                padding: "12px var(--space-card-pad)", 
+                padding: "var(--space-card-gap) var(--space-card-pad)", 
                 borderBottom: isLast ? "none" : `1px solid ${t.border}`,
                 cursor: "pointer",
                 display: "grid",
-                gridTemplateColumns: isCompact ? "1fr auto" : "24px 1fr 80px 1fr 60px",
+                gridTemplateColumns: isCompact ? "1fr auto" : "minmax(24px, auto) 1fr 80px 1fr 60px",
                 alignItems: "center",
-                gap: 12
+                gap: "var(--space-card-gap)",
+                minHeight: 44
               }}
             >
               {!isCompact && (
@@ -114,7 +118,7 @@ export default function Leaderboard({ stats, bp, statsMode, setStatsMode, naviga
                 <div style={{ fontSize: "var(--type-body-sm)", color: t.t2, fontWeight: 600 }}>{w}-{l}</div>
               )}
 
-              <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "var(--space-card-gap)" }}>
                 <ProgressBar pct={pct} color={color} label={`${name} win rate`} />
               </div>
 
@@ -122,7 +126,8 @@ export default function Leaderboard({ stats, bp, statsMode, setStatsMode, naviga
                 fontFamily: "'Instrument Serif', serif", 
                 fontSize: "var(--type-stat-md)", 
                 color: color,
-                textAlign: "right"
+                textAlign: "right",
+                minWidth: 44
               }}>
                 {pct}%
               </div>
@@ -131,7 +136,7 @@ export default function Leaderboard({ stats, bp, statsMode, setStatsMode, naviga
         })}
       </div>
 
-      <div style={{ marginTop: 12, textAlign: "right" }}>
+      <div style={{ marginTop: "var(--space-card-gap)", textAlign: "right" }}>
         <button 
           onClick={() => navigate("season")}
           style={{ 
@@ -141,7 +146,8 @@ export default function Leaderboard({ stats, bp, statsMode, setStatsMode, naviga
             fontSize: "var(--type-body-sm)", 
             fontWeight: 700, 
             cursor: "pointer",
-            padding: "4px 8px"
+            padding: "10px var(--space-card-pad)",
+            minHeight: 44
           }}
         >
           View all records →

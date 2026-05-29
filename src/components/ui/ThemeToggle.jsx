@@ -10,8 +10,8 @@ export function ThemeToggle({ compact }) {
       style={{ 
         background: t.card, 
         border: `1px solid ${t.border}`, 
-        borderRadius: 8, 
-        padding: compact ? "6px 10px" : "8px 14px", 
+        borderRadius: "var(--radius-md)", 
+        padding: compact ? "var(--space-card-gap) var(--space-card-pad)" : "var(--space-card-pad) calc(var(--space-card-pad) * 1.5)", 
         cursor: "pointer", 
         color: t.t2, 
         fontSize: compact ? 'var(--type-label)' : 'var(--type-label-lg)', 
@@ -22,10 +22,12 @@ export function ThemeToggle({ compact }) {
         gap: 'var(--space-card-gap)', 
         minHeight: 44,
         minWidth: 44,
-        justifyContent: "center"
+        justifyContent: "center",
+        transition: "all .15s, transform 0.1s ease"
       }}
     >
-      {dark ? "☀️" : "🌙"} {dark ? "Light" : "Dark"}
+      <span style={{ fontSize: "1.2em" }}>{dark ? "☀️" : "🌙"}</span>
+      <span>{dark ? "Light" : "Dark"}</span>
     </button>
   );
 }

@@ -18,9 +18,10 @@ export function TogglePill({ options, value, onChange }) {
             fontWeight: value === o.id ? 700 : 500, 
             color: value === o.id ? t.accent : t.t3, 
             fontFamily: "'Outfit',sans-serif", 
-            transition: "all .15s", 
+            transition: "all .15s, transform 0.1s ease", 
             whiteSpace: "nowrap", 
-            minHeight: 44 
+            minHeight: 44,
+            minWidth: 44
           }}
         >
           {o.label}

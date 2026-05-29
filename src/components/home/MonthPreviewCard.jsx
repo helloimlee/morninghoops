@@ -16,16 +16,20 @@ export default function MonthPreviewCard({ month, navigate, bp }) {
   return (
     <div 
       onClick={() => navigate("month", { month: month.id })}
+      className="interactive-card"
+      role="button"
+      tabIndex={0}
       style={{
         background: t.card,
         border: `1px solid ${t.border}`,
-        borderRadius: 14,
+        borderRadius: "var(--radius-lg)",
         padding: "var(--space-card-pad)",
         cursor: "pointer",
         display: "flex",
         flexDirection: "column",
-        gap: 12,
-        transition: "transform 0.2s, background 0.2s"
+        gap: "var(--space-card-gap)",
+        transition: "transform 0.2s, background 0.2s",
+        minHeight: 120
       }}
       data-stat-card=""
     >
@@ -60,7 +64,7 @@ export default function MonthPreviewCard({ month, navigate, bp }) {
 
       <div style={{ 
         display: "flex", 
-        gap: 12, 
+        gap: "var(--space-card-gap)", 
         fontSize: "var(--type-body-sm)", 
         fontWeight: 600,
         color: t.t2
@@ -78,7 +82,7 @@ export default function MonthPreviewCard({ month, navigate, bp }) {
         fontStyle: "italic",
         lineHeight: 1.5,
         borderTop: `1px solid ${t.border}`,
-        paddingTop: 10
+        paddingTop: "var(--space-card-gap)"
       }}>
         "{month.commentary.substring(0, isCompact ? 60 : 80)}..."
       </div>
@@ -99,7 +103,7 @@ export function MonthPreviewGrid({ navigate, bp }) {
         letterSpacing: 1.6, 
         textTransform: "uppercase", 
         color: t.t3,
-        marginBottom: 16
+        marginBottom: "var(--space-card-pad)"
       }}>
         The Season Timeline
       </div>
@@ -109,8 +113,9 @@ export function MonthPreviewGrid({ navigate, bp }) {
         gridTemplateColumns: isCompact ? "1fr" : isWide ? "1fr 1fr 1fr" : "1fr 1fr",
         gap: "var(--space-card-gap)",
         overflowX: isCompact ? "auto" : "visible",
+        overscrollBehaviorX: "contain",
         WebkitOverflowScrolling: "touch",
-        paddingBottom: isCompact ? 10 : 0
+        paddingBottom: isCompact ? "var(--space-card-gap)" : 0
       }}>
         {MONTHS.map(month => (
           <MonthPreviewCard 

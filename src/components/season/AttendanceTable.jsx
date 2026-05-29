@@ -15,7 +15,7 @@ export default function AttendanceTable({ players, totalS, bp }) {
         letterSpacing: 1.5, 
         textTransform: "uppercase", 
         color: t.accent, 
-        marginBottom: 16, 
+        marginBottom: "var(--space-card-pad)", 
         scrollMarginTop: 64
       }}>
         Attendance
@@ -24,7 +24,7 @@ export default function AttendanceTable({ players, totalS, bp }) {
         padding: 0, 
         overflow: "hidden", 
         background: t.card, 
-        borderRadius: 14, 
+        borderRadius: "var(--radius-lg)", 
         border: `1px solid ${t.border}`,
         marginBottom: 'var(--space-section)' 
       }}>
@@ -36,15 +36,15 @@ export default function AttendanceTable({ players, totalS, bp }) {
             const wpct = dec > 0 ? Math.round(d.w / dec * 100) : null;
             const tier = rate >= 90 ? ["IRON", t.accent] : rate >= 70 ? ["REG", t.green] : rate >= 40 ? ["PT", t.blue] : rate >= 15 ? ["DROP", t.gold] : ["1x", t.t3];
             return (
-              <div key={name} style={{ padding: '12px var(--space-card-pad)', borderBottom: i < arr.length - 1 ? `1px solid ${t.border}` : "none" }}>
+              <div key={name} style={{ padding: 'var(--space-card-pad)', borderBottom: i < arr.length - 1 ? `1px solid ${t.border}` : "none" }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                   <div style={{ display: "flex", alignItems: "center", gap: 'var(--space-card-gap)' }}>
                     <span style={{ fontWeight: 600, fontSize: 'var(--type-body)' }}>{name}</span>
-                    <span style={{ fontSize: 'var(--type-label)', fontWeight: 800, letterSpacing: 1, padding: "2px 6px", borderRadius: 3, background: `${tier[1]}18`, color: tier[1] }}>{tier[0]}</span>
+                    <span style={{ fontSize: 'var(--type-label)', fontWeight: 800, letterSpacing: 1, padding: "2px 6px", borderRadius: "var(--radius-sm)", background: `${tier[1]}18`, color: tier[1] }}>{tier[0]}</span>
                   </div>
                   <div style={{ fontFamily: "'Instrument Serif', serif", fontSize: 'var(--type-stat-md)', color: tier[1] }}>{rate}%</div>
                 </div>
-                <div style={{ display: "flex", gap: 12, marginTop: 4, fontSize: 'var(--type-body-sm)', color: t.t2 }}>
+                <div style={{ display: "flex", gap: "var(--space-card-pad)", marginTop: "var(--space-card-gap)", fontSize: 'var(--type-body-sm)', color: t.t2 }}>
                   <span>{d.g}/{totalS} games</span>
                   <span style={{ color: t.blue }}>{d.bt}B</span>
                   <span style={{ color: t.white }}>{d.wt}W</span>
@@ -55,19 +55,19 @@ export default function AttendanceTable({ players, totalS, bp }) {
           })
         ) : (
           /* Regular/Wide: table */
-          <div style={{ overflowX: "auto" }}>
+          <div style={{ overflowX: "auto", overscrollBehaviorX: "contain", WebkitOverflowScrolling: "touch" }}>
             <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 'var(--type-body-sm)' }}>
               <thead>
                 <tr style={{ background: t.inset, borderBottom: `1px solid ${t.border}` }}>
                   {["Player", "Games", "Rate", "Blue", "White", "W-L", "Win%"].map(h => (
                     <th key={h} style={{ 
-                      padding: "10px 8px", 
+                      padding: "var(--space-card-gap) 8px", 
                       fontSize: 'var(--type-label)', 
                       fontWeight: 700, 
                       letterSpacing: 1, 
                       color: t.t3, 
                       textAlign: h === "Player" ? "left" : "center", 
-                      ...(h === "Player" ? { paddingLeft: 16, minWidth: 80 } : {}) 
+                      ...(h === "Player" ? { paddingLeft: "var(--space-card-pad)", minWidth: 80 } : {}) 
                     }}>
                       {h}
                     </th>
@@ -82,9 +82,9 @@ export default function AttendanceTable({ players, totalS, bp }) {
                   const tier = rate >= 90 ? ["IRON", t.accent] : rate >= 70 ? ["REG", t.green] : rate >= 40 ? ["PT", t.blue] : rate >= 15 ? ["DROP", t.gold] : ["1x", t.t3];
                   return (
                     <tr key={name} style={{ borderBottom: `1px solid ${t.border}` }}>
-                      <td style={{ padding: "9px 16px", fontWeight: 600, fontSize: 'var(--type-body)' }}>
+                      <td style={{ padding: "var(--space-card-gap) var(--space-card-pad)", fontWeight: 600, fontSize: 'var(--type-body)' }}>
                         {name}
-                        <span style={{ fontSize: 'var(--type-label)', fontWeight: 800, letterSpacing: 1, padding: "2px 6px", borderRadius: 3, background: `${tier[1]}18`, color: tier[1], marginLeft: 8 }}>{tier[0]}</span>
+                        <span style={{ fontSize: 'var(--type-label)', fontWeight: 800, letterSpacing: 1, padding: "2px 6px", borderRadius: "var(--radius-sm)", background: `${tier[1]}18`, color: tier[1], marginLeft: 8 }}>{tier[0]}</span>
                       </td>
                       <td style={{ textAlign: "center", color: t.t2 }}>{d.g}/{totalS}</td>
                       <td style={{ textAlign: "center", fontFamily: "'Instrument Serif', serif", fontSize: 'var(--type-stat-md)', color: tier[1] }}>{rate}%</td>

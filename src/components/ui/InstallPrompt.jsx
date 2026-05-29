@@ -144,48 +144,58 @@ export default function InstallPrompt() {
         .install-prompt-banner.dismissing {
           animation: slideOutDown 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
+        .install-prompt-banner button:active {
+          transform: scale(0.96);
+        }
       `}} />
       <div
         className={`install-prompt-banner ${isDismissing ? "dismissing" : ""}`}
         style={{
           position: "fixed",
-          bottom: "calc(var(--nav-height) + 12px)",
+          bottom: "calc(4.5rem + env(safe-area-inset-bottom) + 16px)",
           left: "var(--space-page-x)",
           right: "var(--space-page-x)",
           maxWidth: "var(--content-max)",
           margin: "0 auto",
           zIndex: 1000,
           background: t.card,
+          backdropFilter: "blur(20px)",
+          WebkitBackdropFilter: "blur(20px)",
           border: `1px solid ${t.border}`,
-          borderRadius: "14px",
-          padding: "var(--space-card-pad)",
+          borderRadius: "16px",
+          padding: "16px",
           fontFamily: "'Outfit', sans-serif",
           color: t.text,
-          userSelect: "none"
+          userSelect: "none",
+          boxShadow: "0 12px 40px rgba(0,0,0,0.2)"
         }}
       >
         <button
           onClick={handleDismiss}
           style={{
             position: "absolute",
-            top: "8px",
-            right: "8px",
-            background: "none",
+            top: "12px",
+            right: "12px",
+            background: t.inset,
             border: "none",
             color: t.t3,
-            fontSize: "18px",
+            fontSize: "14px",
             cursor: "pointer",
-            padding: "4px",
-            lineHeight: 1,
+            width: "28px",
+            height: "28px",
+            borderRadius: "50%",
             display: "flex",
             alignItems: "center",
-            justifyContent: "center"
+            justifyContent: "center",
+            transition: "all 0.2s"
           }}
           aria-label="Dismiss"
         >
           ✕
         </button>
-        {renderContent()}
+        <div style={{ paddingRight: "32px" }}>
+          {renderContent()}
+        </div>
       </div>
     </>
   );
